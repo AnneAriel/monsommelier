@@ -1,26 +1,21 @@
 class WinesController < ApplicationController
 
   def index
-
-
     # @wines = policy_scope(Wine)
-
     # if params[:query].present?
     #   @wines = Bike.search_by_wine_criteria(params[:query])
     # else
-
-    @bikes = Bike.all
-
+  @wines = Wine.all
   end
 
 def show
   @wine = Wine.find(params[:id])
-  # authorize @wine
+  authorize @wine
 end
 
 def new
   @wine = Wine.new
-  # authorize @wine
+  authorize @wine
 end
 
 def create
@@ -33,7 +28,7 @@ end
 
 def destroy
   @wine = Wine.find(params[:id])
-  authorize @wine
+  # authorize @wine
   @wine.destroy
   redirect_to wines_path
 end
@@ -42,7 +37,7 @@ end
 private
 
   def wine_params
-    params.require(:wine).permit(:domaine, :appellation, :category, :daily_price, :photo)
+    params.require(:wine).permit(:domaine, :appellation, :annee, :couleur, :code_barre)
   end
 
 
