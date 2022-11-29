@@ -1,1 +1,20 @@
-<h2><%= @wine.appellation %></h2>
+
+
+
+<div class="flex-container-card">
+      <div class="flex-item-card">
+        <div class="wine">
+          <% if @wine.photo.attached? %>
+           <%= cl_image_tag @wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="flex-item">
+        <h4><%= @wine.nom%></h4>
+        <h5><%= @wine.appellation%></h5>
+
+
+      </div>
+    </div>
+
+    <%= link_to "List of wines",  wines_path, class:"btn btn-primary" %>

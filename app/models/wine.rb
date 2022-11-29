@@ -4,4 +4,5 @@ class Wine < ApplicationRecord
   has_many :bookmarks
   validates :appellation, presence: true
   validates :couleur, presence: true
+  has_one_attached :photo
 end
