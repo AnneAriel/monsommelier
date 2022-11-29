@@ -84,23 +84,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_163603) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "wishlists", force: :cascade do |t|
-    t.bigint "wine_id", null: false
-    t.bigint "user_id", null: false
-    t.boolean "cave_presence"
-    t.integer "stock"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_wishlists_on_user_id"
-    t.index ["wine_id"], name: "index_wishlists_on_wine_id"
-  end
-
   add_foreign_key "bookmarks", "users"
   add_foreign_key "bookmarks", "wines"
   add_foreign_key "comments", "users"
   add_foreign_key "matches", "dishes"
   add_foreign_key "matches", "users"
   add_foreign_key "matches", "wines"
-  add_foreign_key "wishlists", "users"
-  add_foreign_key "wishlists", "wines"
 end
