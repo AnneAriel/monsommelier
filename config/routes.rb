@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :matches do
     resources :wines do
-      resources :wishlist
+      resources :bookmarks
     end
     resources :dishes, except: :index
   end
