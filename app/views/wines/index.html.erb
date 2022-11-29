@@ -2,7 +2,13 @@
 
 
 <ul>
+
+
   <% @wines.each do |wine| %>
+  <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
     <li><%= wine.appellation %></li>
+     <% end %>
   <% end %>
+
+
 </ul>
