@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :followers
   has_many :matches
+  has_one_attached :photo
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
