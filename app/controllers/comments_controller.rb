@@ -10,15 +10,16 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-    authorize @comment
+    #authorize @comment
   end
 
   def create
+    #@commented_on_type = Type
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.save
     redirect_to comment_path(@comment)
-    authorize @comment
+    #authorize @comment
   end
 
   def edit
@@ -33,13 +34,16 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    authorize @comment
+    #authorize @comment
     @comment.destroy
     redirect_to comments_path
   end
 
   private
 
+
+
+  end
   def comment_params
     params.require(:comment).permit(:commentaire, :note, :commented_on_id, :commented_on_type)
   end

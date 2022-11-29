@@ -1,0 +1,19 @@
+  <div class="container">
+    <div class="comments">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="row">
+            <% @comments.each do |comment| %>
+              <div class="col-sm-6 bicard">
+                <%= link_to  comment_path(comment), style:"text-decoration:none;color:black;" do %>
+                  <div class="card rounded-4 shadow mb-4 ml-2" >
+                    <div class="card-body">
+                        <h4 class="card-title"><%= comment.commented_on_type%></h4>
+                        <h5 class="card-title"><%= comment.commentaire%></h5>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>

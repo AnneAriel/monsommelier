@@ -25,7 +25,7 @@ user4 = User.create!(username: "Anne Ariel", email: "anne_ariel@gmail.com", pass
 photo = URI.open("https://ca.slack-edge.com/T02NE0241-U045T6WG65S-3016efea1458-512")
 user4.photo.attach(io: photo, filename: "profil")
 
-# wine1 = Wine.new(nom_commercial: 'Trenel', exploitation: 'Maison Trenel', appellation: 'Viré-Clessé', année: '2021', couleur: 'blanc')
+# wine1 = Wine.new(nom_commercial: 'Trenel', nom: 'Maison Trenel', appellation: 'Viré-Clessé', année: '2021', couleur: 'blanc')
 # photo = [https://produits.bienmanger.com/47120-0w0h0_Vin_Blanc_Vire_Clesse.jpg](https://produits.bienmanger.com/47120-0w0h0_Vin_Blanc_Vire_Clesse.jpg)
 
 # wine 2 = Wine.new(exploitation = “Domaine Saint Jacques”, appellation =”Bourgogne aligoté”, année = “2019”, couleur = “blanc”)
@@ -40,4 +40,3 @@ user4.photo.attach(io: photo, filename: "profil")
 # wine 6 = Wine.new(exploitation = “Domaine des marrans”, appellation =”Beaujolais”, année = “2018”, couleur = “rouge”) + cépage (gamay)
 
 # wine 7 = Wine.new(exploitation = “Domaine Berthoumieu”, année = “2008”, couleur = “rouge”)  + cépage (Tanat) + nom : “Tanatis”
-

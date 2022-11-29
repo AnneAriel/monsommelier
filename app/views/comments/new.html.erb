@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="review">
+    <h2>Laissez une évaluation</h2>
+    <%#= simple_form_for [@wine, @comment] do |f| %>
+    <%#= simple_form_for [@dish, @comment] do |f| %>
+    <%= simple_form_for [@wine, @comment] do |f| %>
+      <%= f.input :commented_on_type, :label => "Vin / Plat / Accord", :collection => ["wine","dish", "match"] %>
+      <%= f.input :commentaire %>
+      <%= f.input :note  %>
+      <%#as: :hidden %>
+      <div class="my-3">
+        <i  class="comment-rating far fa-star"></i>
+        <i  class="comment-rating far fa-star"></i>
+        <i  class="comment-rating far fa-star"></i>
+        <i  class="comment-rating far fa-star"></i>
+        <i  class="comment-rating far fa-star"></i>
+      <%= f.submit class: "btn btn-primary", value: "Valider" %>
+    <% end %>
+  </div>
+</div>
