@@ -5,5 +5,4 @@ class Wine < ApplicationRecord
   has_one_attached :photo
 
   validates :couleur, presence: true
-  has_one_attached :photo
 end
