@@ -41,9 +41,6 @@ class CommentsController < ApplicationController
 
   private
 
-
-
-  end
   def comment_params
     params.require(:comment).permit(:commentaire, :note, :commented_on_id, :commented_on_type)
   end
