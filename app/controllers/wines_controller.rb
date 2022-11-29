@@ -15,15 +15,14 @@ end
 
 def new
   @wine = Wine.new
-  authorize @wine
+  # authorize @wine
 end
 
 def create
   @wine = Wine.new(wine_params)
-    @wine.user = current_user
     @wine.save
     redirect_to wine_path(@wine)
-    authorize @wine
+    # authorize @wine
 end
 
 def destroy
@@ -37,9 +36,9 @@ end
 private
 
   def wine_params
-    params.require(:wine).permit(:domaine, :appellation, :annee, :couleur, :code_barre, :photo)
-  end
 
-
+    params.require(:wine).permit(:nom, :appellation, :annee, :couleur, :code_barre, :nom_commercial, :provenance, :cepage, :photo)
 
   end
+
+end
