@@ -36,6 +36,6 @@ before_action :set_dish, only: %i[show edit update destroy]
   end
 
   def dish_params
-    params.require(:dish).permit(:caracteristique, :nom)
+    params.require(:dish).permit(:nom)
   end
 end

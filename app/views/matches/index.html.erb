@@ -1,0 +1,8 @@
+<div class="container">
+  <%= @matches.each do |match| %>
+    <ul>
+      <li><%= match.wine.nom %></li>
+      <li><%= match.dish.nom %></li>
+    </ul>
+  <% end %>
+</div>

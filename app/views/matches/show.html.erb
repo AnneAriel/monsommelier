@@ -1,0 +1,17 @@
+<div class="container">
+  <h4>Wine</h4>
+  <ul>
+    <li><%= @match.wine.nom %></li>
+    <li><%= @match.wine.appelation %></li>
+    <li><%= @match.wine.couleur %></li>
+  </ul>
+  <h4>Dish</h4>
+  <ul>
+    <li><%= @match.dish.nom %></li>
+  </ul>
+
+   <%= link_to "Delete match",
+    match_path(@match),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+</div>
