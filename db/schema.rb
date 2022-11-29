@@ -85,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_115002) do
     t.string "nom_commercial"
     t.string "provenance"
     t.string "cépage"
+
   end
 
   add_foreign_key "bookmarks", "users"
