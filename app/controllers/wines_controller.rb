@@ -36,7 +36,9 @@ end
 private
 
   def wine_params
+
     params.require(:wine).permit(:nom, :appellation, :annee, :couleur, :code_barre, :nom_commercial, :provenance, :cepage, :photo)
+
   end
 
 end
