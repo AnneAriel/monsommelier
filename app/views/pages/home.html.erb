@@ -1,2 +1,8 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% if user_signed_in? %>
+      <%= link_to "See available wines", wines_path, class:"btn btn-primary" %>
+      <% else %>
+      <%= link_to "Log in", wines_path, class:"btn btn-primary" %>
+    <% end %>
