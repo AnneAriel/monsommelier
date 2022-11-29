@@ -4,7 +4,6 @@
     <%#= simple_form_for [@wine, @comment] do |f| %>
     <%#= simple_form_for [@dish, @comment] do |f| %>
     <%= simple_form_for [@wine, @comment] do |f| %>
-      <%= f.input :commented_on_type, :label => "Vin / Plat / Accord", :collection => ["wine","dish", "match"] %>
       <%= f.input :commentaire %>
       <%= f.input :note  %>
       <%#as: :hidden %>
