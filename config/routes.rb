@@ -17,5 +17,4 @@ Rails.application.routes.draw do
   resources :followers, except: :show
   resources :wines
   resources :dishes
-
 end
