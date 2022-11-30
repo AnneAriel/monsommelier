@@ -2,11 +2,38 @@ class WinesController < ApplicationController
 
   def index
     # @wines = policy_scope(Wine)
-    # if params[:query].present?
-    #   @wines = Bike.search_by_wine_criteria(params[:query])
-    # else
-  @wines = Wine.all
+    if params[:query].present?
+      @wines = []
+      @dishes = []
+      @results = PgSearch.multisearch(params[:query])
+      @results.each do |dish|
+        @dish = dish.searchable
+        @dish.matches.each do |match|
+          @wines << match.wine
+          @dishes << match.dish
+
+        end
+      end
+
+
+        # if params[:query].present?
+        #   @wines = []
+        #   @dishes = PgSearch.multisearch(params[:query])
+        #   @dishes.each do |dish|
+        #    @dish = dish.searchable
+        #     @dish.matches.each do |match|
+        #       puts match.wine
+        #     end
+        #     end
+
+
+
+
+    else
+      @wines = Wine.all
+    end
   end
+
 
 def show
   @wine = Wine.find(params[:id])
