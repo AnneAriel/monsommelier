@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Create a match</h1>
+
+  <%= simple_form_for [@match] do |f|%>
+    <%= f.input :wine, label: 'Vin' %>
+    <%= f.input :dish, label: 'Met' %>
+    <%= f.submit %>
+  <% end %>
+
+</div>

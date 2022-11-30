@@ -1,10 +1,10 @@
 class MatchesController < ApplicationController
-before_action
-  # def index
-  # end
+before_action :set_match, only: %i[show destroy]
+  def index
+    @matches = Match.all
+  end
 
   def show
-    @match = Match.find(params[:id])
   end
 
   def new
@@ -20,16 +20,16 @@ before_action
       end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
+    @match.destroy
+    redirect_to root_path
   end
 
   private
+
+  def set_match
+    @match = Match.find(params[:id])
+  end
 
   def match_params
     params.require(:match).permit(:wine_id, :dish_id)
