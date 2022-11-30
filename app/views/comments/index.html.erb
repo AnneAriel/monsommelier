@@ -3,17 +3,62 @@
       <div class="row">
         <div class="col-12 col-lg-8">
           <div class="row">
-            <% @comments.each do |comment| %>
+            <% if params[:wine_id] %>
+              <% @comments_select = Comment.where(commented_on_type: "Wine", commented_on_id: params[:wine_id] ) %>
+              <% @comments_select.each do |comment| %>
               <div class="col-sm-6 bicard">
-                <%#= link_to  comment_path(comment), style:"text-decoration:none;color:black;" do %>
-                  <div class="card rounded-4 shadow mb-4 ml-2" >
-                    <div class="card-body">
-                        <h4 class="card-title"><%= comment.commented_on_type%></h4>
-                        <h5 class="card-title"><%= comment.commentaire%></h5>
-                    </div>
+                <div class="card rounded-4 shadow mb-4 ml-2" >
+                  <div class="card-body">
+                    <% if current_user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+                    <% else %>
+                      <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+                    <% end %>
+                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <h4 class="card-title"><%= comment.commented_on.nom %></h4>
+                    <h5 class="card-title"><%= comment.commentaire%></h5>
                   </div>
-                <% end %>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+            <% if params[:dish_id] %>
+              <% @comments_select = Comment.where(commented_on_type: "Dish", commented_on_id: params[:dish_id]) %>
+              <% @comments_select.each do |comment| %>
+              <div class="col-sm-6 bicard">
+                <div class="card rounded-4 shadow mb-4 ml-2" >
+                  <div class="card-body">
+                    <% if current_user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+                    <% else %>
+                      <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+                    <% end %>
+                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <h4 class="card-title"><%= comment.commented_on.nom %></h4>
+                    <h5 class="card-title"><%= comment.commentaire%></h5>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+            <% if params[:match_id] %>
+              <% @comments_select = Comment.where(commented_on_type: "Match", commented_on_id: params[:match_id]) %>
+              <% @comments_select.each do |comment| %>
+              <div class="col-sm-6 bicard">
+                <div class="card rounded-4 shadow mb-4 ml-2" >
+                  <div class="card-body">
+                    <% if current_user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+                    <% else %>
+                      <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+                    <% end %>
+                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <h4 class="card-title"><%= comment.commented_on.nom %></h4>
+                    <h5 class="card-title"><%= comment.commentaire%></h5>
+                  </div>
+                </div>
               </div>
             <% end %>
-          </div>
-        </div>
+          <% end %>
+    </div>
+  </div>
