@@ -41,6 +41,7 @@ class CommentsController < ApplicationController
     end
 
     @comment.user = current_user
+
     if @comment.save && params[:wine_id]
       redirect_to wine_comment_path(@wine, @comment)
     elsif @comment.save && params[:dish_id]
