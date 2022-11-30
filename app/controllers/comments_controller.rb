@@ -41,8 +41,12 @@ class CommentsController < ApplicationController
     end
 
     @comment.user = current_user
-    if @comment.save
-      redirect_to wine_comment_path(@wine,@comment)
+    if @comment.save && params[:wine_id]
+      redirect_to wine_comment_path(@wine, @comment)
+    elsif @comment.save && params[:dish_id]
+      redirect_to dish_comment_path(@dish, @comment)
+    elsif @comment.save && params[:match_id]
+      redirect_to match_comment_path(@match, @comment)
     else
       render :new, status: :unprocessable_entity
     end
