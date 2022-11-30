@@ -1,18 +1,31 @@
 <div class="container">
-  <h1>Create a match</h1>
-
-  <%= simple_form_for [@match] do |f|%>
-    <%= f.association :wine do |w| %>
-    <%= w.input :appellation %>
-    <%= w.input :annee %>
-    <%= w.select :couleur, collection: ["rouge","blanc","rosé"] %>
-    <% end %>
-    <%= f.association :dish do |d| %>
-    <%= d.input :nom %>
-    <% end %>
-    <%= f.submit %>
-  <% end %>
-
-
-
+  <div class="row justify-content-center">
+    <div class="col-18 col-sm-4">
+      <div class="card rounded-4 shadow mb-4 ml-2 " >
+        <div class="card-body p-6">
+          <h2>Créer un accord mets / vin</h2>
+          <%= simple_form_for [@match] do |f|%>
+            <%= f.association :wine do |w| %>
+            <h1><i class="fa-solid fa-wine-glass-empty"></h1></i><h4>Vin</h4>
+            <%= w.input :appellation %>
+            <%= w.input :annee %>
+            <%= w.select :couleur, collection: ["rouge","blanc","rosé"] %>
+            <%#= simple_form_for [@match, @comment] do |f|%>
+              <%#= f.input :commentaire %>
+              <%#= f.input :note  %>
+            <%# end %>
+          <% end %>
+          <p></p>
+          <p></p>
+          <h1><i class="fa-solid fa-utensils"></i></h1><h4>Plat</h4>
+          <%= f.association :dish do |d| %>
+            <p></p>
+            <%= d.input :nom, label: "Plat"  %>
+          <% end %>
+          <%= f.submit %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
