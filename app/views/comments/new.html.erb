@@ -1,59 +1,30 @@
 <div class="container">
   <div class="review">
     <h2>Laissez une évaluation</h2>
-    <%# <i  class="comment-rating far fa-star"></i>
-    <i  class="comment-rating far fa-star"></i>
-    <i  class="comment-rating far fa-star"></i>
-    <i  class="comment-rating far fa-star"></i>
-    <i  class="comment-rating far fa-star"></i> %>
 
     <% if params[:wine_id] %>
       <%= simple_form_for [@wine, @comment] do |f| %>
         <%= f.input :commentaire %>
-        <%= f.input :note  %>
-
-        <div class="flex gap-x-3 mb-4">
-          <% Comment::MAX_RATING.times do |n| %>
-            <%= button_to new_wine_comment_path(@wine, @comment),
-              method: :patch,
-              params: { comment: { note: n + 1 } } do %>
-              <%= inline_svg_tag("star.svg",
-                class: "
-                  w-8 h-8
-                  hover:fill-yellow-500 hover:stroke-yellow-500
-                  #{star_rating_class(@comment, n)}
-                ") %>
-            <% end %>
-          <% end %>
-        </div>
-
-        <div class="my-3">
-          <%= f.submit class: "btn btn-primary", value: "Valider" %>
-        </div>
+        <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
+         <%= f.submit class: "d-none" %>
       <% end %>
     <% end %>
 
     <% if params[:dish_id] %>
       <%= simple_form_for [@dish, @comment] do |f| %>
         <%= f.input :commentaire %>
-        <%= f.input :note  %>
-        <%#as: :hidden %>
-        <div class="my-3">
-          <%= f.submit class: "btn btn-primary", value: "Valider" %>
-        </div>
+        <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
+         <%= f.submit class: "d-none" %>
       <% end %>
     <% end %>
 
-    <% if params[:match_id] %>
+     <% if params[:match_id] %>
       <%= simple_form_for [@match, @comment] do |f| %>
         <%= f.input :commentaire %>
-        <%= f.input :note  %>
-        <%#as: :hidden %>
-        <div class="my-3">
-          <%= f.submit class: "btn btn-primary", value: "Valider" %>
-        </div>
+        <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
+         <%= f.submit class: "d-none" %>
       <% end %>
     <% end %>
 
-
+  </div>
 </div>

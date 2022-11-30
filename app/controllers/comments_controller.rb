@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
 
     @comment.user = current_user
     if @comment.save
-      redirect_to wine_comment_path(@wine,@comment)
+      redirect_to wine_comment_path(@wine, @comment)
     else
       render :new, status: :unprocessable_entity
     end
