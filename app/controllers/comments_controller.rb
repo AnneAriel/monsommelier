@@ -41,8 +41,13 @@ class CommentsController < ApplicationController
     end
 
     @comment.user = current_user
-    if @comment.save
-      redirect_to wine_comment_path(@wine,@comment)
+
+    if @comment.save && params[:wine_id]
+      redirect_to wine_comment_path(@wine, @comment)
+    elsif @comment.save && params[:dish_id]
+      redirect_to dish_comment_path(@dish, @comment)
+    elsif @comment.save && params[:match_id]
+      redirect_to match_comment_path(@match, @comment)
     else
       render :new, status: :unprocessable_entity
     end
@@ -63,23 +68,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     #authorize @comment
     @comment.destroy
-    redirect_to comments_path
+    redirect_to root_path
   end
 
   private
-
-  #def set_wine
-  #  @wine = Wine.find(params[:wine_id])
-  #end
-
-  #def set_dish
-  #  @dish = Dish.find(params[:dish_id])
-  #end
-
-  #def set_match
-  #  @match = Match.find(params[:match_id])
-  #end
-
 
   def comment_params
     params.require(:comment).permit(:commentaire, :note, :commented_on_id, :commented_on_type)

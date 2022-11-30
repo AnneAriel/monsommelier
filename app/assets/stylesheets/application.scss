@@ -10,12 +10,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "star-rating.js/dist/star-rating.css";
 
-.fa-star {
-  color:  #FFD700;
+.card-body .card-comment-user {
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  width: 40px;
 }
 
-.review-rating {
-  cursor:    pointer;
-  font-size: 2rem;
+.container {
+  padding-top: 20px
 }

@@ -1,8 +1,49 @@
 <div class="container">
-  <%= @matches.each do |match| %>
-    <ul>
-      <li><%= match.wine.nom %></li>
-      <li><%= match.dish.nom %></li>
-    </ul>
-  <% end %>
+
+  <div class="row mb-6">
+    <% @matches.each do |match| %>
+      <div class="col-sm-6 bicard">
+        <%= link_to  match_path(match), style:"text-decoration:none;color:black;" do %>
+          <div class="card rounded-4 shadow mb-4 ml-2" >
+            <div class="card-body">
+              <div class="row mb-6">
+                <div class="col-sm-6 bicard">
+                  <% if match.wine.photo.attached? %>
+                    <%= cl_image_tag match.wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+                  <% end %>
+                </div>
+
+                <div class="col-sm-6 bicard">
+                  <h4>Wine</h4>
+                  <ul>
+                    <li><%= match.wine.nom %></li>
+                    <li><%= match.wine.appellation %></li>
+                    <li><%= match.wine.couleur %></li>
+                  </ul>
+
+                  <h4>Dish</h4>
+                  <ul>
+                    <li><%= match.dish.nom %></li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
 </div>
+
+
+      <%#
+      <div class="card rounded-4 shadow mb-4 ml-2" >
+        <div class="card-body">
+          <h4 class="card-title"><%= match.wine.nom %><%# </h4>
+          <h5 class="card-title"><%= match.dish.nom %><%# </h5>
+        </div>
+      </div> %>
