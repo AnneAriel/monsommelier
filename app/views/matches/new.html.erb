@@ -2,9 +2,17 @@
   <h1>Create a match</h1>
 
   <%= simple_form_for [@match] do |f|%>
-    <%= f.input :wine, label: 'Vin' %>
-    <%= f.input :dish, label: 'Met' %>
+    <%= f.association :wine do |w| %>
+    <%= w.input :appellation %>
+    <%= w.input :annee %>
+    <%= w.select :couleur, collection: ["rouge","blanc","rosé"] %>
+    <% end %>
+    <%= f.association :dish do |d| %>
+    <%= d.input :nom %>
+    <% end %>
     <%= f.submit %>
   <% end %>
+
+
 
 </div>

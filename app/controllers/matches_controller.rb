@@ -12,12 +12,19 @@ before_action :set_match, only: %i[show destroy]
   end
 
   def create
-    @match = Match.new(match_params)
-      if @match.save
-        redirect_to match_wine_path(@match)
-      else
-        render :new, status: :unprocessable_entity
-      end
+
+    @wine = Wine.create(wine_params)
+    @dish = Dish.create(dish_params)
+    @match = Match.new
+    @match.wine = @wine
+    @match.dish = @dish
+    @match.user = current_user
+    @match.save
+    if @match.save
+      redirect_to match_path(@match)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -33,6 +40,14 @@ before_action :set_match, only: %i[show destroy]
 
   def match_params
     params.require(:match).permit(:wine_id, :dish_id)
+  end
+
+  def wine_params
+    params.require(:match).require(:wine).permit(:appellation, :couleur)
+  end
+
+  def dish_params
+    params.require(:match).require(:dish).permit(:nom)
   end
 
 end
