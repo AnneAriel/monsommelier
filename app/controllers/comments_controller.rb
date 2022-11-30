@@ -67,23 +67,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     #authorize @comment
     @comment.destroy
-    redirect_to comments_path
+    redirect_to root_path
   end
 
   private
-
-  #def set_wine
-  #  @wine = Wine.find(params[:wine_id])
-  #end
-
-  #def set_dish
-  #  @dish = Dish.find(params[:dish_id])
-  #end
-
-  #def set_match
-  #  @match = Match.find(params[:match_id])
-  #end
-
 
   def comment_params
     params.require(:comment).permit(:commentaire, :note, :commented_on_id, :commented_on_type)

@@ -1,17 +1,64 @@
 <div class="container">
-  <h4>Wine</h4>
-  <ul>
-    <li><%= @match.wine.nom %></li>
-    <li><%= @match.wine.appellation %></li>
-    <li><%= @match.wine.couleur %></li>
-  </ul>
-  <h4>Dish</h4>
-  <ul>
-    <li><%= @match.dish.nom %></li>
-  </ul>
 
-   <%= link_to "Delete match",
-    match_path(@match),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
+  <div class="col-sm-6 bicard">
+    <div class="card rounded-4 shadow mb-4 ml-2" >
+      <div class="card-body">
+        <div class="row mb-6">
+          <div class="col-sm-6 bicard">
+            <% if @match.wine.photo.attached? %>
+              <%= cl_image_tag @match.wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+            <% end %>
+          </div>
+          <div class="col-sm-6 bicard">
+            <h4>Wine</h4>
+            <ul>
+              <li><%= @match.wine.nom %></li>
+              <li><%= @match.wine.appellation %></li>
+              <li><%= @match.wine.couleur %></li>
+            </ul>
+
+            <h4>Dish</h4>
+            <ul>
+              <li><%= @match.dish.nom %></li>
+            </ul>
+          </div>
+        </div>
+<p></p>
+<p></p>
+        <%= link_to "Delete match",
+          match_path(@match),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+        %>
+        <p></p>
+        <p><%= link_to "Ajouter un commentaire",  new_match_comment_path(@match), class:"btn btn-primary" %></p>
+    </div>
+  </div>
+</div>
+
+<div class="comments">
+  <div class="row pt-4">
+    <div class="col-12 col-lg-8">
+      <div class="row">
+        <% @comments_select = Comment.where(commented_on_type: "Match", commented_on_id: params[:id] ) %>
+        <% @comments_select.each do |comment| %>
+        <div class="col-sm-6 bicard">
+          <div class="card rounded-4 shadow mb-4 ml-2" >
+            <div class="card-body">
+
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+              <% else %>
+                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+              <% end %>
+              <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+              <h5 class="card-title"><%= comment.commentaire%></h5>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div >
+    </div>
+  </div>
+</div>
+
 </div>
