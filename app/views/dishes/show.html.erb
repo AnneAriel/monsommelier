@@ -8,4 +8,31 @@
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
   %>
 
+<div class="comments">
+  <div class="row pt-4">
+    <div class="col-12 col-lg-8">
+      <div class="row">
+        <% @comments_select = Comment.where(commented_on_type: "Dish", commented_on_id: params[:id] ) %>
+        <% @comments_select.each do |comment| %>
+        <div class="col-sm-6 bicard">
+          <div class="card rounded-4 shadow mb-4 ml-2" >
+            <div class="card-body">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+              <% else %>
+                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+              <% end %>
+              <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+              <h5 class="card-title"><%= comment.commentaire%></h5>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div >
+    </div>
+  </div>
+</div>
+
+
+
 </div>
