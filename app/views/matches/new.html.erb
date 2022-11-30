@@ -1,17 +1,17 @@
 <div class="container">
   <h1>Create a match</h1>
 
-  <%= simple_form_for [@wine] do |f|%>
-    <%= f.input :nom %>
-    <%= f.input :appellation %>
-    <%= f.select :couleur, ["rouge","blanc","rosé"] %>
-    <p></p>
-    <%= f.input :annee %>
-    <%= f.input :photo, as: :file %>
-    <p></p>
-
+  <%= simple_form_for [@match] do |f|%>
+    <%= f.association :wine do |w| %>
+    <%= w.input :appellation %>
+    <%= w.input :annee %>
+    <%= w.select :couleur, collection: ["rouge","blanc","rosé"] %>
+    <% end %>
+    <%= f.association :dish do |d| %>
+    <%= d.input :nom %>
+    <% end %>
+    <%= f.submit %>
   <% end %>
-
 
 
 

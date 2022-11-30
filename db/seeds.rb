@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
+Match.destroy_all
+Wine.destroy_all
+Dish.destroy_all
 User.destroy_all
 
 user1 = User.create!(username: "Cathy", email: "catherinecrozat@gmail.com", password: "toto123")
@@ -64,4 +66,4 @@ match2 = Match.create!(user: user1, dish: dish3, wine: wine5)
 match3 = Match.create!(user: user1, dish: dish3, wine: wine6)
 match4 = Match.create!(user: user1, dish: dish2, wine: wine2)
 match5 = Match.create!(user: user1, dish: dish1, wine: wine4)
-match5 = Match.create!(user: user1, dish: dish4, wine: wine7)
+match6 = Match.create!(user: user1, dish: dish4, wine: wine7)
