@@ -1,0 +1,11 @@
+<div class="container">
+  <h1><%= @wine.nom %></h1>
+  <p>Evaluateur: <%#= @comment.user %></p>
+  <p><%= @comment.commentaire %></p>
+
+  <%= link_to "Delete comment",
+    wine_comment_path(@wine, @comment),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+
+</div>

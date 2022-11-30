@@ -7,14 +7,18 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :matches do
+    resources :comments
     resources :wines do
       resources :bookmarks
     end
     resources :dishes, except: :index
   end
 
-  resources :comments
   resources :followers, except: :show
-  resources :wines
-  resources :dishes
+  resources :wines do
+    resources :comments
+  end
+  resources :dishes do
+    resources :comments
+  end
 end

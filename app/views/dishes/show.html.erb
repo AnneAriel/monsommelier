@@ -1,10 +1,11 @@
 <div class="container">
   <h1><%= @dish.nom %></h1>
-
+<p><%= link_to "Ajouter un commentaire",  new_dish_comment_path(@dish), class:"btn btn-primary" %></p>
   <p><%= @dish.caracteristique %></p>
 
   <%= link_to "Delete dish",
     dish_path(@dish),
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
   %>
+
 </div>
