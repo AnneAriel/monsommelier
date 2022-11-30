@@ -1,19 +1,45 @@
 <div class="container">
   <div class="review">
     <h2>Laissez une évaluation</h2>
+    <i  class="comment-rating far fa-star"></i>
+    <i  class="comment-rating far fa-star"></i>
+    <i  class="comment-rating far fa-star"></i>
+    <i  class="comment-rating far fa-star"></i>
+    <i  class="comment-rating far fa-star"></i>
     <%#= simple_form_for [@wine, @comment] do |f| %>
     <%#= simple_form_for [@dish, @comment] do |f| %>
-    <%= simple_form_for [@wine, @comment] do |f| %>
-      <%= f.input :commentaire %>
-      <%= f.input :note  %>
-      <%#as: :hidden %>
-      <div class="my-3">
-        <i  class="comment-rating far fa-star"></i>
-        <i  class="comment-rating far fa-star"></i>
-        <i  class="comment-rating far fa-star"></i>
-        <i  class="comment-rating far fa-star"></i>
-        <i  class="comment-rating far fa-star"></i>
-      <%= f.submit class: "btn btn-primary", value: "Valider" %>
+    <% if params[:wine_id] %>
+      <%= simple_form_for [@wine, @comment] do |f| %>
+        <%= f.input :commentaire %>
+        <%= f.input :note  %>
+        <%#as: :hidden %>
+        <div class="my-3">
+          <%= f.submit class: "btn btn-primary", value: "Valider" %>
+        </div>
+      <% end %>
     <% end %>
-  </div>
+
+    <% if params[:dish_id] %>
+      <%= simple_form_for [@dish, @comment] do |f| %>
+        <%= f.input :commentaire %>
+        <%= f.input :note  %>
+        <%#as: :hidden %>
+        <div class="my-3">
+          <%= f.submit class: "btn btn-primary", value: "Valider" %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if params[:match_id] %>
+      <%= simple_form_for [@match, @comment] do |f| %>
+        <%= f.input :commentaire %>
+        <%= f.input :note  %>
+        <%#as: :hidden %>
+        <div class="my-3">
+          <%= f.submit class: "btn btn-primary", value: "Valider" %>
+        </div>
+      <% end %>
+    <% end %>
+
+
 </div>

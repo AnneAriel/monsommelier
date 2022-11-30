@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def show
+    @wine = Wine.find(params[:wine_id])
     @comment = Comment.find(params[:id])
   end
 
@@ -14,10 +15,10 @@ class CommentsController < ApplicationController
       @wine = Wine.find(params[:wine_id])
     end
     if params[:dish_id]
-      @wine = Dish.find(params[:dish_id])
+      @dish = Dish.find(params[:dish_id])
     end
     if params[:match_id]
-      @wine = Match.find(params[:match_id])
+      @match = Match.find(params[:match_id])
     end
     @comment = Comment.new
     #authorize @comment
@@ -31,15 +32,17 @@ class CommentsController < ApplicationController
       @comment.commented_on = @wine
     end
     if params[:dish_id]
-      @wine = @dish
+      @dish = Dish.find(params[:dish_id])
+      @comment.commented_on = @dish
     end
     if params[:match_id]
-      @wine = @match
+      @match = Match.find(params[:match_id])
+      @comment.commented_on = @match
     end
 
     @comment.user = current_user
     if @comment.save
-      redirect_to wines_path
+      redirect_to wine_comment_path(@wine,@comment)
     else
       render :new, status: :unprocessable_entity
     end
