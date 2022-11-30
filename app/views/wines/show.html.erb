@@ -5,16 +5,28 @@
       <div class="flex-item-card">
         <div class="wine">
           <% if @wine.photo.attached? %>
-           <%= cl_image_tag @wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+            <%= cl_image_tag @wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
           <% end %>
         </div>
       </div>
       <div class="flex-item">
         <h4><%= @wine.nom%></h4>
         <h5><%= @wine.appellation%></h5>
+        <h6><%= @wine.annee %></h6>
 
 
       </div>
     </div>
+
+    <p></p>
+
+    <%= link_to "Delete this wine",
+  wine_path(@wine), style:"text-decoration:none;color:red;",
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%> <%= link_to "Make changes to this wine",
+  edit_wine_path(@wine), style:"text-decoration:none;color:purple;"
+
+%>
+<p></p>
 
     <%= link_to "List of wines",  wines_path, class:"btn btn-primary" %>

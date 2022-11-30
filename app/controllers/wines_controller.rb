@@ -25,6 +25,18 @@ def create
     # authorize @wine
 end
 
+
+def edit
+  @wine = Wine.find(params[:id])
+end
+
+def update
+  @wine = Wine.find(params[:id])
+  @wine.update(wine_params)
+
+  redirect_to wine_path(@wine)
+end
+
 def destroy
   @wine = Wine.find(params[:id])
   # authorize @wine
