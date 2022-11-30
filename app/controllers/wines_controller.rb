@@ -32,7 +32,9 @@ end
 
 def update
   @wine = Wine.find(params[:id])
+  # @wine.update(rating: params[:wine][:note])
   @wine.update(wine_params)
+
 
   redirect_to wine_path(@wine)
 end

@@ -2,6 +2,7 @@
   <h1><%= @wine.nom %></h1>
   <p>Evaluateur: <%#= @comment.user %></p>
   <p><%= @comment.commentaire %></p>
+  <p><%= @comment.note %></p>
 
   <%= link_to "Delete comment",
     wine_comment_path(@wine, @comment),
