@@ -1,11 +1,49 @@
 <div class="container">
-  <h1><%= @wine.nom %></h1>
-  <p>Evaluateur: <%#= @comment.user %></p>
-  <p><%= @comment.commentaire %></p>
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="row">
+        <div class="card rounded-4 shadow mb-4 ml-2" >
+          <div class="card-body">
+            <% if params[:wine_id] %>
+              <h1><%= @wine.nom %></h1>
+            <% end %>
+            <% if params[:dish_id] %>
+              <h1><%= @dish.nom %></h1>
+            <% end %>
+            <% if params[:match_id] %>
+              <h1><%= @match.nom %></h1>
+            <% end %>
+            <div class="card-body">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+              <% else %>
+                <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+              <% end %>
+              <p>Evaluateur: <%= "#{@comment.user.username}" %></p>
+              <p><%= @comment.commentaire %></p>
 
-  <%= link_to "Delete comment",
-    wine_comment_path(@wine, @comment),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
+              <% if params[:wine_id] %>
+                <%= link_to "Delete comment",
+                wine_comment_path(@wine, @comment),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                %>
+              <% end %>
 
+              <% if params[:dish_id] %>
+                <%= link_to "Delete comment",
+                dish_comment_path(@dish, @comment),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+              <% end %>
+
+              <% if params[:match_id] %>
+                <%= link_to "Delete comment",
+                match_comment_path(@match, @comment),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+              <% end %>
+
+      </div>
+    </div>
+  </div>
 </div>
