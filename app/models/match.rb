@@ -6,5 +6,4 @@ class Match < ApplicationRecord
 
   include PgSearch::Model
   multisearchable against: [:appellation, :couleur, :annee, :nom, :provenance, :cépage]
-
 end
