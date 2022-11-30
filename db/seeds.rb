@@ -7,6 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
+Match.destroy_all
+Wine.destroy_all
+Dish.destroy_all
+User.destroy_all
+
 
 user1 = User.create!(username: "Cathy", email: "catherinecrozat@gmail.com", password: "toto123")
 photo = URI.open("https://ca.slack-edge.com/T02NE0241-U045TDQ4M43-d011388c1f01-512")
