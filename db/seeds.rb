@@ -7,9 +7,9 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-Match.destroy_all
-Wine.destroy_all
-Dish.destroy_all
+#Match.destroy_all
+#Wine.destroy_all
+#Dish.destroy_all
 User.destroy_all
 
 
@@ -56,6 +56,7 @@ wine6.photo.attach(io: photo, filename: "profil")
 wine7 = Wine.create!(nom: 'Domaine Berthoumieu', nom_commercial: 'Tanatis', provenance: 'France', annee: '2008', couleur: 'rouge', cépage: 'tanat')
 photo = URI.open("app/assets/images/Domaine-des-Marrans-_-B09-Vieilles-vignes.png")
 wine7.photo.attach(io: photo, filename: "profil")
+
 
 dish1 = Dish.create!(nom: 'Quiche au saumon')
 dish2 = Dish.create!(nom: 'Rillettes d’oie')

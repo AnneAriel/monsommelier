@@ -19,7 +19,6 @@ before_action :set_match, only: %i[show destroy]
     @match.wine = @wine
     @match.dish = @dish
     @match.user = current_user
-    @match.save
     if @match.save
       redirect_to match_path(@match)
     else
@@ -43,7 +42,8 @@ before_action :set_match, only: %i[show destroy]
   end
 
   def wine_params
-    params.require(:match).require(:wine).permit(:appellation, :couleur)
+    #params.require(:match).require(:wine).permit(:nom, :appellation, :couleur, :annee, :code_barre, :nom_commercial, :provenance, :cépage)
+    params.require(:wine).permit(:nom, :appellation, :couleur, :annee, :code_barre, :nom_commercial, :provenance, :cépage)
   end
 
   def dish_params
