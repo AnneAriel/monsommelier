@@ -1,19 +1,24 @@
-
-
-<p></p>
-<%= form_with url: wines_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Enter a dish to find a wine"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-<p></p>
-
-
-
 <div class="container">
+  <p></p>
+  <h5>Bonjour  <strong><%=current_user.username%></strong> !</h5>
+  <h5> Que souhaites-tu accorder aujourd'hui?</h5>
+  <%# <div class= "images-search">
+    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046772.png" alt="plat" height="50px" >
+    <img src="https://cdn-icons-png.flaticon.com/512/763/763031.png" alt="plat" height="50px" style="margin-left: 45px" >
+  </div> %>
+
+    <div class=search-bar>
+      <%= form_with url: wines_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Mon plat/Mon vin"
+        %>
+        <%= submit_tag "Search", class: "btn btn-ghost" %>
+      <% end %>
+    </div>
+  <p></p>
+
     <div class="wines">
       <a class="btn btn-gradient rounded-circle" href="#"></a>
       <div class="row">
@@ -21,66 +26,72 @@
           <div class="row">
 
           <% if params[:query] %>
-            <strong><p>Le vin</p></strong>
+
+
+            <strong><p>Vins</p></strong>
 
             <% @wines.each do |wine| %>
               <div class="col-sm-6 bicard">
                 <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
                   <div class="card rounded-4 shadow mb-4 ml-2" >
-              <% if wine.photo.attached? %>
-              <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
-              <% end %>
+                  <% if wine.photo.attached? %>
+                  <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+                  <% end %>
               <div class="card-body">
                 <h4 class="card-title"><%= wine.nom%></h4>
                 <h5 class="card-title"><%= wine.appellation%></h5>
                 <h6 class="card-title"><%= wine.couleur%></h6>
                 <h6><%= wine.annee %></h6>
+                <strong><p> Plat </p></strong>
+                <% unless @dishes.nil? %>
+                  <% @dishes.each do |dish| %>
+                    <p><%= dish.nom %></p>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           <% end %>
+
         </div>
       <% end %>
+
+
+            <p></p>
     </div>
   </div>
 
 
 
-<strong><p>Le plat associé</p></strong>
-<% unless @dishes.nil? %>
-  <% @dishes.each do |dish| %>
-    <%= dish.nom %>
+
+  <% else %>
+
+  <div class="container">
+      <div class="bikes">
+        <a class="btn btn-gradient rounded-circle" href="#"></a>
+        <div class="row">
+          <div class="col-12 col-lg-8">
+            <div class="row">
+              <% @wines.each do |wine| %>
+                <div class="col-sm-6 bicard">
+                  <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
+                    <div class="card rounded-4 shadow mb-4 ml-2" >
+                        <% if wine.photo.attached? %>
+                          <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+                        <% end %>
+                      <div class="card-body">
+                          <h4 class="card-title"><%= wine.nom%></h4>
+                          <h5 class="card-title"><%= wine.appellation%></h5>
+                          <h6 class="card-title"><%= wine.couleur%></h6>
+                          <h6><%= wine.annee %></h6>
+
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
   <% end %>
 
-<% end %>
-
-
-<% else %>
-
-<div class="container">
-    <div class="bikes">
-      <a class="btn btn-gradient rounded-circle" href="#"></a>
-      <div class="row">
-        <div class="col-12 col-lg-8">
-          <div class="row">
-            <% @wines.each do |wine| %>
-              <div class="col-sm-6 bicard">
-                <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
-                  <div class="card rounded-4 shadow mb-4 ml-2" >
-                      <% if wine.photo.attached? %>
-                        <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
-                      <% end %>
-                    <div class="card-body">
-                        <h4 class="card-title"><%= wine.nom%></h4>
-                        <h5 class="card-title"><%= wine.appellation%></h5>
-                        <h6 class="card-title"><%= wine.couleur%></h6>
-                        <h6><%= wine.annee %></h6>
-
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-
-<% end %>
+</div>

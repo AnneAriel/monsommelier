@@ -1,33 +1,36 @@
+<div class="background" style = "background-image: url('app/assets/images/Rectangle 16 .png')">
 
-<div class="container">
+  <div class="container">
 
-  <% if user_signed_in? %>
-        <h2 style="color:#05595B"> A la recherche du match parfait... </h2>
-        <%= link_to "See available wines", wines_path, class:"btn btn-ghost" %>
-        <% else %>
-        <%= link_to "Log in", wines_path, class:"btn btn-ghost" %>
-      <% end %>
+    <% if user_signed_in? %>
+          <h2 style="color:#05595B"> A la recherche du match parfait... </h2>
+          <%= link_to "See available wines", wines_path, class:"btn btn-ghost" %>
+          <% else %>
+          <%= link_to "Log in", wines_path, class:"btn btn-ghost" %>
+        <% end %>
 
-  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="https://www.clos19.com/on/demandware.static/-/Sites-mh-master/default/dw9867bc5b/images/large/clos_des_lambrays/packshots/CLOS-DES-LAMBRAYS-RED-WINE-GRAND-CRU-2018-1088624_1.jpg?im=Resize,width=408,height=544" class="d-block w-15" alt="...">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="https://www.clos19.com/on/demandware.static/-/Sites-mh-master/default/dw9867bc5b/images/large/clos_des_lambrays/packshots/CLOS-DES-LAMBRAYS-RED-WINE-GRAND-CRU-2018-1088624_1.jpg?im=Resize,width=408,height=544" class="d-block w-15" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="https://www.clos19.com/on/demandware.static/-/Sites-mh-master/default/dwb739855d/images/large/mercier/packshots/MERCIER-CHAMPAGNE-VENDANGE-2010-1090813_1.jpg?im=Resize,width=408,height=544" class="d-block w-15" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.clos19.com/on/demandware.static/-/Sites-mh-master/default/dw79cc3358/images/large/ao_yun/packshots/AO-YUN-RED-WINE-2017-75CL-1091359_1.jpg?im=Resize,width=408,height=544" class="d-block w-15" alt="...">
+        </div>
       </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="https://www.clos19.com/on/demandware.static/-/Sites-mh-master/default/dwb739855d/images/large/mercier/packshots/MERCIER-CHAMPAGNE-VENDANGE-2010-1090813_1.jpg?im=Resize,width=408,height=544" class="d-block w-15" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://www.clos19.com/on/demandware.static/-/Sites-mh-master/default/dw79cc3358/images/large/ao_yun/packshots/AO-YUN-RED-WINE-2017-75CL-1091359_1.jpg?im=Resize,width=408,height=544" class="d-block w-15" alt="...">
-      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+
   </div>
 
 </div>

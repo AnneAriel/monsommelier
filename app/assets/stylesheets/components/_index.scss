@@ -5,3 +5,32 @@
 @import "navbar";
 @import "footer";
 @import "button";
+
+.search-bar {
+  width: 300px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-top:20px;
+  position: relative;
+}
+
+.images-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  .img {
+    height: 50px;
+  }
+}
+
+h5 {
+  text-align: center;
+  color: #062C30;
+}
+
+.form-control {
+  border-radius: 10px;
+}
