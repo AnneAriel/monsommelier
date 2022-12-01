@@ -1,7 +1,21 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.body {
-  background-image: url('app/assets/images/Rectangle 16 .png');
+
+.background-index {
+  background-image: url("https://res-console.cloudinary.com/diihg9d0h/thumbnails/v1/image/upload/v1669929793/UmVjdGFuZ2xlXzE2XzJfZGlyOTNv/preview");
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  height:100%;
 }
 
+.titre-vin-carte-accord {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.star {
+  text-align: center;
+}

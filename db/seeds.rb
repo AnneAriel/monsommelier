@@ -79,11 +79,11 @@ match6 = Match.create!(user: user1, dish: dish4, wine: wine7)
 match7 = Match.create!(user: user2, dish: dish6, wine: wine8)
 match8 = Match.create!(user: user3, dish: dish6, wine: wine9)
 
-winecomment1 = Comment.create!(commentaire: "Accord délicieux", note: "4", user: user2, commented_on: wine1)
+winecomment1 = Comment.create!(commentaire: "Délicieux & fruité", note: "4", user: user2, commented_on: wine1)
 winecomment2 = Comment.create!(commentaire: "Pas terrible", note: "2", user: user1, commented_on: wine2)
-winecomment3 = Comment.create!(commentaire: "Accord correct", note: "3", user: user3, commented_on: wine3)
+winecomment3 = Comment.create!(commentaire: "Correct", note: "3", user: user3, commented_on: wine3)
 winecomment4 = Comment.create!(commentaire: "Exceptionnel", note: "5", user: user4, commented_on: wine4)
-winecomment5 = Comment.create!(commentaire: "Bon accord", note: "4", user: user2, commented_on: wine5)
+winecomment5 = Comment.create!(commentaire: "Bons arômes, léger", note: "4", user: user2, commented_on: wine5)
 winecomment6 = Comment.create!(commentaire: "Bon mais pas incroyable", note: "2", user: user1, commented_on: wine6)
 winecomment7 = Comment.create!(commentaire: "Incroyable", note: "5", user: user3, commented_on: wine7)
 
@@ -97,5 +97,3 @@ matchcomment7 = Comment.create!(commentaire: "Bon mais pas incroyable", note: "2
 matchcomment8 = Comment.create!(commentaire: "Accord correct", note: "3", user: user2, commented_on: match7)
 matchcomment9 = Comment.create!(commentaire: "Agréable", note: "3", user: user3, commented_on: match8)
 matchcomment10 = Comment.create!(commentaire: "Exceptionnel", note: "5", user: user4, commented_on: match8)
-
-

@@ -25,6 +25,30 @@
 }
 
 h4 {
-  text-align: center;
   color: #05595B;
+}
+
+h3 {
+  text-align: center;
+}
+
+.link-match-view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nom-vin{
+  text-align: center;
+  padding-top: 10px;
+}
+
+.boutons-view-vin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boutons-liens-vin {
+  text-align: center;
 }

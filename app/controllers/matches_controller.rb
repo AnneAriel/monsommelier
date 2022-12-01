@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
 before_action :set_match, only: %i[show destroy]
+
   def index
     @matches = Match.all
   end
