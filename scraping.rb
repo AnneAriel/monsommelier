@@ -3,12 +3,13 @@ require "nokogiri"
 
 
 dishes = ["quiche+au+saumon", "camembert", "tarte+au+chocolat", "Omelette+champignon"]
+#pas encore fini, il faudra iterer dessus
 
-dishes.each do |dish|
-  url = "http://www.quelvin.com/rechacccrus.asp?Plat=#{dish}&Tri=Coul&Ordre=ASC&Lien=0"
-end
-  html_file = URI.open(url).read
-  html_doc = Nokogiri::HTML(html_file)
+dish = "tarte+au+chocolat"
+
+url = "http://www.quelvin.com/rechacccrus.asp?Plat=#{dish}&Tri=Coul&Ordre=ASC&Lien=0"
+html_file = URI.open(url).read
+html_doc = Nokogiri::HTML(html_file)
 
 total_match = html_doc.search("table tr").map do |element|
   color = nil
