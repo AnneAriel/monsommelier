@@ -41,8 +41,8 @@ before_action :set_match, only: %i[show destroy]
   end
 
   def wine_params
-    #params.require(:match).require(:wine).permit(:nom, :appellation, :couleur, :annee, :code_barre, :nom_commercial, :provenance, :cépage)
-    params.require(:wine).permit(:nom, :appellation, :couleur, :annee, :code_barre, :nom_commercial, :provenance, :cépage)
+    params.require(:match).require(:wine).permit(:nom, :appellation, :couleur, :annee, :code_barre, :nom_commercial, :provenance, :cépage)
+    #params.require(:wine).permit(:nom, :appellation, :couleur, :annee, :code_barre, :nom_commercial, :provenance, :cépage)
   end
 
   def dish_params
