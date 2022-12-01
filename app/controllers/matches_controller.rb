@@ -12,7 +12,6 @@ before_action :set_match, only: %i[show destroy]
   end
 
   def create
-
     @wine = Wine.create(wine_params)
     @dish = Dish.create(dish_params)
     @match = Match.new

@@ -6,12 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
-#Match.destroy_all
-#Wine.destroy_all
-#Dish.destroy_all
+Match.destroy_all
+Wine.destroy_all
+Dish.destroy_all
 User.destroy_all
-
 
 user1 = User.create!(username: "Cathy", email: "catherinecrozat@gmail.com", password: "toto123")
 photo = URI.open("https://ca.slack-edge.com/T02NE0241-U045TDQ4M43-d011388c1f01-512")
@@ -57,16 +55,15 @@ wine7 = Wine.create!(nom: 'Domaine Berthoumieu', nom_commercial: 'Tanatis', prov
 photo = URI.open("app/assets/images/Domaine-des-Marrans-_-B09-Vieilles-vignes.png")
 wine7.photo.attach(io: photo, filename: "profil")
 
-
 dish1 = Dish.create!(nom: 'Quiche au saumon')
 dish2 = Dish.create!(nom: 'Rillettes d’oie')
 dish3 = Dish.create!(nom: 'camembert')
 dish4 = Dish.create!(nom: 'Tarte au chocolat')
 dish5 = Dish.create!(nom: 'Toasts au chèvre chaud')
 
-match1 = Match.create!(user: user1, dish: dish5, wine: wine1)
-match2 = Match.create!(user: user2, dish: dish3, wine: wine5)
-match3 = Match.create!(user: user3, dish: dish3, wine: wine6)
-match4 = Match.create!(user: user4, dish: dish2, wine: wine2)
-match5 = Match.create!(user: user1, dish: dish1, wine: wine4)
-match6 = Match.create!(user: user1, dish: dish4, wine: wine7)
+# match1 = Match.create!(user: user1, dish: dish5, wine: wine1)
+# match2 = Match.create!(user: user2, dish: dish3, wine: wine5)
+# match3 = Match.create!(user: user3, dish: dish3, wine: wine6)
+# match4 = Match.create!(user: user4, dish: dish2, wine: wine2)
+# match5 = Match.create!(user: user1, dish: dish1, wine: wine4)
+# match6 = Match.create!(user: user1, dish: dish4, wine: wine7)
