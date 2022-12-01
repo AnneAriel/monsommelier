@@ -57,7 +57,7 @@ wine7.photo.attach(io: photo, filename: "profil")
 
 dish1 = Dish.create!(nom: 'Quiche au saumon')
 dish2 = Dish.create!(nom: 'Rillettes d’oie')
-dish3 = Dish.create!(nom: 'camembert')
+dish3 = Dish.create!(nom: 'Camembert')
 dish4 = Dish.create!(nom: 'Tarte au chocolat')
 dish5 = Dish.create!(nom: 'Toasts au chèvre chaud')
 
