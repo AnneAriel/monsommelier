@@ -29,6 +29,15 @@ before_action :set_dish, only: %i[show edit update destroy]
     redirect_to root_path
   end
 
+  def set_favorite
+    @wine = Wine.find(params[:wine_id])
+    if current_user.favorited?(@wine)
+      current_user.unfavorite(@wine)
+    else
+      current_user.favorite(@wine)
+    end
+  end
+
   private
 
   def set_dish
@@ -38,4 +47,5 @@ before_action :set_dish, only: %i[show edit update destroy]
   def dish_params
     params.require(:dish).permit(:nom)
   end
+
 end
