@@ -9,7 +9,7 @@
 Match.destroy_all
 Wine.destroy_all
 Dish.destroy_all
-# User.destroy_all
+User.destroy_all
 
 user1 = User.create!(username: "Cathy", email: "catherinecrozat@gmail.com", password: "toto123")
 photo = URI.open("https://ca.slack-edge.com/T02NE0241-U045TDQ4M43-d011388c1f01-512")
@@ -97,3 +97,5 @@ matchcomment7 = Comment.create!(commentaire: "Bon mais pas incroyable", note: "2
 matchcomment8 = Comment.create!(commentaire: "Accord correct", note: "3", user: user2, commented_on: match7)
 matchcomment9 = Comment.create!(commentaire: "Agréable", note: "3", user: user3, commented_on: match8)
 matchcomment10 = Comment.create!(commentaire: "Exceptionnel", note: "5", user: user4, commented_on: match8)
+
+
