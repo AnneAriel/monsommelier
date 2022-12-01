@@ -10,27 +10,22 @@
             <% end %>
           </div>
           <div class="col-sm-6 bicard">
-            <h4>Wine</h4>
-            <ul>
-              <li><%= @match.wine.nom %></li>
-              <li><%= @match.wine.appellation %></li>
-              <li><%= @match.wine.couleur %></li>
-            </ul>
+            <h5><%= @match.wine.nom %></h5>
+            <h5><%= @match.wine.appellation %></h5>
+            <h5><%= @match.wine.couleur %></h5>
 
-            <h4>Dish</h4>
-            <ul>
-              <li><%= @match.dish.nom %></li>
-            </ul>
+            <h4> Accord </h4>
+            <h5><%= @match.dish.nom %></h5>
           </div>
         </div>
 <p></p>
 <p></p>
         <%= link_to "Delete match",
           match_path(@match),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-ghost"
         %>
         <p></p>
-        <p><%= link_to "Ajouter un commentaire",  new_match_comment_path(@match), class:"btn btn-primary" %></p>
+        <p><%= link_to "Ajouter un commentaire",  new_match_comment_path(@match), class:"btn btn-ghost" %></p>
     </div>
   </div>
 </div>
