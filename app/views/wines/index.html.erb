@@ -37,6 +37,8 @@
                     <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
                     <% end %>
                 <div class="card-body">
+                  <% @match = Match.where(wine: wine, dish: @dish).first %>
+                  <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
                   <h4 class="card-title"><%= wine.nom%></h4>
                   <h5 class="card-title"><%= wine.appellation%></h5>
                   <h6 class="card-title"><%= wine.couleur%></h6>
