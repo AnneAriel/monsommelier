@@ -44,15 +44,17 @@
                     <% @match = Match.where(wine: wine, dish: @dish).first %>
                   <% end %>
                   <% if @match != nil %>
-                  <div class="infos-index">
-                    <div class="text-center mb-3">
-                      <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
+                    <div class="infos-index text-center">
+                      <div class="text-center mb-3">
+                        <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
+                      </div>
+                      <% end %>
+
+                      <h4 class="card-title"><%= wine.nom%></h4>
+                      <h5 class="card-title"><%= wine.appellation%></h5>
+                      <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
+                      <h6><%= wine.annee %></h6>
                     </div>
-                    <h4 class="card-title"><%= wine.nom%></h4>
-                    <h5 class="card-title"><%= wine.appellation%></h5>
-                    <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
-                    <h6><%= wine.annee %></h6>
-                  </div>
 
                    <div class="note">
                       <% wine.comments.average(:note).to_i.times do %>
@@ -71,7 +73,6 @@
         <% end %>
       </div>
     </div>
-
 
     <% else %>
 
