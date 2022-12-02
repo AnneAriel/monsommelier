@@ -1,66 +1,65 @@
-
-
-<div class="container">
-<div class="container-card align-items-center">
-  <div class="row pt-4">
-    <div class="col-sm-3 align-self-center">
-<div class="card rounded-4 shadow mb-4 ml-2 align-self-center" >
-        <div class="wine">
-          <% if @wine.photo.attached? %>
-            <%= cl_image_tag @wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
-          <% end %>
-        </div>
-      <div class="col-sm-12 mt-4 text-center bicard">
-        <h4><%= @wine.nom%></h4>
-        <h5><%= @wine.appellation%></h5>
-        <h6><%= @wine.annee %></h6>
-     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <p></p>
-
-    <%= link_to "Delete this wine",
-  wine_path(@wine), style:"text-decoration:none;color:red;",
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%> <%= link_to "Make changes to this wine",
-  edit_wine_path(@wine), style:"text-decoration:none;color:purple;"
-
-%>
-<p></p>
-
-    <%= link_to "List of wines",  wines_path, class:"btn btn-primary" %>
-    <%= link_to "Ajouter un commentaire",  new_wine_comment_path(@wine), class:"btn btn-primary" %>
-
-
-
-<div class="comments">
-  <div class="row pt-4">
-    <div class="col-12 col-lg-8">
-      <div class="row">
-        <% @comments_select = Comment.where(commented_on_type: "Wine", commented_on_id: params[:id] ) %>
-        <% @comments_select.each do |comment| %>
-        <div class="col-sm-6 bicard">
-          <div class="card rounded-4 shadow mb-4 ml-2" >
-            <div class="card-body">
-              <% if current_user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
-              <% else %>
-                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+<div class="background-index">
+  <div class="container">
+    <div class="container-card align-items-center">
+      <div class="row pt-4">
+        <div class="col-sm-3 align-self-center">
+          <div class="card rounded-4 shadow mb-4 ml-2 align-self-center" >
+            <div class="wine">
+              <% if @wine.photo.attached? %>
+                <%= cl_image_tag @wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
               <% end %>
-              <%#  <div class="card-header", style="background-color: #BC8F8F"></div>%>
-              <p>Evaluateur: <%= "#{comment.user.username}" %></p>
-              <h5 class="card-title"><%= comment.commentaire%></h5>
+            </div>
+            <div class="col-sm-12 mt-4 text-center bicard">
+              <h4><%= @wine.nom%></h4>
+              <h5><%= @wine.appellation%></h5>
+              <h6><%= @wine.annee %></h6>
             </div>
           </div>
         </div>
-        <% end %>
-      </div >
+      </div>
     </div>
+
+    <div class="boutons-liens-vin">
+      <%= link_to "Supprimer",
+          wine_path(@wine), style:"text-decoration:none;color:grey;",
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+        <%= link_to "Modifier",
+        edit_wine_path(@wine), style:"text-decoration:none;color:grey;"
+          %>
+    </div>
+
+    <div class="boutons-view-vin">
+      <%= link_to "Noter",  new_wine_comment_path(@wine), class:"btn btn-ghost" %>
+      <%= link_to "Voir les vins",  wines_path, class:"btn btn-ghost" %>
+    </div>
+
+
+    <div class="comments">
+      <div class="row pt-4">
+        <div class="col-12 col-lg-8">
+          <div class="row">
+            <% @comments_select = Comment.where(commented_on_type: "Wine", commented_on_id: params[:id] ) %>
+            <% @comments_select.each do |comment| %>
+            <div class="col-sm-6 bicard">
+              <div class="card rounded-4 shadow mb-4 ml-2" >
+                <div class="card-body">
+                  <% if current_user.photo.attached? %>
+                    <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+                  <% else %>
+                    <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+                  <% end %>
+                  <%#  <div class="card-header", style="background-color: #BC8F8F"></div>%>
+                  <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                  <h5 class="card-title"><%= comment.commentaire%></h5>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div >
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
-
-
 </div>

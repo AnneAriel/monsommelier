@@ -1,5 +1,7 @@
 <div class="container">
 
+
+
   <div class="row mb-6">
     <% @matches.each do |match| %>
       <div class="col-sm-6 bicard">
@@ -15,23 +17,17 @@
                 </div>
 
                 <div class="col-sm-6 bicard">
-                  <h4>Wine</h4>
-                  <ul>
-                    <li><%= match.wine.nom %></li>
-                    <li><%= match.wine.appellation %></li>
-                    <li><%= match.wine.couleur %></li>
-                  </ul>
-
-                  <h4>Dish</h4>
-                  <ul>
-                    <li><%= match.dish.nom %></li>
-                  </ul>
+                <div class="titre-vin-carte-accord">
+                  <h3><%= match.wine.nom %></h3>
+                  <h3> ④ </h3>
                 </div>
-
+                  <p><%= match.wine.appellation %> - <%= match.wine.couleur %> </p>
+                  <h4> Accord : <%= match.dish.nom %></h4>
+                  <p>Commentaire</p>
+                  <p class="star"> ⭐️⭐️⭐️⭐️⭐️ </p>
+                </div>
               </div>
-
             </div>
-
           </div>
         <% end %>
       </div>
