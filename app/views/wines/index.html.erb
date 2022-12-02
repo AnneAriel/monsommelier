@@ -36,8 +36,14 @@
                     <% if wine.photo.attached? %>
                     <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
                     <% end %>
-                <div class="card-body text-center">
-                  <% @match = Match.where(wine: wine, dish: @dish).first %>
+                <div class="card-body">
+                  <p></p>
+                  <% if @dish.nil? %>
+                    <% @dish = "" %>
+                  <% else %>
+                    <% @match = Match.where(wine: wine, dish: @dish).first %>
+                  <% end %>
+                  <% if @match != nil %>
                   <div class="infos-index">
                     <div class="text-center mb-3">
                       <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
@@ -47,6 +53,7 @@
                     <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
                     <h6><%= wine.annee %></h6>
                   </div>
+
                    <div class="note">
                       <% wine.comments.average(:note).to_i.times do %>
                       <i class="fa-solid fa-star"></i>
