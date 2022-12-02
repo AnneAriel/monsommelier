@@ -23,3 +23,26 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+
+.form-control {
+
+  /* line-height: 1.5; */
+  color: #0E0000 !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  border-bottom: 1px solid black !important;
+  border-radius: 0px !important;
+
+}
+
+.form-control:focus {
+  border-color: transparent !important;
+  border: 0px solid transparent !important;
+  box-shadow: 0 0 0 0 transparent !important;
+  border-bottom: 1px solid black !important;
+}
+
+input::placeholder {
+  color: black !important;
+}
