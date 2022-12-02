@@ -18,7 +18,7 @@
           <div class="card rounded-4 shadow mb-4 ml-2" >
             <div class="card-body">
               <% if current_user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+                <%= cl_image_tag comment.user.photo.key, class:"avatar card-comment-user" %>
               <% else %>
                 <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
               <% end %>
