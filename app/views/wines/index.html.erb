@@ -15,9 +15,13 @@
             class: "form-control",
             placeholder: "Mon plat/Mon vin"
           %>
-          <%= submit_tag "Search", class: "btn btn-ghost" %>
+          <%= submit_tag "Trouver", class: "btn btn-ghost" %>
         <% end %>
       </div>
+
+       <%= link_to 'Accueil', root_path, class:"btn btn-ghost" %>
+
+       <%= link_to 'nouvel accord', new_match_path, class:"btn btn-ghost" %>
 
       <div class="wines">
         <a class="btn btn-gradient rounded-circle" href="#"></a>
@@ -59,7 +63,7 @@
     <% else %>
 
     <div class="container">
-        <div class="bikes">
+        <div class="wines">
           <a class="btn btn-gradient rounded-circle" href="#"></a>
           <div class="row">
             <div class="col-12 col-lg-8">
@@ -86,4 +90,5 @@
             </div>
     <% end %>
   </div>
+
 </div>
