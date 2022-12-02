@@ -94,6 +94,9 @@
                               <h4 class="card-title"><%= wine.appellation%></h4>
                               <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
                               <h6><%= wine.annee %></h6>
+                              <% if wine.quantité != nil %>
+                              <p>Quantité : <%= wine.quantité %></p>
+                              <% end %>
                           </div>
                           <div class="note">
                             <p> Note moyenne: <%= wine.comments.average(:note).to_i %></p>
