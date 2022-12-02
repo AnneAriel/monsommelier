@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import FavouriteController from "./favourite_controller"
+application.register("favourite", FavouriteController)
+
 import FormSubmitController from "./form_submit_controller"
 application.register("form-submit", FormSubmitController)
 

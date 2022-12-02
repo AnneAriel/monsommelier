@@ -14,21 +14,6 @@ class WinesController < ApplicationController
 
         end
       end
-
-
-        # if params[:query].present?
-        #   @wines = []
-        #   @dishes = PgSearch.multisearch(params[:query])
-        #   @dishes.each do |dish|
-        #    @dish = dish.searchable
-        #     @dish.matches.each do |match|
-        #       puts match.wine
-        #     end
-        #     end
-
-
-
-
     else
       @wines = Wine.all
     end
@@ -73,13 +58,20 @@ def destroy
   redirect_to wines_path
 end
 
+def set_favorite
+  @wine = Wine.find(params[:wine_id])
+  if current_user.favorited?(@wine)
+    current_user.unfavorite(@wine)
+  else
+    current_user.favorite(@wine)
+  end
+end
+
 
 private
 
   def wine_params
-
     params.require(:wine).permit(:nom, :appellation, :annee, :couleur, :code_barre, :nom_commercial, :provenance, :cepage, :photo)
-
   end
 
 end

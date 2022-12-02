@@ -8,17 +8,23 @@ Rails.application.routes.draw do
 
   resources :matches do
     resources :comments
-    resources :wines do
-      resources :bookmarks
-    end
+    resources :wines
     resources :dishes, except: :index
+    get "set_favorite", to: "matches#set_favorite"
   end
 
   resources :followers, except: :show
+
   resources :wines do
     resources :comments
+    resources :bookmarks
+    get "set_favorite", to: "wines#set_favorite"
   end
   resources :dishes do
     resources :comments
+    get "set_favorite", to: "dishes#set_favorite"
   end
+
+
+
 end

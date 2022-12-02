@@ -31,6 +31,16 @@ before_action :set_match, only: %i[show destroy]
     redirect_to root_path
   end
 
+  def set_favorite
+    @match = Match.find(params[:match_id])
+    if current_user.favorited?(@match)
+      current_user.unfavorite(@match)
+    else
+      current_user.favorite(@match)
+    end
+  end
+
+
   private
 
   def set_match

@@ -18,7 +18,6 @@
           <%= submit_tag "Search", class: "btn btn-ghost" %>
         <% end %>
       </div>
-    <p></p>
 
       <div class="wines">
         <a class="btn btn-gradient rounded-circle" href="#"></a>
@@ -27,7 +26,6 @@
             <div class="row">
 
             <% if params[:query] %>
-
 
               <strong><p>Vins</p></strong>
 
@@ -52,16 +50,10 @@
                 </div>
               </div>
             <% end %>
-
           </div>
         <% end %>
-
-
-              <p></p>
       </div>
     </div>
-
-
 
 
     <% else %>
@@ -84,16 +76,14 @@
                             <h5 class="card-title"><%= wine.appellation%></h5>
                             <h6 class="card-title"><%= wine.couleur%></h6>
                             <h6><%= wine.annee %></h6>
-
                         </div>
                       </div>
                     <% end %>
                   </div>
+                </div>
                 <% end %>
               </div>
             </div>
-
     <% end %>
-
   </div>
 </div>
