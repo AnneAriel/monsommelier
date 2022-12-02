@@ -19,10 +19,6 @@
         <% end %>
       </div>
 
-       <%= link_to 'Accueil', root_path, class:"btn btn-ghost" %>
-
-       <%= link_to 'nouvel accord', new_match_path, class:"btn btn-ghost" %>
-
       <div class="wines">
         <a class="btn btn-gradient rounded-circle" href="#"></a>
         <div class="row">
@@ -54,11 +50,9 @@
                     </div>
                     <div class="star">
                   <strong><p> Plat </p></strong>
-                  <% unless @dishes.nil? %>
-                    <% @dishes.each do |dish| %>
+                    <% @dishes.uniq.each do |dish| %>
                       <p><%= dish.nom %></p>
                     <% end %>
-                  <% end %>
                 </div>
               </div>
             <% end %>
