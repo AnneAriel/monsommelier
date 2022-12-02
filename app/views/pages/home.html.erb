@@ -3,11 +3,13 @@
   <div class="container">
 
     <% if user_signed_in? %>
-          <h2 id="titre-home"> Découvrez et testez de nouvelles alliances ! </h2>
-          <%= link_to "Voir les accords", wines_path, class:"btn btn-ghost" %>
-          <% else %>
-          <%= link_to "Log in", wines_path, class:"btn btn-ghost" %>
-        <% end %>
+          <h2 id="titre-home"> Testez de nouvelles alliances ! </h2>
+          <div class="boutons-home">
+            <%= link_to "Voir les accords", wines_path, class:"btn btn-ghost" %>
+            <% else %>
+            <%= link_to "Log in", wines_path, class:"btn btn-ghost" %>
+            <% end %>
+          </div>
 
     <div class="carousel">
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
