@@ -22,6 +22,7 @@
               <% end %>
               <p>Evaluateur: <%= "#{@comment.user.username}" %></p>
               <p><%= @comment.commentaire %></p>
+              <p><%= @comment.note %></p>
 
               <% if params[:wine_id] %>
                 <%= link_to "Delete comment",

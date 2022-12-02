@@ -11,11 +11,22 @@
           <div class="col-sm-6 bicard">
             <div class="titre-vin-carte-accord">
               <h3 class = "nom-vin"><%= @match.wine.nom %></h3>
-              <h3> ④ </h3>
+               <div class="note-vin">
+                  <%=@match.wine.comments.average(:note).to_i %>
+              </div>
             </div>
             <p><%= @match.wine.appellation %> - <%= @match.wine.couleur %> </p>
             <h4> Accord : <%= @match.dish.nom %></h4>
-            <p class="star"> ⭐️⭐️⭐️⭐️⭐️ </p>
+            <div class="star">
+              <% @match.comments.average(:note).to_i.times do %>
+              <i class="fa-solid fa-star"></i>
+              <% end %>
+            </div>
+
+
+
+
+
           </div>
           <div class="link-match-view">
             <%= link_to "Supprimer",
