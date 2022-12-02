@@ -32,35 +32,35 @@ photo = URI.open("https://produits.bienmanger.com/47120-0w0h0_Vin_Blanc_Vire_Cle
 wine1.photo.attach(io: photo, filename: "profil")
 
 wine2 = Wine.create!(nom:'Domaine Saint Jacques', appellation: 'Bourgogne aligoté', provenance: 'France', annee: '2019', couleur: 'blanc')
-photo = URI.open("app/assets/images/Domaine St jacques_bourgogne.jpeg")
+photo = URI.open("https://cdn2.samedivin.com/9251-home_default/bourgogne-aligote-2018-domaine-st-jacques.jpg")
 wine2.photo.attach(io: photo, filename: "profil")
 
 wine3 = Wine.create!(nom:'Domaine Saint Germain', appellation: 'Bourgogne', provenance: 'France', annee: '2019', couleur: 'rouge')
-photo = URI.open("app/assets/images/domaine saint germain.jpeg")
+photo = URI.open("https://courses.monoprix.fr/images-v3/0c44253f-c4a3-4340-9d37-d41e42b9d14a/aa85f4a3-6e39-4aa8-9f23-15a4bbf784b6/500x500.jpg")
 wine3.photo.attach(io: photo, filename: "profil")
 
 wine4 = Wine.create!(nom:'Domaine Antoine Armanet', nom_commercial: 'Pura vida', appellation: 'Rhone', provenance: 'France', annee: '2021', couleur: 'blanc')
-photo = URI.open("app/assets/images/domaine saint germain.jpeg")
+photo = URI.open("https://img.e-boissons.com/picture/product/ARM/pura-vida-sans-sulfites-ajoutes-rouge-2021-antoine-armanet-11331-1-1QPE.png")
 wine4.photo.attach(io: photo, filename: "profil")
 
-wine5 = Wine.create!(nom:'Domaine des coutures', nom_commercial: 'Pura vida', appellation: 'Saint Nicolas de Bourgeuil', provenance: 'France', annee: '2020', couleur: 'rouge', cépage: 'cabernet franc')
-photo = URI.open("app/assets/images/pura vida.jpeg")
+wine5 = Wine.create!(nom:'Domaine des coutures', appellation: 'Saint Nicolas de Bourgeuil', provenance: 'France', annee: '2020', couleur: 'rouge', cépage: 'cabernet franc')
+photo = URI.open("https://www.vinatis.com/64772-detail_default/les-coutures-2018-frederic-mabileau.png")
 wine5.photo.attach(io: photo, filename: "profil")
 
 wine6 = Wine.create!(nom: 'Domaine des marrans', appellation: 'Beaujolais', provenance: 'France', annee: '2018', couleur: 'rouge', cépage: 'gamay')
-photo = URI.open("app/assets/images/Domaine-des-Marrans-_-B09-Vieilles-vignes.png")
+photo = URI.open("https://www.vinatis.com/72641-detail_default/morgon-corcelette-2021-domaine-des-marrans.png")
 wine6.photo.attach(io: photo, filename: "profil")
 
 wine7 = Wine.create!(nom: 'Domaine Berthoumieu', nom_commercial: 'Tanatis', provenance: 'France', annee: '2008', couleur: 'rouge', cépage: 'tanat')
-photo = URI.open("app/assets/images/Domaine-des-Marrans-_-B09-Vieilles-vignes.png")
+photo = URI.open("https://images.vivino.com/thumbs/q3LzsfAkR1C17mLtts_m0A_pb_600x600.png")
 wine7.photo.attach(io: photo, filename: "profil")
 
 wine8 = Wine.create!(nom: 'Xavier Vignon', appellation: 'Côte du Rhône Villages', provenance: 'France', annee: '2019', couleur: 'rouge', cépage: '75% Syrah, 10% Mourvèdre, 10% Grenache, 2% Roussanne, 3% Viognier')
-photo = URI.open("app/assets/images/cotes-du-rhone-villages-bio-2019-xavier-vignon.png")
+photo = URI.open("https://www.vinatis.com/59365-detail_default/cotes-du-rhone-villages-bio-2019-xavier-vignon.png")
 wine8.photo.attach(io: photo, filename: "profil")
 
 wine9 = Wine.create!(nom: 'LES CLOS DE PAULILLES', appellation: 'Collioure', provenance: 'France', annee: '2020', couleur: 'rouge', cépage: '	60% Grenache, 25% Syrah, 15% Mourvèdre')
-photo = URI.open("app/assets/images/collioure-rouge-2020-les-clos-de-paulilles.png")
+photo = URI.open("https://www.vinatis.com/64459-detail_default/collioure-rouge-2020-les-clos-de-paulilles.png")
 wine9.photo.attach(io: photo, filename: "profil")
 
 dish1 = Dish.create!(nom: 'Quiche au saumon')
