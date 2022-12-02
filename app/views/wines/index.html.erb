@@ -19,10 +19,6 @@
         <% end %>
       </div>
 
-       <%= link_to 'Accueil', root_path, class:"btn btn-ghost" %>
-
-       <%= link_to 'nouvel accord', new_match_path, class:"btn btn-ghost" %>
-
       <div class="wines">
         <a class="btn btn-gradient rounded-circle" href="#"></a>
         <div class="row">
@@ -43,19 +39,21 @@
                 <div class="card-body">
                   <p></p>
                   <% if @dish.nil? %>
-
                     <% @dish = "" %>
                   <% else %>
                     <% @match = Match.where(wine: wine, dish: @dish).first %>
                   <% end %>
                   <% if @match != nil %>
-                    <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
-                  <% end %>
-                  <p></p>
-                  <h4 class="card-title"><%= wine.nom%></h4>
-                  <h5 class="card-title"><%= wine.appellation%></h5>
-                  <h6 class="card-title"><%= wine.couleur%></h6>
-                  <h6><%= wine.annee %></h6>
+                  <div class="infos-index">
+                    <div class="text-center mb-3">
+                      <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
+                    </div>
+                    <h4 class="card-title"><%= wine.nom%></h4>
+                    <h5 class="card-title"><%= wine.appellation%></h5>
+                    <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
+                    <h6><%= wine.annee %></h6>
+                  </div>
+
                    <div class="note">
                       <% wine.comments.average(:note).to_i.times do %>
                       <i class="fa-solid fa-star"></i>
@@ -63,11 +61,9 @@
                     </div>
                     <div class="star">
                   <strong><p> Plat </p></strong>
-                  <% unless @dishes.nil? %>
-                    <% @dishes.each do |dish| %>
+                    <% @dishes.uniq.each do |dish| %>
                       <p><%= dish.nom %></p>
                     <% end %>
-                  <% end %>
                 </div>
               </div>
             <% end %>
@@ -92,11 +88,16 @@
                           <% if wine.photo.attached? %>
                             <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
                           <% end %>
-                        <div class="card-body">
-                            <h4 class="card-title"><%= wine.nom%></h4>
-                            <h5 class="card-title"><%= wine.appellation%></h5>
-                            <h6 class="card-title"><%= wine.couleur%></h6>
-                            <h6><%= wine.annee %></h6>
+                        <div class="card-body text-center">
+                          <div class="infos-index">
+                              <h4 class="card-title"><%= wine.nom%></h4>
+                              <h4 class="card-title"><%= wine.appellation%></h4>
+                              <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
+                              <h6><%= wine.annee %></h6>
+                          </div>
+                          <div class="note">
+                            <p> Note moyenne: <%= wine.comments.average(:note).to_i %></p>
+                          </div>
                         </div>
                       </div>
                     <% end %>
