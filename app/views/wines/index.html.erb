@@ -41,6 +41,12 @@
                   <h5 class="card-title"><%= wine.appellation%></h5>
                   <h6 class="card-title"><%= wine.couleur%></h6>
                   <h6><%= wine.annee %></h6>
+                   <div class="note">
+                      <% wine.comments.average(:note).to_i.times do %>
+                      <i class="fa-solid fa-star"></i>
+                      <% end %>
+                    </div>
+                    <div class="star">
                   <strong><p> Plat </p></strong>
                   <% unless @dishes.nil? %>
                     <% @dishes.each do |dish| %>
