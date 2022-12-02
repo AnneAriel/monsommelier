@@ -13,6 +13,7 @@
               <h4><%= @wine.nom%></h4>
               <h5><%= @wine.appellation%></h5>
               <h6><%= @wine.annee %></h6>
+              <p>Quantité : <%= @wine.quantité %></p>
               <div class="star">
                 <% @wine.comments.average(:note).to_i.times do %>
                 <i class="fa-solid fa-star"></i>
