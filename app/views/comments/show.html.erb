@@ -12,7 +12,7 @@
               <h1><%= @dish.nom %></h1>
             <% end %>
             <% if params[:match_id] %>
-              <h1><%= @match.nom %></h1>
+              <h2>Accord <%= @match.wine.nom %> / <%= @match.dish.nom %></h2>
             <% end %>
             <div class="card-body">
               <% if @comment.user.photo.attached? %>

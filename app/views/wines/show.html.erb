@@ -27,7 +27,7 @@
 
     <div class="boutons-liens-vin">
       <%= link_to "Supprimer",
-          wine_path(@wine), style:"text-decoration:none;color:grey;",
+          wine_path(@wine), style:"text-decoration:none;color:grey",
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
           %>
         <%= link_to "Modifier",
@@ -56,8 +56,9 @@
                     <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                   <% end %>
                   <%#  <div class="card-header", style="background-color: #BC8F8F"></div>%>
-                  <p>Evaluateur: <%= "#{comment.user.username}" %></p>
-                  <h5 class="card-title"><%= comment.commentaire%></h5>
+                  <p><b>Evaluateur: <%= "#{comment.user.username}" %></b></p>
+                  <p>Note: <%= comment.note%></p>
+                  <p><%= comment.commentaire%></p>
                 </div>
               </div>
             </div>
