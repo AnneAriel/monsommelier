@@ -36,7 +36,7 @@
                     <% if wine.photo.attached? %>
                     <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
                     <% end %>
-                <div class="card-body">
+                <div class="card-body  text-center">
                   <p></p>
                   <% if @dish.nil? %>
                     <% @dish = "" %>
@@ -48,24 +48,27 @@
                       <div class="text-center mb-3">
                         <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
                       </div>
-                      <% end %>
-
+                  <% end %>
                       <h4 class="card-title"><%= wine.nom%></h4>
                       <h5 class="card-title"><%= wine.appellation%></h5>
                       <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
                       <h6><%= wine.annee %></h6>
                     </div>
-
-                   <div class="note">
-                      <% wine.comments.average(:note).to_i.times do %>
-                      <i class="fa-solid fa-star"></i>
-                      <% end %>
-                    </div>
                     <div class="star">
-                  <strong><p> Plat </p></strong>
+                      <div class="note">
+                        <% wine.comments.average(:note).to_i.times do %>
+                        <i class="fa-solid fa-star"></i>
+                        <% end %>
+                      </div>
+                    </div>
+
+                  <strong><p class="text-center"> Plat </p></strong>
+                  <% if @dishes != nil %>
                     <% @dishes.uniq.each do |dish| %>
                       <p><%= dish.nom %></p>
                     <% end %>
+                  <% end %>
+                  <p></p>
                 </div>
               </div>
             <% end %>
@@ -90,7 +93,7 @@
                             <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
                           <% end %>
                         <div class="card-body text-center">
-                          <div class="infos-index">
+                          <div class="infos-index text-center">
                               <h4 class="card-title"><%= wine.nom%></h4>
                               <h4 class="card-title"><%= wine.appellation%></h4>
                               <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
@@ -99,9 +102,12 @@
                               <p>Quantité : <%= wine.quantité %></p>
                               <% end %>
                           </div>
-                          <div class="note">
-                            <p> Note moyenne: <%= wine.comments.average(:note).to_i %></p>
-                          </div>
+                        <div class="note">
+                          <% wine.comments.average(:note).to_i.times do %>
+                            <i class="fa-solid fa-star"></i>
+                          <% end %>
+                        </div>
+                        <div class="star">
                         </div>
                       </div>
                     <% end %>
