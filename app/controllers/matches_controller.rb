@@ -14,6 +14,8 @@ before_action :set_match, only: %i[show destroy]
 
   def new
     @match = Match.new
+    @appellations = Wine.all.pluck(:appellation)
+    @years = Wine.all.pluck(:annee)
   end
 
   def create

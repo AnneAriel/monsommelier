@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :comments
     resources :bookmarks
     get "set_favorite", to: "wines#set_favorite"
+    collection do
+      get :search
+    end
   end
   resources :dishes do
     resources :comments

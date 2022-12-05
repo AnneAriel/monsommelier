@@ -7,6 +7,9 @@ import { application } from "./application"
 import FavouriteController from "./favourite_controller"
 application.register("favourite", FavouriteController)
 
+import FindWineController from "./find_wine_controller"
+application.register("find-wine", FindWineController)
+
 import FormSubmitController from "./form_submit_controller"
 application.register("form-submit", FormSubmitController)
 
