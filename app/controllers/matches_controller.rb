@@ -2,7 +2,11 @@ class MatchesController < ApplicationController
 before_action :set_match, only: %i[show destroy]
 
   def index
-    @matches = Match.all
+    if params[:query].present?
+      @matches = Match.matches_search(params[:query])
+    else
+      @matches = Match.all
+    end
   end
 
   def show
@@ -42,6 +46,18 @@ before_action :set_match, only: %i[show destroy]
     end
   end
 
+def all_favorite_matches
+  @matches = Match.all
+    if current_user.all_favorites
+      current_user.all_favorites
+    end
+end
+
+def all_favorites
+    if current_user.all_favorites
+      current_user.all_favorites
+    end
+end
 
   private
 

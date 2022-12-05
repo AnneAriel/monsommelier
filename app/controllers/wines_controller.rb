@@ -33,6 +33,19 @@ class WinesController < ApplicationController
       # authorize @wine
   end
 
+def all_favorite_wines
+  @favorite_wines = []
+    if current_user.all_favorites
+      @favorites = current_user.all_favorites
+      @favorites.each do |favorite|
+        if favorite.class == Wine
+          @favorite_wines << favorite
+        end
+      end
+    end
+  return @favorite_wines
+end
+
 
   def edit
     @wine = Wine.find(params[:id])

@@ -12,6 +12,7 @@
 @import "pages/index";
 @import "star-rating.js/dist/star-rating.css";
 
+
 .card-body .card-comment-user {
   position: absolute;
   right: 16px;
@@ -22,14 +23,6 @@
 .container {
   padding-top: 70px;
   padding-bottom: 80px;
-}
-
-h4 {
-  color: #05595B;
-}
-
-h3 {
-  text-align: center;
 }
 
 .link-match-view {

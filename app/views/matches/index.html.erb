@@ -1,52 +1,78 @@
 <div class="background-index" >
   <div class="container">
 
+    <% if params[:query] != ""%>
+      <div class=search-bar>
+        <%= form_with url: matches_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Mon plat/Mon vin"
+          %>
+          <button type="submit" class= "btn btn-no-design">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        <% end %>
+      </div>
 
+      <strong><p>Résultats</p></strong>
+      <%= render "carousel" %>
 
-    <div class="row mb-6">
-      <% @matches.each do |match| %>
-        <div class="col-sm-6 bicard">
-          <div class="card rounded-4 shadow mb-4 ml-2" >
-          <div class="card-body">
-            <%# <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" class="fa-regular fa-bookmark" id="<%=match.id%><%#  "></i>%>
-              <%= link_to  match_path(match), style:"text-decoration:none;color:black;" do %>
-                <div class="row mb-6">
-                  <div class="col-sm-6 bicard">
-                    <% if match.wine.photo.attached? %>
-                      <%= cl_image_tag match.wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
-                    <% end %>
-                  </div>
+    <% else %>
 
-                  <div class="col-sm-6 bicard">
-                  <div class="titre-vin-carte-accord">
-                    <h3><%= match.wine.nom %></h3>
-                    <div class="note-vin">
-                      <%=match.wine.comments.average(:note).to_i %>
-                    </div>
-                  </div>
-                    <p><%= match.wine.appellation %> - <%= match.wine.couleur %> </p>
-                    <h4> Accord : <%= match.dish.nom %></h4>
-                      <div class="star">
-                        <% match.comments.average(:note).to_i.times do %>
-                        <i class="fa-solid fa-star"></i>
+      <h5>Bonjour  <strong><%=current_user.username%></strong> !</h5>
+      <h5> Que souhaites-tu accorder aujourd'hui?</h5>
+
+      <div class=search-bar>
+        <%= form_with url: matches_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Mon plat/Mon vin"
+          %>
+          <button type="submit" class= "btn btn-no-design">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        <% end %>
+      </div>
+      <div class="row mb-6">
+        <% @matches.each do |match| %>
+          <div class="col-sm-6 bicard">
+            <div class="card rounded-4 shadow mb-4 ml-2" >
+              <div class="card-body">
+                <% if current_user.favorited?(match) %>
+                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark" id="<%=match.id%>"></i>
+                <% else %>
+                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=match.id%>"></i>
+                <% end %>
+                  <%= link_to  match_path(match), style:"text-decoration:none;color:black;" do %>
+                    <div class="row mb-6">
+                      <div class="col-sm-6 bicard">
+                        <% if match.wine.photo.attached? %>
+                          <%= cl_image_tag match.wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
                         <% end %>
                       </div>
-                  </div>
-                </div>
+                      <div class="col-sm-6 bicard">
+                        <div class="infos-accords text-center">
+                          <h3><%= match.wine.nom %></h3>
+                          <div class="note-vin">
+                            <p>Note du vin:<%=match.wine.comments.average(:note).to_i %></p>
+                          </div>
+                          <p><%= match.wine.appellation %> - <%= match.wine.couleur %> </p>
+                          <h4> Accord : <%= match.dish.nom %></h4>
+                        </div>
+                        <div class="star">
+                          <% match.comments.average(:note).to_i.times do %>
+                          <i class="fa-solid fa-star"></i>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
               </div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-      <%#
-      <div class="card rounded-4 shadow mb-4 ml-2" >
-        <div class="card-body">
-          <h4 class="card-title"><%= match.wine.nom %><%# </h4>
-          <h5 class="card-title"><%= match.dish.nom %><%# </h5>
-        </div>
-      </div> %>

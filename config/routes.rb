@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :wines
     resources :dishes, except: :index
+    resources :bookmarks
     get "set_favorite", to: "matches#set_favorite"
   end
 
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     get "set_favorite", to: "dishes#set_favorite"
   end
 
+  resources :bookmarks
 
 
 end

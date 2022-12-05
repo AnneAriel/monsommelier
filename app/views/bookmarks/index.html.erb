@@ -1,0 +1,16 @@
+<div class="background-index" >
+  <div class="container">
+    <div class="row m-6" data-controller="favourite">
+
+
+      <div><i data-action="click->favourite#update" data-favourite-target="checkbox" data-favourite-class-value="match" class="fa-regular fa-square" type="checkbox" id="match"></i> Mes accords préférés</div>
+      <div><i data-action="click->favourite#update" data-favourite-target="checkbox" data-favourite-class-value="wine" class="fa-regular fa-square" type="checkbox" id="wine"></i> Mes vins préférés</div>
+      <%#= ${checkbox_choice_match} %>
+    <%# raise %>
+
+      <div data-favourite-target="sortedcard">
+        <%= render "index_wine_match", favorites: @favorites  %>
+      </div>
+  </div>
+</div>
+</div>

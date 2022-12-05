@@ -1,6 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
-
+@import "matches_search";
 
 .background-index {
   background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1669977727/Rectangle_17_1_d9lgss.png");
@@ -23,4 +23,21 @@
 .infos-vin-index {
   display: flex;
   align-items: center;
+}
+
+.descriptif-match-search {
+  position: relative;
+  background: transparent;
+  text-align: center;
+  border: solid 1px;
+  width: 300px;
+  top: 0px;
+  left: -20px;
+  }
+
+
+.note-accord{
+    position: relative;
+    top: -367px;
+    left: 200px;
 }
