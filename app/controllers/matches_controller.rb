@@ -46,11 +46,16 @@ before_action :set_match, only: %i[show destroy]
 
 def all_favorite_matches
   @matches = Match.all
-    if current_user.all_favorited
-      current_user.all_favorited
+    if current_user.all_favorites
+      current_user.all_favorites
     end
 end
 
+def all_favorites
+    if current_user.all_favorites
+      current_user.all_favorites
+    end
+end
 
   private
 

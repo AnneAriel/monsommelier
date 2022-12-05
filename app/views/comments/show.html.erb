@@ -25,21 +25,21 @@
               <p><%= @comment.note %></p>
 
               <% if params[:wine_id] %>
-                <%= link_to "Delete comment",
+                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
                 wine_comment_path(@wine, @comment),
                 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
                 %>
               <% end %>
 
               <% if params[:dish_id] %>
-                <%= link_to "Delete comment",
+                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
                 dish_comment_path(@dish, @comment),
                 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
               %>
               <% end %>
 
               <% if params[:match_id] %>
-                <%= link_to "Delete comment",
+                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
                 match_comment_path(@match, @comment),
                 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
               %>

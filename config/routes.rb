@@ -26,9 +26,7 @@ Rails.application.routes.draw do
     get "set_favorite", to: "dishes#set_favorite"
   end
 
-  resources :bookmarks do
-    get "all_favorite_matches", to: "matches#all_favorite_matches"
-  end
+  resources :bookmarks
 
 
 end
