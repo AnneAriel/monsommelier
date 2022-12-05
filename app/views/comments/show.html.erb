@@ -25,24 +25,28 @@
               <p><%= @comment.note %></p>
 
               <% if params[:wine_id] %>
-                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
-                wine_comment_path(@wine, @comment),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                %>
+                <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                    match_comment_path(@wine, @comment), style:"text-decoration:none;color:black;text-align:center;",
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                 %>
+                 <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                    edit_match_comment_path(@wine, @comment), style:"text-decoration:none;color:black;text-align:center;",
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                 %>
               <% end %>
 
               <% if params[:dish_id] %>
-                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
-                dish_comment_path(@dish, @comment),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-              %>
+                <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                    match_comment_path(@wine, @comment), style:"text-decoration:none;color:black;text-align:center;",
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                 %>
+                 <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                    edit_match_comment_path(@dish, @comment), style:"text-decoration:none;color:black;text-align:center;",
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                 %>
               <% end %>
 
-              <% if params[:match_id] %>
-                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
-                match_comment_path(@match, @comment),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-              %>
+
               <% end %>
 
       </div>

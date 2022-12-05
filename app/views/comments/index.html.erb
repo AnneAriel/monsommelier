@@ -15,9 +15,18 @@
                       <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                     <% end %>
                     <p>Evaluateur: <%= "#{comment.user.username}" %></p>
-                    <h4 class="card-title"><%= comment.commented_on.wine.nom %></h4>
+                    <% @wine = Wine.find(params[:wine_id]) %>
+                    <h4 class="card-title"><%= @wine.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
+                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                      dish_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
+                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                      edit_dish_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
                   </div>
                 </div>
               </div>
@@ -38,7 +47,15 @@
                     <h4 class="card-title"><%= comment.commented_on.dish.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
-
+                    <% @dish = Dish.find(params[:dish_id]) %>
+                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                      dish_comment_path(@dish, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
+                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                      edit_dish_comment_path(@dish, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
                   </div>
                 </div>
               </div>
@@ -59,6 +76,15 @@
                     <h4 class="card-title"><%= comment.commented_on.wine.nom %> / <%= comment.commented_on.dish.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
+                    <% @match = Match.find(params[:match_id]) %>
+                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                      match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
+                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                      edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
                   </div>
                 </div>
               </div>
