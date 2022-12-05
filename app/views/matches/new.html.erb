@@ -1,29 +1,34 @@
-<div class="container">
+<div class="container" data-controller="find-wine">
   <div class="row justify-content-center">
     <div class="col-18 col-sm-4">
       <div class="card rounded-4 shadow mb-4 ml-2 " >
         <div class="card-body p-6">
           <h2> Ma dégustation </h2>
-          <%= simple_form_for [@match] do |f|%>
+          <%= simple_form_for [@match], data: {find_wine_target: "form"} do |f|%>
             <%= f.association :wine do |w| %>
             <h1><i class="fa-solid fa-wine-glass-empty"></h1></i><h4>Vin</h4>
-            <%= w.input :appellation %>
-            <%= w.input :annee %>
-            <%= w.select :couleur, collection: ["rouge","blanc","rosé"] %>
+              <%= w.text_field :appellation, list: "appellations", input_html: {data: {action:"change->find-wine#type"}} %>
+              <datalist id="appellations">
+                <% @appellations.each do |appellation| %>
+                  <option value="<%= appellation %>"></option>
+                <% end %>
+              </datalist>
+              <%= w.input :annee %>
+              <%= w.select :couleur, collection: ["rouge","blanc","rosé"] %>
             <%#= simple_form_for [@match, @comment] do |f|%>
               <%#= f.input :commentaire %>
               <%#= f.input :note  %>
             <%# end %>
-          <% end %>
-          <p></p>
-          <p></p>
-          <h1><i class="fa-solid fa-utensils"></i></h1><h4>Plat</h4>
-          <%= f.association :dish do |d| %>
+            <% end %>
             <p></p>
-            <%= d.input :nom, label: "Plat"  %>
+            <p></p>
+            <h1><i class="fa-solid fa-utensils"></i></h1><h4>Plat</h4>
+            <%= f.association :dish do |d| %>
+              <p></p>
+              <%= d.input :nom, label: "Plat"  %>
+            <% end %>
+            <%= f.submit %>
           <% end %>
-          <%= f.submit %>
-        <% end %>
         </div>
       </div>
     </div>
