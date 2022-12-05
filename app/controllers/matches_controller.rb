@@ -40,6 +40,13 @@ before_action :set_match, only: %i[show destroy]
     end
   end
 
+def all_favorite_matches
+  @matches = Match.all
+    if current_user.all_favorited
+      current_user.all_favorited
+    end
+end
+
 
   private
 

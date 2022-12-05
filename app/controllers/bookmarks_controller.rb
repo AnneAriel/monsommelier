@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
 
   def index
+    @favorites = current_user.all_favorited
   end
 
   def show
