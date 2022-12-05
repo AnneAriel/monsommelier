@@ -15,7 +15,7 @@
                       <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                     <% end %>
                     <p>Evaluateur: <%= "#{comment.user.username}" %></p>
-                    <h4 class="card-title"><%= comment.commented_on.nom %></h4>
+                    <h4 class="card-title"><%= comment.commented_on.wine.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
                   </div>
@@ -35,7 +35,7 @@
                       <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                     <% end %>
                     <p>Evaluateur: <%= "#{comment.user.username}" %></p>
-                    <h4 class="card-title"><%= comment.commented_on.nom %></h4>
+                    <h4 class="card-title"><%= comment.commented_on.dish.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
 
@@ -56,7 +56,7 @@
                       <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                     <% end %>
                     <p>Evaluateur: <%= "#{comment.user.username}" %></p>
-                    <h4 class="card-title"><%= comment.commented_on.nom %></h4>
+                    <h4 class="card-title"><%= comment.commented_on.wine.nom %> / <%= comment.commented_on.dish.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
                   </div>
