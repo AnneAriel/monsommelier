@@ -1,6 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
-
+@import "matches_search";
 
 .background-index {
   background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1669977727/Rectangle_17_1_d9lgss.png");
@@ -35,8 +35,9 @@
   left: -20px;
   }
 
-  .note-accord{
+
+.note-accord{
     position: relative;
     top: -367px;
     left: 200px;
-  }
+}
