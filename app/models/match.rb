@@ -2,7 +2,7 @@ class Match < ApplicationRecord
   belongs_to :user
   belongs_to :wine
   belongs_to :dish
-  has_many :comments, as: :commented_on
+  has_many :comments, as: :commented_on, dependent: :destroy
 
   include PgSearch::Model
   pg_search_scope :matches_search, associated_against: {
