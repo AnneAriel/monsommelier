@@ -8,7 +8,11 @@
         <div class="col-sm-6 bicard">
           <div class="card rounded-4 shadow mb-4 ml-2" >
           <div class="card-body">
-            <%# <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" class="fa-regular fa-bookmark" id="<%=match.id%><%#  "></i>%>
+            <% if current_user.favorited?(match) %>
+              <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark" id="<%=match.id%>"></i>
+            <% else %>
+              <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=match.id%>"></i>
+            <% end %>
               <%= link_to  match_path(match), style:"text-decoration:none;color:black;" do %>
                 <div class="row mb-6">
                   <div class="col-sm-6 bicard">
@@ -21,7 +25,7 @@
                   <div class="titre-vin-carte-accord">
                     <h3><%= match.wine.nom %></h3>
                     <div class="note-vin">
-                      <%=match.wine.comments.average(:note).to_i %>
+                      <p>Note du vin:<%=match.wine.comments.average(:note).to_i %></p>
                     </div>
                   </div>
                     <p><%= match.wine.appellation %> - <%= match.wine.couleur %> </p>
