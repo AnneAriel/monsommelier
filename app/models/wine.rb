@@ -8,5 +8,5 @@ class Wine < ApplicationRecord
   validates :couleur, presence: true
 
   include PgSearch::Model
-  multisearchable against: [:appellation, :couleur, :annee, :nom, :provenance, :cépage]
+  multisearchable against: [:appellation, :nom_commercial, :couleur, :annee, :nom, :provenance, :cépage]
 end

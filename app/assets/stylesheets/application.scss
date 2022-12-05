@@ -11,7 +11,7 @@
 @import "components/index";
 @import "pages/index";
 @import "star-rating.js/dist/star-rating.css";
-// @import "matches_search";
+
 
 .card-body .card-comment-user {
   position: absolute;
@@ -22,16 +22,7 @@
 
 .container {
   padding-top: 70px;
-  
   padding-bottom: 80px;
-}
-
-h4 {
-  color: #05595B;
-}
-
-h3 {
-  text-align: center;
 }
 
 .link-match-view {

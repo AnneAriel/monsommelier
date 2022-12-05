@@ -6,7 +6,7 @@ class Match < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :matches_search, associated_against: {
-    wine: [:appellation, :couleur, :annee, :nom, :provenance, :cépage],
+    wine: [:appellation, :nom_commercial, :couleur, :annee, :nom, :provenance, :cépage],
     dish: [:nom, :caracteristique]
   }
 
