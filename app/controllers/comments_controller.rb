@@ -36,7 +36,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-
     if params[:wine_id]
       @wine = Wine.find(params[:wine_id])
       @comment.commented_on = @wine
@@ -51,7 +50,7 @@ class CommentsController < ApplicationController
     end
 
     @comment.user = current_user
-
+    #authorize @comment
     if @comment.save && params[:wine_id]
       redirect_to wine_path(@wine, @comment)
     elsif @comment.save && params[:dish_id]
@@ -61,7 +60,7 @@ class CommentsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    #authorize @comment
+
   end
 
   def edit
@@ -70,6 +69,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+    #authorize @comment
     @comment.update(comment_params)
     #redirect_to comment_path(@comment)
     if params[:wine_id]

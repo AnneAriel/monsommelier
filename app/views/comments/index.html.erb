@@ -19,14 +19,16 @@
                     <h4 class="card-title"><%= @wine.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
-                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
-                      dish_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                    %>
-                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
-                      edit_dish_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                    %>
+                    <% if @wine.user == current_user %>
+                      <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                        dish_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                      <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                        edit_dish_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -48,14 +50,16 @@
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
                     <% @dish = Dish.find(params[:dish_id]) %>
-                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
-                      dish_comment_path(@dish, comment), style:"text-decoration:none;color:black;text-align:center;",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                    %>
-                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
-                      edit_dish_comment_path(@dish, comment), style:"text-decoration:none;color:black;text-align:center;",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                    %>
+                    <% if @dish.user == current_user %>
+                      <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                        dish_comment_path(@dish, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                      <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                        edit_dish_comment_path(@dish, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -77,14 +81,16 @@
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                     <h5 class="card-title"><%= comment.note%></h5>
                     <% @match = Match.find(params[:match_id]) %>
-                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
-                      match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                    %>
-                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
-                      edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                    %>
+                    <% if comment.user == current_user %>
+                      <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                        match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                      <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                        edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                    <% end %>
                   </div>
                 </div>
               </div>

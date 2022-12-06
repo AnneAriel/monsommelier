@@ -9,7 +9,7 @@
       <% if wine.couleur == "blanc" %>
       <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:beige"></i></div>
       <% elsif wine.couleur == "rouge" %>
-      <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:lightpink"></i></div>
+      <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:purple"></i></div>
       <% else %>
       <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:lightpink"></i></div>
       <%end %>
@@ -22,11 +22,13 @@
             <h6>Quantité : <%= wine.quantité %></h6>
           <% end %>
         </div>
-        <div class="star">
-          <div class="note">
-            <%= wine.comments.average(:note).to_i%>
+        <% if wine.comments.average(:note).to_i != 0 && wine.comments.average(:note).to_i != nil %>
+          <div class="star">
+            <div class="note">
+              <%= wine.comments.average(:note).to_i %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
     <% end %>
