@@ -14,6 +14,7 @@
             <% if params[:match_id] %>
               <h2>Accord <%= @match.wine.nom %> / <%= @match.dish.nom %></h2>
             <% end %>
+
             <div class="card-body">
               <% if @comment.user.photo.attached? %>
                 <%= cl_image_tag @comment.user.photo.key, class:"avatar card-comment-user" %>
@@ -36,16 +37,20 @@
               <% end %>
 
               <% if params[:dish_id] %>
-                <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                <% if policy(@comment).destroy? %>
+                  <i class="fa-solid fa-x"></i><%= link_to " Effacer",
                     match_comment_path(@wine, @comment), style:"text-decoration:none;color:black;text-align:center;",
                     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                 %>
-                 <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                  %>
+                <% end %>
+
+                <% if policy(@comment).edit? %>
+                  <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
                     edit_match_comment_path(@dish, @comment), style:"text-decoration:none;color:black;text-align:center;",
                     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                 %>
+                  %>
+                <% end %>
               <% end %>
-
 
               <% end %>
 

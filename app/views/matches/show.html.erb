@@ -24,9 +24,15 @@
           <div class="col-sm-6 bicard">
             <div class="titre-vin-carte-accord">
               <h3 class = "nom-vin"><%= @match.wine.nom %></h3>
-               <div class="note-vin">
-                  <%=@match.wine.comments.average(:note).to_i %>
-              </div>
+
+              <% if @match.wine.comments.average(:note).to_i != 0 && @match.wine.comments.average(:note).to_i != nil %>
+                <div class="star">
+                  <div class="note-vin-show">
+                    <%= @match.wine.comments.average(:note).to_i %>
+                  </div>
+                </div>
+              <% end %>
+
             </div>
             <p><%= @match.wine.appellation %> - <%= @match.wine.couleur %> </p>
             <h4> Accord : <%= @match.dish.nom %></h4>
@@ -37,12 +43,23 @@
             </div>
 
           </div>
-          <div class="link-match-view">
-            <%= link_to "Supprimer",
-                match_path(@match),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-ghost"
+
+          <div class="boutons-liens-accord" style="text-align:center">
+            <% if @match.user == current_user %>
+              <i class="fa-solid fa-x"></i><%= link_to " Supprimer",
+                match_path(@match), style:"text-decoration:none;color:black;text-align:center;",
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
               %>
-            <%= link_to "Noter",  new_match_comment_path(@match), class:"btn btn-ghost" %>
+              <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                edit_match_path(@match), style:"text-decoration:none;color:black;text-align:center;"
+              %>
+              <% end %>
+            <i class="fa-regular fa-comment"></i><%= link_to " Noter",
+              new_match_comment_path(@match), style:"text-decoration:none;color:black;text-align:center;"
+            %>
+          </div>
+
+          <%#= link_to "Noter",  new_match_comment_path(@match), class:"btn btn-ghost" %>
           </div>
         </div>
       </div>
@@ -64,13 +81,15 @@
                   <p><b>Evaluateur: <%= "#{comment.user.username}" %></b></p>
                   <p>Note: <%= comment.note%></p>
                   <p><%= comment.commentaire%></p>
-                  <i class="fa-solid fa-x"></i><%= link_to " Effacer",
-                    match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                  %>
-                  <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
-                    edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;"
-                  %>
+                  <% if comment.user == current_user %>
+                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                      match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
+                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                      edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;"
+                    %>
+                  <% end %>
                 </div>
               </div>
             </div>
