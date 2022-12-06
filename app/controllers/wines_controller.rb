@@ -2,7 +2,8 @@ class WinesController < ApplicationController
   def index
     # @wines = policy_scope(Wine)
     if params[:query].present?
-      @wines, @dishes = []
+      @wines = []
+      @dishes = []
       @results = PgSearch.multisearch(params[:query])
       @results.each do |dish|
         @dish = dish.searchable

@@ -32,6 +32,11 @@
                     <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
                   <% end %>
                   <div class="card-body  text-center">
+                    <% if @dish.nil? %>
+                      <% @dish = "" %>
+                    <% else %>
+                      <% @match = Match.where(wine: wine, dish: @dish).first %>
+                    <% end %>
                     <div class="infos-index text-center">
                       <% if @match != nil %>
                         <div class="text-center mb-3">
@@ -50,6 +55,12 @@
                         <% end %>
                       </div>
                     </div>
+                    <strong> <p class="text-center"> Plat </p> </strong>
+                    <% if @dishes != nil %>
+                      <% @dishes.uniq.each do |dish| %>
+                      <p><%= dish.nom %></p>
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
                 <% end %>
