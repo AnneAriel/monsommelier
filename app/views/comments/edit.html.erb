@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="review">
+    <h2>Modifier une évaluation</h2>
+
+    <% if params[:wine_id] %>
+      <% comment = Comment.where(commented_on_type: "Wine", commented_on_id: params[:id] ).first %>
+      <p><b>Evaluateur: <%= "#{comment.user.username}" %></b></p>
+      <%#  <p>Note: <%= comment.note%><%# </p>er%>
+      <p><% wine = Wine.find(params[:match_id]) %></p>
+      <%= simple_form_for [wine, comment] do |f| %>
+        <%= f.input :commentaire, input_html: {id: 'commentaire', value: comment.commentaire }%>
+        <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
+         <%= f.submit class: "d-none" %>
+      <% end %>
+    <% end %>
+
+    <% if params[:dish_id] %>
+      <% comment = Comment.where(commented_on_type: "Dish", commented_on_id: params[:id] ).first %>
+      <p><b>Evaluateur: <%= "#{comment.user.username}" %></b></p>
+      <%#  <p>Note: <%= comment.note%><%# </p>er%>
+      <p><% dish = Dish.find(params[:match_id]) %></p>
+      <%= simple_form_for [dish, comment] do |f| %>
+        <%= f.input :commentaire, input_html: {id: 'commentaire', value: comment.commentaire }%>
+        <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
+         <%= f.submit class: "d-none" %>
+      <% end %>
+    <% end %>
+
+     <% if params[:match_id] %>
+      <% comment = Comment.where(commented_on_type: "Match", commented_on_id: params[:id] ).first %>
+      <p><b>Evaluateur: <%= "#{comment.user.username}" %></b></p>
+      <%#  <p>Note: <%= comment.note%><%# </p>er%>
+      <p><% match = Match.find(params[:match_id]) %></p>%>
+      <%= simple_form_for [match, comment] do |f| %>
+        <%= f.input :commentaire, input_html: {id: 'commentaire', value: comment.commentaire }%>
+        <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
+         <%= f.submit class: "d-none" %>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
