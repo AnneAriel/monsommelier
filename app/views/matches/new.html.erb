@@ -4,17 +4,60 @@
       <div class="card rounded-4 shadow mb-4 ml-2 " >
         <div class="card-body p-6">
           <h2> Ma dégustation </h2>
-          <%= simple_form_for [@match], data: {find_wine_target: "form"} do |f|%>
+          <%= simple_form_for [@match] do |f|%>
             <%= f.association :wine do |w| %>
-            <h1><i class="fa-solid fa-wine-glass-empty"></h1></i><h4>Vin</h4>
-              <%= w.text_field :appellation, list: "appellations", input_html: {data: {action:"change->find-wine#type"}} %>
-              <datalist id="appellations">
-                <% @appellations.each do |appellation| %>
-                  <option value="<%= appellation %>"></option>
-                <% end %>
-              </datalist>
+            <h1><i class="fa-solid fa-wine-glass-empty"></h1></i><h4 style="text-align: left;">Vin</h4>
+              <%= w.label :appellation, "Appellation" %>
+              <%= w.text_field :appellation, :label => "appellation", list: "appellations"%>
+                <datalist id="appellations">
+                  <% @appellations.each do |appellation| %>
+                    <option value="<%= appellation %>"></option>
+                  <% end %>
+                </datalist>
+              <p></p>
+              <%#= w.input :nom %>
+              <%= w.label :nom, "Nom" %>
+              <%= w.text_field :nom, :label => "nom", list: "noms"%>
+                <datalist id="noms">
+                  <% @noms_vin.each do |nom| %>
+                    <option value="<%= nom %>"></option>
+                  <% end %>
+                </datalist>
               <%= w.input :annee %>
               <%= w.select :couleur, collection: ["rouge","blanc","rosé"] %>
+
+              <%# PARTIE OPTIONNELLE DU FORMULAIRE %>
+              <div>
+              <%#= w.input :nom_commercial %>
+              <%= w.label :nom_commercial, "Nom_commercial" %>
+              <%= w.text_field :nom_commercial, :label => "nom_commercial", list: "noms_commercial"%>
+                <datalist id="noms_commercial">
+                  <% @noms_commercial.each do |nom| %>
+                    <option value="<%= nom %>"></option>
+                  <% end %>
+                </datalist>
+              <%#= w.input :provenance %>
+              <p></p>
+              <%= w.label :provenance, "Provenance" %>
+              <%= w.text_field :provenance, :label => "provenance", list: "provenances"%>
+                <datalist id="provenances">
+                  <% @provenances.each do |provenance| %>
+                    <option value="<%= provenance %>"></option>
+                  <% end %>
+                </datalist>
+              <p></p>
+              <%#= w.input :cépage %>
+              <%= w.label :cépage, "cépage" %>
+              <%= w.text_field :cépage, :label => "cépage", list: "cépages"%>
+                <datalist id="cépages">
+                  <% @cépages.each do |cépage| %>
+                    <option value="<%= cépage %>"></option>
+                  <% end %>
+                </datalist>
+              <p></p>
+              <%= w.input :quantité, input_html: { type: 'number' } %>
+              </div>
+
             <%#= simple_form_for [@match, @comment] do |f|%>
               <%#= f.input :commentaire %>
               <%#= f.input :note  %>
@@ -22,12 +65,19 @@
             <% end %>
             <p></p>
             <p></p>
-            <h1><i class="fa-solid fa-utensils"></i></h1><h4>Plat</h4>
+            <h1><i class="fa-solid fa-utensils"></i></h1><h4  style="text-align: left;">Plat</h4>
             <%= f.association :dish do |d| %>
               <p></p>
-              <%= d.input :nom, label: "Plat"  %>
+              <%= d.text_field :nom, list: "noms"%>
+                <datalist id="noms">
+                  <% @noms.each do |nom| %>
+                    <option value="<%= nom %>"></option>
+                  <% end %>
+                </datalist>
             <% end %>
-            <%= f.submit %>
+            <%#= f.input :commentaire %>
+            <%#= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
+            <%= f.submit "Créer un accord"%>
           <% end %>
         </div>
       </div>

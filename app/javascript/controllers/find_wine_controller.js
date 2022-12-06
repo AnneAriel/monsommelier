@@ -17,6 +17,9 @@ export default class extends Controller {
     headers: { "Accept": "application/json" }
   })
   .then(response => response.text())
-  .then(data => console.log(data))
+  .then(data => {
+    console.log(data)
+    console.log("azezez")
+  })
 };
 }

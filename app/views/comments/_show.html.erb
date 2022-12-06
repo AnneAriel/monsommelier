@@ -1,0 +1,51 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="row">
+        <div class="card rounded-4 shadow mb-4 ml-2" >
+          <div class="card-body">
+            <% if params[:wine_id] %>
+              <h1><%= @wine.nom %></h1>
+            <% end %>
+            <% if params[:dish_id] %>
+              <h1><%= @dish.nom %></h1>
+            <% end %>
+            <% if params[:match_id] %>
+              <h2>Accord <%= @match.wine.nom %> / <%= @match.dish.nom %></h2>
+            <% end %>
+            <div class="card-body">
+              <% if @comment.user.photo.attached? %>
+                <%= cl_image_tag @comment.user.photo.key, class:"avatar card-comment-user" %>
+              <% else %>
+                <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+              <% end %>
+              <p>Evaluateur: <%= "#{@comment.user.username}" %></p>
+              <p><%= @comment.commentaire %></p>
+              <p><%= @comment.note %></p>
+
+              <% if params[:wine_id] %>
+                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
+                wine_comment_path(@wine, @comment),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                %>
+              <% end %>
+
+              <% if params[:dish_id] %>
+                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
+                dish_comment_path(@dish, @comment),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+              <% end %>
+
+              <% if params[:match_id] %>
+                <i class="fa-solid fa-x"></i><%= link_to " Delete comment",
+                match_comment_path(@match, @comment),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+              <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
