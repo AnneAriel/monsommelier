@@ -3,14 +3,15 @@
     <div class="card rounded-4 border-0 shadow mb-4 ml-2 p-4">
     <h1 class="mb-4 text-center" >Modifier le vin</h1>
       <%= simple_form_for(@wine) do |f| %>
-        <%= f.input :nom %>
-        <%= f.input :appellation  %>
-        <%= f.select :couleur, ["rouge","blanc","rosé"]  %>
+        <%= f.input :nom, readonly: true %>
+        <%= f.input :appellation, readonly: true  %>
+        <%= f.select :couleur, ["rouge","blanc","rosé"], readonly: true  %>
         <p></p>
-         <%= f.input :annee %>
+         <%= f.input :annee, readonly: true %>
+         <%= f.input :quantité, input_html: { type: 'number' } %>
          <%= f.input :photo, as: :file %>
         <p></p>
-        <%= f.submit "Modifier le vin"%>
+    <%= f.submit "Mettre à jour mon stock"%>
       <% end %>
     </div>
   </div>

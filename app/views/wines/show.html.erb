@@ -24,7 +24,7 @@
               <h4><%= @wine.nom%></h4>
               <h6><%= @wine.appellation%></h5>
               <h6><%= @wine.annee %></h6>
-              <% if @wine.quantité != 0 %>
+              <% if @wine.quantité != 0 && @wine.quantité != nil %>
                 <h6>Quantité : <%= @wine.quantité %></h6>
               <% end %>
               <div class="star">
@@ -39,17 +39,20 @@
     </div>
 
     <div class="boutons-liens-vin">
-      <%= link_to "Supprimer",
-          wine_path(@wine), style:"text-decoration:none;color:grey",
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-          %>
-      <%= link_to "Modifier",
-        edit_wine_path(@wine), style:"text-decoration:none;color:grey;"
-          %>
+
+      <i class="fa-solid fa-x"></i><%= link_to " Supprimer",
+        wine_path(@wine), style:"text-decoration:none;color:black;text-align:center;",
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+      <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+        edit_wine_path(@wine), style:"text-decoration:none;color:black;text-align:center;"
+      %>
     </div>
+    <p></p>
 
     <div class="boutons-view-vin">
       <%= link_to "Noter",  new_wine_comment_path(@wine), class:"btn btn-ghost" %>
+      <%= link_to "Ajuster mon stock",  edit_wine_path(@wine), class:"btn btn-ghost" %>
       <%= link_to "Voir les vins",  wines_path, class:"btn btn-ghost" %>
     </div>
 
