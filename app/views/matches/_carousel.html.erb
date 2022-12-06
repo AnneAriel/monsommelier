@@ -3,8 +3,8 @@
     <div class="matches-search">
       <% @matches.first(5).each_with_index do |match, index| %>
         <% if index <= 0 %>
-          <div class="match-card">
-            <div class="carousel-item active">
+           <div class="match-card">
+            <div class="carousel-item active" >
               <div class=bookmark-match>
                 <% if current_user.favorited?(match) %>
                     <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark" id="<%=match.id%>"></i>
@@ -12,14 +12,14 @@
                     <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=match.id%>"></i>
                 <% end %>
               </div>
-              <%= link_to  match_path(match), style:"text-decoration:none;color:black;position:relative;" do %>
-              <% if match.wine.couleur == "blanc" %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:beige;"></i></div>
-              <% elsif match.wine.couleur == "rouge" %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;" ><i class="fa-solid fa-wine-bottle" style="color:purple;"></i></div>
-              <% else %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:lightpink;"></i></div>
-              <%end %>
+              <%= link_to  match_path(match, value: params[:query]), style:"text-decoration:none;color:black;position:relative;" do %>
+                <% if match.wine.couleur == "blanc" %>
+                  <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:beige;"></i></div>
+                  <% elsif match.wine.couleur == "rouge" %>
+                  <div class="pastille" style="position:absolute;top:50px;left:20px;" ><i class="fa-solid fa-wine-bottle" style="color:purple;"></i></div>
+                  <% else %>
+                  <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:lightpink;"></i></div>
+                <%end %>
                 <% if match.wine.photo.attached? %>
                   <%= cl_image_tag match.wine.photo.key, class:"d-block w-75" %>
                 <% end %>
@@ -47,7 +47,7 @@
                     <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=match.id%>"></i>
                 <% end %>
               </div>
-              <%= link_to  match_path(match), style:"text-decoration:none;color:black;" do %>
+              <%= link_to  match_path(match, value: params[:query]), style:"text-decoration:none;color:black;position:relative;" do %>
               <% if match.wine.couleur == "blanc" %>
               <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:beige;"></i></div>
               <% elsif match.wine.couleur == "rouge" %>
