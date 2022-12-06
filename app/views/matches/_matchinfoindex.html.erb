@@ -1,43 +1,58 @@
-<div class="row mb-6">
-        <% @matches.each do |match| %>
-          <div class="col-sm-6 bicard">
-            <div class="card rounded-4 shadow mb-4 ml-2" >
-              <div class="card-body">
-                <% if current_user.favorited?(match) %>
-                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark" id="<%=match.id%>"></i>
-                <% else %>
-                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=match.id%>"></i>
+<% @matches.each do |match| %>
+  <div class="col-sm-6 bicard">
+    <div class="card rounded-4 shadow mb-4 ml-2" >
+      <div class="card-body">
+      <div class = "upper-card">
+        <% if current_user.favorited?(match) %>
+          <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl" id="<%=match.id%>"></i>
+        <% else %>
+          <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl" id="<%=match.id%>"></i>
+        <% end %>
+        <h1>Accord</h1>
+        <div class="star">
+          <div class="note-vin">
+            <%= match.wine.comments.average(:note).to_i %>
+          </div>
+        </div>
+      </div>
+          <%= link_to  match_path(match), style:"text-decoration:none;color:black;" do %>
+            <div class="row mb-6">
+              <div class="col-sm-6 bicard">
+                <% if match.wine.photo.attached? %>
+                  <%= cl_image_tag match.wine.photo.key, height: 300, width: 400, crop: :fit, class:"card-img-top rounded-4" %>
                 <% end %>
-                  <%= link_to  match_path(match), style:"text-decoration:none;color:black;" do %>
-                    <div class="row mb-6">
-                      <div class="col-sm-6 bicard">
-                        <% if match.wine.photo.attached? %>
-                          <%= cl_image_tag match.wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
-                        <% end %>
-                      </div>
-                      <div class="col-sm-6 bicard">
-                        <div class="infos-accords text-center">
-                          <h3><%= match.wine.nom %></h3>
-                          <% if match.wine.comments.average(:note).to_i != 0 && match.wine.comments.average(:note).to_i != nil %>
-                            <div class="star">
-                              <div class="note-vin">
-                                <%= match.wine.comments.average(:note).to_i %>
-                              </div>
-                            </div>
-                          <% end %>
-
-                          <p><%= match.wine.appellation %> - <%= match.wine.couleur %> </p>
-                          <h4> Accord : <%= match.dish.nom %></h4>
-                        </div>
-                        <div class="star">
-                          <% match.comments.average(:note).to_i.times do %>
-                          <i class="fa-solid fa-star"></i>
-                          <% end %>
-                        </div>
-                      </div>
+              </div>
+              <div class="col-sm-6 bicard">
+                <div class="infos-accords text-center">
+                  <h3><%= match.wine.nom %></h3>
+                  <% if match.wine.comments.average(:note).to_i != 0 && match.wine.comments.average(:note).to_i != nil %>
+                  <% end %>
+                  <p><%= match.wine.appellation %>  </p>
+                  <h4> <i class="fa-solid fa-utensils"></i>   <%= match.dish.nom %></h4>
+                </div>
+                <div class="color_tag">
+                  <% if match.wine.couleur == "blanc" %>
+                    <div class="white_tag" >
+                      <span class="badge rounded-pill">Blanc</span>
                     </div>
+                    <% elsif match.wine.couleur == "rouge" %>
+                      <div class="red_tag" >
+                        <span class="badge rounded-pill">Rouge</span>
+                      </div>
+                    <% else %>
+                      <div class="rose_tag">
+                      <span class="badge rounded-pill text-dark">Rosé</span>
+                    </div>
+                  <%end %>
+                </div>
+                <div class="star">
+                  <% match.comments.average(:note).to_i.times do %>
+                  <i class="fa-solid fa-star"></i>
                   <% end %>
               </div>
+              </div>
             </div>
-        <% end %>
+          <% end %>
       </div>
+    </div>
+<% end %>

@@ -1,61 +1,71 @@
 <div class="container">
-<%= link_to "return", matches_path(query: params[:value]), class:"btn btn-ghost" %>
+  <div class="back text-center">
+  <i class="fa-solid fa-circle-chevron-left fa-xl"></i><%= link_to "retour", matches_path(query: params[:value]) %>
+  </div>
+
   <div class="col-sm-6 bicard">
     <div class="card rounded-4 shadow mb-4 ml-2" >
       <div class="card-body">
-
-        <% if current_user.favorited?(@match) %>
-          <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark" id="<%=@match.id%>"></i>
-        <% else %>
-          <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=@match.id%>"></i>
-        <% end %>
+        <div class = "upper-card">
+            <% if current_user.favorited?(@match) %>
+                <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl" id="<%=@match.id%>"></i>
+              <% else %>
+                <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl" id="<%=@match.id%>"></i>
+            <% end %>
+            <% if @match.wine.comments.average(:note).to_i != 0 && @match.wine.comments.average(:note).to_i != nil %>
+               <h1>Accord</h1>
+              <div class="star">
+                <div class="note-vin">
+                  <%= @match.wine.comments.average(:note).to_i %>
+                </div>
+              </div>
+            <% end %>
+          </div>
           <div class="row mb-6">
           <div class="col-sm-6 bicard" style="position:relative;">
             <% if @match.wine.photo.attached? %>
-              <%= cl_image_tag @match.wine.photo.key, height: 500, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+              <%= cl_image_tag @match.wine.photo.key, height: 500, width: 400, crop: :fit, class:"card-img-top rounded-4" %>
             <% end %>
-             <% if @match.wine.couleur == "blanc" %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:beige;"></i></div>
-              <% elsif @match.wine.couleur == "rouge" %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;" ><i class="fa-solid fa-wine-bottle" style="color:purple;"></i></div>
-              <% else %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:lightpink;"></i></div>
+            <div class="color_tag_show">
+              <% if @match.wine.couleur == "blanc" %>
+                <div class="white_tag_show" >
+                  <span class="badge rounded-pill">Blanc</span>
+                </div>
+                <% elsif @match.wine.couleur == "rouge" %>
+                  <div class="red_tag_show" >
+                    <span class="badge rounded-pill">Rouge</span>
+                  </div>
+                <% else %>
+                  <div class="rose_tag_show">
+                  <span class="badge rounded-pill text-dark">Rosé</span>
+                </div>
               <%end %>
+            </div>
           </div>
           <div class="col-sm-6 bicard">
-            <div class="titre-vin-carte-accord">
+            <div class="infos-wine text-center">
               <h3 class = "nom-vin"><%= @match.wine.nom %></h3>
-
-              <% if @match.wine.comments.average(:note).to_i != 0 && @match.wine.comments.average(:note).to_i != nil %>
-                <div class="star">
-                  <div class="note-vin-show">
-                    <%= @match.wine.comments.average(:note).to_i %>
-                  </div>
-                </div>
-              <% end %>
-
+              <p><%= @match.wine.appellation %> </p>
+              <h4> <i class="fa-solid fa-utensils"></i>  <%= @match.dish.nom %></h4>
+              <div class="star">
+                <% @match.comments.average(:note).to_i.times do %>
+                <i class="fa-solid fa-star"></i>
+                <% end %>
+              </div>
             </div>
-            <p><%= @match.wine.appellation %> - <%= @match.wine.couleur %> </p>
-            <h4> Accord : <%= @match.dish.nom %></h4>
-            <div class="star">
-              <% @match.comments.average(:note).to_i.times do %>
-              <i class="fa-solid fa-star"></i>
-              <% end %>
-            </div>
-
           </div>
 
-          <div class="boutons-liens-accord" style="text-align:center">
+          <div class="boutons-liens-accord">
             <% if @match.user == current_user %>
-              <i class="fa-solid fa-x"></i><%= link_to " Supprimer",
+              <i class="fa-solid fa-x fa-lg"></i><%= link_to "supp",
                 match_path(@match), style:"text-decoration:none;color:black;text-align:center;",
                 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
               %>
-              <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+              <i class="fa-solid fa-pen fa-lg"></i><%= link_to "edit",
                 edit_match_path(@match), style:"text-decoration:none;color:black;text-align:center;"
               %>
               <% end %>
-            <i class="fa-regular fa-comment"></i><%= link_to " Noter",
+            <i class="fa-regular fa-comment fa-lg"></i><%= link_to "comment",
               new_match_comment_path(@match), style:"text-decoration:none;color:black;text-align:center;"
             %>
           </div>
@@ -83,11 +93,11 @@
                   <p>Note: <%= comment.note%></p>
                   <p><%= comment.commentaire%></p>
                   <% if comment.user == current_user %>
-                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                    <i class="fa-solid fa-x fa-lg"></i><%= link_to "edit",
                       match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
                       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
                     %>
-                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                    <i class="fa-solid fa-pen fa-lg"></i><%= link_to "comment",
                       edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;"
                     %>
                   <% end %>

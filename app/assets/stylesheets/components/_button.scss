@@ -15,3 +15,24 @@
 .btn-no-design , .btn-no-design:active {
   border: 0px solid transparent;
 }
+
+.btn.btn-flat{
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+
+.boutons-view-vin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boutons-liens-vin {
+  text-align: center;
+}
+
+.boutons-liens-accord {
+  text-align: right;
+}
