@@ -40,6 +40,7 @@ before_action :set_match, only: %i[show destroy]
     @match.wine = @wine
     @match.dish = @dish
     @match.user = current_user
+    #authorize @comment
     if @match.save
       redirect_to match_path(@match)
     else

@@ -19,7 +19,7 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
-    # authorize @wine
+    # #authorize @wine
   end
 
   def new

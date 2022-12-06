@@ -18,9 +18,14 @@
                       <div class="col-sm-6 bicard">
                         <div class="infos-accords text-center">
                           <h3><%= match.wine.nom %></h3>
-                          <div class="note-vin">
-                            <p>Note du vin:<%=match.wine.comments.average(:note).to_i %></p>
-                          </div>
+                          <% if match.wine.comments.average(:note).to_i != 0 && match.wine.comments.average(:note).to_i != nil %>
+                            <div class="star">
+                              <div class="note-vin">
+                                <%= match.wine.comments.average(:note).to_i %>
+                              </div>
+                            </div>
+                          <% end %>
+
                           <p><%= match.wine.appellation %> - <%= match.wine.couleur %> </p>
                           <h4> Accord : <%= match.dish.nom %></h4>
                         </div>

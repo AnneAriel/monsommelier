@@ -27,10 +27,30 @@
               <% if @wine.quantité != 0 && @wine.quantité != nil %>
                 <h6>Quantité : <%= @wine.quantité %></h6>
               <% end %>
-              <div class="star">
+              <% if @wine.comments.average(:note).to_i != 0 && @wine.comments.average(:note).to_i != nil %>
                 <div class="note">
                   <%= @wine.comments.average(:note).to_i %>
                 </div>
+              <% end %>
+
+              <div>
+                <%= simple_form_for(@wine) do |f| %>
+                  <%= f.input :quantité, label: false, input_html: { type: 'number' } , style:"text-align:center;"%>
+                <%= f.submit "Ajuster mon stock", class:"btn btn-ghost"%>
+                <% end %>
+                <p></p>
+                <div class="boutons-liens-vin">
+                  <%# if @wine.user == current_user %>
+                    <i class="fa-solid fa-x"></i><%= link_to " Supprimer",
+                      wine_path(@wine), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
+                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                      edit_wine_path(@wine), style:"text-decoration:none;color:black;text-align:center;"
+                    %>
+                  <%# end %>
+                </div>
+                <p></p>
               </div>
             </div>
           </div>
@@ -38,21 +58,10 @@
       </div>
     </div>
 
-    <div class="boutons-liens-vin">
 
-      <i class="fa-solid fa-x"></i><%= link_to " Supprimer",
-        wine_path(@wine), style:"text-decoration:none;color:black;text-align:center;",
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-      %>
-      <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
-        edit_wine_path(@wine), style:"text-decoration:none;color:black;text-align:center;"
-      %>
-    </div>
-    <p></p>
 
     <div class="boutons-view-vin">
       <%= link_to "Noter",  new_wine_comment_path(@wine), class:"btn btn-ghost" %>
-      <%= link_to "Ajuster mon stock",  edit_wine_path(@wine), class:"btn btn-ghost" %>
       <%= link_to "Voir les vins",  wines_path, class:"btn btn-ghost" %>
     </div>
 
@@ -76,14 +85,16 @@
                   <p><b>Evaluateur: <%= "#{comment.user.username}" %></b></p>
                   <p>Note: <%= comment.note%></p>
                   <p><%= comment.commentaire%></p>
-                  <i class="fa-solid fa-x"></i><%= link_to " Effacer",
-                    match_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                  %>
-                  <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
-                    edit_match_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                  %>
+                  <% if comment.user == current_user %>
+                    <i class="fa-solid fa-x"></i><%= link_to " Effacer",
+                      match_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
+                    <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
+                      edit_match_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                    %>
+                  <% end %>
                 </div>
               </div>
             </div>
