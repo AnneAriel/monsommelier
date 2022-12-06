@@ -31,6 +31,14 @@
                   <% if wine.photo.attached? %>
                     <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
                   <% end %>
+                 <div class="card-body text-center">
+                  <% if wine.couleur == "blanc" %>
+                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:beige"></i></div>
+                  <% elsif wine.couleur == "rouge" %>
+                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:lightpink"></i></div>
+                  <% else %>
+                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:lightpink"></i></div>
+                  <%end %>
                   <div class="card-body  text-center">
                     <div class="infos-index text-center">
                       <% if @match != nil %>

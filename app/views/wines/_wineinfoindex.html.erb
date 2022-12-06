@@ -6,10 +6,17 @@
         <%= cl_image_tag wine.photo.key, class:"card-img-top rounded-4" %>
       <% end %>
       <div class="card-body text-center">
+      <% if wine.couleur == "blanc" %>
+      <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:beige"></i></div>
+      <% elsif wine.couleur == "rouge" %>
+      <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:lightpink"></i></div>
+      <% else %>
+      <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:lightpink"></i></div>
+      <%end %>
         <div class="infos-index text-center">
           <h4 class="card-title"><%= wine.nom%></h4>
           <h6 class="card-title"><%= wine.appellation%></h5>
-          <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
+          <%# <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
           <h6><%= wine.annee %></h6>
         </div>
         <div class="star">

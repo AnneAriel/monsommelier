@@ -9,10 +9,17 @@
           <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=@match.id%>"></i>
         <% end %>
           <div class="row mb-6">
-          <div class="col-sm-6 bicard">
+          <div class="col-sm-6 bicard" style="position:relative;">
             <% if @match.wine.photo.attached? %>
               <%= cl_image_tag @match.wine.photo.key, height: 500, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
             <% end %>
+             <% if @match.wine.couleur == "blanc" %>
+              <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:beige;"></i></div>
+              <% elsif @match.wine.couleur == "rouge" %>
+              <div class="pastille" style="position:absolute;top:50px;left:20px;" ><i class="fa-solid fa-wine-bottle" style="color:purple;"></i></div>
+              <% else %>
+              <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:lightpink;"></i></div>
+              <%end %>
           </div>
           <div class="col-sm-6 bicard">
             <div class="titre-vin-carte-accord">
