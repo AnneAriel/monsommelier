@@ -4,6 +4,8 @@ before_action :set_match, only: %i[show destroy]
   def index
     if params[:query].present?
       @matches = Match.matches_search(params[:query])
+    elsif params[:query] == ""
+      redirect_to matches_path
     else
       @matches = Match.all
     end

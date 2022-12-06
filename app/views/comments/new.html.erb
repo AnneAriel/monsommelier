@@ -6,7 +6,7 @@
       <%= simple_form_for [@wine, @comment] do |f| %>
         <%= f.input :commentaire %>
         <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
-         <%= f.submit class: "d-none" %>
+        <%= f.submit value="noter", style:"background: #a5263d; border: solid 1px white; border-radius: 10px; color: white;"%>
       <% end %>
     <% end %>
 
@@ -14,7 +14,7 @@
       <%= simple_form_for [@dish, @comment] do |f| %>
         <%= f.input :commentaire %>
         <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
-         <%= f.submit class: "d-none" %>
+        <%= f.submit value="noter", style:"background: #a5263d; border: solid 1px white; border-radius: 10px; color: white;"%>
       <% end %>
     <% end %>
 
@@ -22,7 +22,7 @@
       <%= simple_form_for [@match, @comment] do |f| %>
         <%= f.input :commentaire %>
         <%= f.input :note, collection: (1..5).to_a, label: "Note", input_html: {data: { controller: "star-rating"}}  %>
-         <%= f.submit class: "d-none" %>
+         <%= f.submit value="noter", style:"background: #a5263d; border: solid 1px white; border-radius: 10px; color: white;"%>
       <% end %>
     <% end %>
 
