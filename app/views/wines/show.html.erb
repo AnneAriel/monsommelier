@@ -40,7 +40,7 @@
                 <% end %>
                 <p></p>
                 <div class="boutons-liens-vin">
-                  <% if @wine.user == current_user %>
+                  <%# if @wine.user == current_user %>
                     <i class="fa-solid fa-x"></i><%= link_to " Supprimer",
                       wine_path(@wine), style:"text-decoration:none;color:black;text-align:center;",
                       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
@@ -48,7 +48,7 @@
                     <i class="fa-solid fa-pen"></i><%= link_to " Modifier",
                       edit_wine_path(@wine), style:"text-decoration:none;color:black;text-align:center;"
                     %>
-                  <% end %>
+                  <%# end %>
                 </div>
                 <p></p>
               </div>
