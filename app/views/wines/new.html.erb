@@ -9,7 +9,7 @@
         <%= f.input :appellation %>
         <%= f.select :couleur, ["rouge","blanc","rosé"] %>
         <%= f.input :annee %>
-        <%= f.input :quantité %>
+        <%= f.input :quantité, input_html: { type: 'number' } %>
         <%= f.input :photo, as: :file %>
         <%= f.submit %>
       <% end %>

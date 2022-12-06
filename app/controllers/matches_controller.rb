@@ -15,12 +15,25 @@ before_action :set_match, only: %i[show destroy]
   def new
     @match = Match.new
     @appellations = Wine.all.pluck(:appellation)
+    @noms_vin = Wine.all.pluck(:nom)
+    @noms_commercial = Wine.all.pluck(:nom_commercial)
+    @provenances = Wine.all.pluck(:provenance)
+    @cépages = Wine.all.pluck(:cépage)
     @years = Wine.all.pluck(:annee)
+    @noms = Dish.all.pluck(:nom)
   end
 
   def create
-    @wine = Wine.create(wine_params)
-    @dish = Dish.create(dish_params)
+    if Wine.find_by(wine_params)
+      @wine = Wine.find_by(wine_params)
+    else
+      @wine = Wine.create(wine_params)
+    end
+    if Dish.find_by(dish_params)
+      @dish = Dish.find_by(dish_params)
+    else
+      @dish = Dish.create(dish_params)
+    end
     @match = Match.new
     @match.wine = @wine
     @match.dish = @dish
