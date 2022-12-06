@@ -69,13 +69,13 @@ end
   end
 
   def set_favorite
-    @wine = Wine.find(params[:wine_id])
-    if current_user.favorited?(@wine)
-      current_user.unfavorite(@wine)
-    else
-      current_user.favorite(@wine)
-    end
+    @wines = Wine.where("quantité > 0")
   end
+
+  def index_cellar
+    @wines = Wine.find(params[:wine_id])
+  end
+
 
   def search_appellation_years
     appellation = params[:appellation]
