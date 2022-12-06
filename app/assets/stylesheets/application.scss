@@ -20,6 +20,16 @@
   width: 40px;
 }
 
+.banner{
+  min-height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
 .container {
   padding-top: 70px;
   padding-bottom: 80px;
@@ -95,3 +105,10 @@ margin-top: 5px;
   margin-top: 30px;
 }
 
+.btn.btn-flat{
+
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: lightgray;
+}
