@@ -7,18 +7,24 @@
             <div class="carousel-item active" >
               <div class=bookmark-match>
                 <% if current_user.favorited?(match) %>
-                    <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark" id="<%=match.id%>"></i>
+                    <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-lg" id="<%=match.id%>"></i>
                 <% else %>
-                    <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=match.id%>"></i>
+                    <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-lg" id="<%=match.id%>"></i>
                 <% end %>
               </div>
               <%= link_to  match_path(match, value: params[:query]), style:"text-decoration:none;color:black;position:relative;" do %>
                 <% if match.wine.couleur == "blanc" %>
-                  <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:beige;"></i></div>
+                  <div class="pastille" style="position:absolute;top:50px;left:20px;" >
+                    <span class="badge rounded-pill bg-warning text-dark">Blanc</span>
+                  </div>
                   <% elsif match.wine.couleur == "rouge" %>
-                  <div class="pastille" style="position:absolute;top:50px;left:20px;" ><i class="fa-solid fa-wine-bottle" style="color:purple;"></i></div>
+                  <div class="pastille" style="position:absolute;top:50px;left:20px;" >
+                    <span class="badge rounded-pill bg-danger">Rouge</span>
+                  </div>
                   <% else %>
-                  <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:lightpink;"></i></div>
+                   <div class="pastille" style="position:absolute;top:50px;left:20px;" >
+                    <span class="badge rounded-pill bg-light text-dark">Rosé</span>
+                  </div>
                 <%end %>
                 <% if match.wine.photo.attached? %>
                   <%= cl_image_tag match.wine.photo.key, class:"d-block w-75" %>
@@ -26,8 +32,7 @@
                   <div class="descriptif-match-search carousel-caption d-md-block">
                     <h6><%= match.wine.nom %></h6>
                     <h6><%= match.wine.appellation %></h6>
-                    <%#=#match.wine.couleur%>
-                    <h6> Accord : <%= match.dish.nom %></h6>
+                    <h5> <i class="fa-solid fa-utensils"></i>  <%= match.dish.nom %></h5>
                   </div>
                   <div class="note-accord">
                     <% match.comments.average(:note).to_i.times do %>
@@ -42,27 +47,32 @@
             <div class="carousel-item ">
               <div class=bookmark-match>
                 <% if current_user.favorited?(match) %>
-                    <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark" id="<%=match.id%>"></i>
+                    <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-lg" id="<%=match.id%>"></i>
                 <% else %>
-                    <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark" id="<%=match.id%>"></i>
+                    <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-lg" id="<%=match.id%>"></i>
                 <% end %>
               </div>
               <%= link_to  match_path(match, value: params[:query]), style:"text-decoration:none;color:black;position:relative;" do %>
-              <% if match.wine.couleur == "blanc" %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:beige;"></i></div>
-              <% elsif match.wine.couleur == "rouge" %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;" ><i class="fa-solid fa-wine-bottle" style="color:purple;"></i></div>
-              <% else %>
-              <div class="pastille" style="position:absolute;top:50px;left:20px;"><i class="fa-solid fa-wine-bottle" style="color:lightpink;"></i></div>
-              <%end %>
+                <% if match.wine.couleur == "blanc" %>
+                  <div class="pastille" style="position:absolute;top:50px;left:20px;" >
+                    <span class="badge rounded-pill bg-warning text-dark">Blanc</span>
+                  </div>
+                  <% elsif match.wine.couleur == "rouge" %>
+                  <div class="pastille" style="position:absolute;top:50px;left:20px;" >
+                    <span class="badge rounded-pill bg-danger">Rouge</span>
+                  </div>
+                  <% else %>
+                  <div class="pastille" style="position:absolute;top:50px;left:20px;" >
+                    <span class="badge rounded-pill bg-light text-dark">Rosé</span>
+                  </div>
+                <%end %>
                 <% if match.wine.photo.attached? %>
                   <%= cl_image_tag match.wine.photo.key, class:"d-block w-75" %>
                 <% end %>
                 <div class="descriptif-match-search carousel-caption d-md-block">
-                  <h6><%= match.wine.nom %> <%= match.wine.appellation %> </h6>
+                  <h6><%= match.wine.nom %> </h6>
                   <h6><%= match.wine.appellation%></h6>
-                  <%#=#match.wine.couleur%>
-                  <h5> Accord : <%= match.dish.nom %></h5>
+                  <h5> <i class="fa-solid fa-utensils"></i>  <%= match.dish.nom %></h5>
                 </div>
                   <div class="note-accord">
                   <% match.comments.average(:note).to_i.times do %>

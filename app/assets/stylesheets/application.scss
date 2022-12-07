@@ -12,7 +12,15 @@
 @import "pages/index";
 @import "star-rating.js/dist/star-rating.css";
 
-
+.upper-card{
+  display: flex;
+  justify-content: space-between;
+    .fa-bookmark{
+      position: relative;
+      left: 10px;
+      top: 20px;
+    }
+}
 .card-body .card-comment-user {
   position: absolute;
   right: 16px;
@@ -56,70 +64,12 @@
   text-align: center;
 }
 
-.star {
-  color: #337f81;
-}
-
-.note {
-  border:solid 1px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: inline-grid;
-  align-items: center;
-  position: relative;
-  left: 130px;
-  bottom: 440px;
-}
-
-
-.note-vin {
-  border:solid 1px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: inline-grid;
-  align-items: center;
-  position: relative;
-  left: 130px;
-  bottom: 350px;
-}
-
-
-.note-vin-show {
-  border:solid 1px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: inline-grid;
-  align-items: center;
-  position: relative;
-  bottom: 500px;
-  right: 20px;
-}
-
-
-.wine-bookmark {
-  position: relative;
-  top: 15px;
-  left: 20px;
-}
-
-.pastille {
-margin-top: 10px;
-  height: 40px;
-  width: 40px;
-  text-align: center;
-  margin: 0 auto;
-  background-color: grey;
-  align-items: center;
-  border-radius: 50%;
-  display: inline-grid;
-  position: relative;
-}
-
 .infos-index {
-margin-top: 5px;
+  margin-top: 5px;
+}
+
+.infos-accords {
+  margin-top: 10px;
 }
 
 // .fa-solid.fa-wine-bottle{
@@ -131,12 +81,3 @@ margin-top: 5px;
   height: 75%;
   margin-top: 30px;
 }
-
-.btn.btn-flat{
-
-  width: 150px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: lightgray;
-}
-

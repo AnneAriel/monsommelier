@@ -28,11 +28,11 @@ photo = URI.open("https://ca.slack-edge.com/T02NE0241-U045T6WG65S-3016efea1458-5
 user4.photo.attach(io: photo, filename: "profil")
 
 wine1 = Wine.create!(nom:'Maison Trenel', nom_commercial: 'Trenel', appellation: 'Viré-Clessé', provenance: 'France', annee: '2021', couleur: 'blanc')
-photo = URI.open("https://produits.bienmanger.com/47120-0w0h0_Vin_Blanc_Vire_Clesse.jpg")
+photo = URI.open("https://www.vinademi.com/528-special_default/saint-veran-blanc-2018.jpg")
 wine1.photo.attach(io: photo, filename: "profil")
 
 wine2 = Wine.create!(nom:'Domaine Saint Jacques', appellation: 'Bourgogne aligoté', provenance: 'France', annee: '2019', couleur: 'blanc')
-photo = URI.open("https://cdn2.samedivin.com/9251-home_default/bourgogne-aligote-2018-domaine-st-jacques.jpg")
+photo = URI.open("https://cdn.shopify.com/s/files/1/0076/3032/3801/products/DSC_1077_clipped_rev_1_1_1024x1024.png?v=1662128864")
 wine2.photo.attach(io: photo, filename: "profil")
 
 wine3 = Wine.create!(nom:'Domaine Saint Germain', appellation: 'Bourgogne', provenance: 'France', annee: '2019', couleur: 'rouge')
@@ -40,7 +40,7 @@ photo = URI.open("https://courses.monoprix.fr/images-v3/0c44253f-c4a3-4340-9d37-
 wine3.photo.attach(io: photo, filename: "profil")
 
 wine4 = Wine.create!(nom:'Domaine Antoine Armanet', nom_commercial: 'Pura vida', appellation: 'Rhone', provenance: 'France', annee: '2021', couleur: 'blanc')
-photo = URI.open("https://img.e-boissons.com/picture/product/ARM/pura-vida-sans-sulfites-ajoutes-rouge-2021-antoine-armanet-11331-1-1QPE.png")
+photo = URI.open("https://www.antoine-armanet.com/wp-content/uploads/2022/03/vin-armanet-Pura-Vida-rouge-1024x1024.png")
 wine4.photo.attach(io: photo, filename: "profil")
 
 wine5 = Wine.create!(nom:'Domaine des coutures', appellation: 'Saint Nicolas de Bourgeuil', provenance: 'France', annee: '2020', couleur: 'rouge', cépage: 'cabernet franc')

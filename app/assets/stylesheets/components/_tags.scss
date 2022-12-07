@@ -1,0 +1,62 @@
+  .color_tag {
+    position: absolute;
+  }
+
+  .white_tag{
+    text-align: center;
+    background-color: #f4de54;
+    border-radius: 10px;
+    display: inline-table;
+    position: relative;
+  }
+
+  .red_tag{
+    text-align: center;
+    background-color: #5a1f29;
+    border-radius: 10px;
+    display: inline-table;
+    position: relative;
+    color: white;
+  }
+
+  .rose_tag{
+    text-align: center;
+    background-color: #f9d3aa;
+    border-radius: 10px;
+    display: inline-table;
+    position: relative;
+    color:black;
+  }
+
+  // .color_tag_show {
+  //   position: absolute;
+  // }
+
+  .white_tag_show{
+    text-align: center;
+    background-color: #f4de54;
+    border-radius: 10px;
+    display: inline-table;
+    position: relative;
+    bottom: -170px;
+  }
+
+  .red_tag_show{
+    text-align: center;
+    background-color: #5a1f29;
+    border-radius: 10px;
+    display: inline-table;
+    position: relative;
+    color: white;
+    bottom: -170px;
+  }
+
+  .rose_tag_show{
+    text-align: center;
+    background-color: #f9d3aa;
+    border-radius: 10px;
+    display: inline-table;
+    position: relative;
+    color:black;
+    bottom: -170px;
+  }
