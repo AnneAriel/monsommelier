@@ -133,4 +133,4 @@ matchcomment14 = Comment.create!(commentaire: "Délicieux", note: "5", user: use
 matchcomment15 = Comment.create!(commentaire: "Le vin a pris le pas sur le goût du poulet", note: "2", user: user1, commented_on: match10)
 matchcomment16 = Comment.create!(commentaire: "Aucun interêt", note: "1", user: user2, commented_on: match10)
 matchcomment17 = Comment.create!(commentaire: "Très déçue par cet accord", note: "2", user: user1, commented_on: match10)
-matchcomment18 = Comment.create!(commentaire: "Je ne recommande pas", note: "1", user: user1, commented_on: match10)
+matchcomment18 = Comment.create!(commentaire: "Correct", note: "3", user: user4, commented_on: match10)
