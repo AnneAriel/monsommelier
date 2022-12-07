@@ -9,7 +9,7 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
-          <%= f.input :username, autofocus: true, input_html: { autocomplete: "username" } %>
+          <%= f.input :username, label: "Pseudo", autofocus: true, input_html: { autocomplete: "username" } %>
           <%= f.input :photo, autofocus: true, label: "Avatar", as: :file %>
           <%= f.input :password,
                   required: true,

@@ -1,0 +1,61 @@
+<div class="background-index">
+  <div class="container">
+
+
+    <div class="wines">
+      <a class="btn btn-gradient rounded-circle" href="#"></a>
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="row">
+          <% @wines = Wine.where("quantité > 0") %>
+              <% @wines.each do |wine| %>
+              <div class="col-sm-6 bicard">
+                <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
+                <div class="card rounded-4 shadow mb-4 ml-2">
+                  <% if wine.photo.attached? %>
+                    <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+                  <% end %>
+                 <div class="card-body text-center">
+                  <% if wine.couleur == "blanc" %>
+                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:beige"></i></div>
+                  <% elsif wine.couleur == "rouge" %>
+                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:purple"></i></div>
+                  <% else %>
+                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:lightpink"></i></div>
+                  <%end %>
+                  <div class="card-body  text-center">
+                    <div class="infos-index text-center">
+                      <% if @match != nil %>
+                        <div class="text-center mb-3">
+                          <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
+                        </div>
+                      <% end %>
+                      <h4 class="card-title"><%= wine.nom%></h4>
+                      <h5 class="card-title"><%= wine.appellation%></h5>
+                      <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
+                      <h6><%= wine.annee %></h6>
+                      <% if wine.quantité != 0 && wine.quantité != nil %>
+                        <h6>Quantité : <%= wine.quantité %></h6>
+                      <% end %>
+                    </div>
+                    <% if wine.comments.average(:note).to_i != 0 && wine.comments.average(:note).to_i != nil %>
+                      <div class="star">
+                        <div class="note">
+                          <%= wine.comments.average(:note).to_i %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
