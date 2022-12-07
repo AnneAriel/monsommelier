@@ -57,17 +57,19 @@
 
           <div class="boutons-liens-accord">
             <% if @match.user == current_user %>
-              <i class="fa-solid fa-x fa-lg"></i><%= link_to "supp",
-                match_path(@match), style:"text-decoration:none;color:black;text-align:center;",
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-              %>
-              <i class="fa-solid fa-pen fa-lg"></i><%= link_to "edit",
-                edit_match_path(@match), style:"text-decoration:none;color:black;text-align:center;"
-              %>
+              <%= link_to match_path(@match), style:"text-decoration:none;color:black;text-align:center;",
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <i class="fa-solid fa-x fa-lg"></i>
               <% end %>
-            <i class="fa-regular fa-comment fa-lg"></i><%= link_to "comment",
-              new_match_comment_path(@match), style:"text-decoration:none;color:black;text-align:center;"
-            %>
+
+              <%= link_to edit_match_path(@match), style:"text-decoration:none;color:black;text-align:center;" do %>
+                <i class="fa-solid fa-pen fa-lg"></i>
+              <% end %>
+            <% end %>
+
+            <%= link_to new_match_comment_path(@match), style:"text-decoration:none;color:black;text-align:center;" do %>
+              <i class="fa-regular fa-comment fa-lg"></i>
+            <% end %>
           </div>
 
           <%#= link_to "Noter",  new_match_comment_path(@match), class:"btn btn-ghost" %>
@@ -93,13 +95,13 @@
                   <p>Note: <%= comment.note%></p>
                   <p><%= comment.commentaire%></p>
                   <% if comment.user == current_user %>
-                    <i class="fa-solid fa-x fa-lg"></i><%= link_to "edit",
-                      match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
-                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                    %>
-                    <i class="fa-solid fa-pen fa-lg"></i><%= link_to "comment",
-                      edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;"
-                    %>
+                    <%= link_to match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+                      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                      <i class="fa-solid fa-x fa-lg"></i>
+                    <% end %>
+                    <%= link_to edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;" do %>
+                      <i class="fa-solid fa-pen fa-lg"></i>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
