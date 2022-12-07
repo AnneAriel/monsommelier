@@ -28,55 +28,55 @@ photo = URI.open("https://ca.slack-edge.com/T02NE0241-U045T6WG65S-3016efea1458-5
 user4.photo.attach(io: photo, filename: "profil")
 
 wine1 = Wine.create!(nom:'Maison Trenel', nom_commercial: 'Trenel', appellation: 'Viré-Clessé', provenance: 'France', annee: '2021', couleur: 'blanc', quantité: "16")
-photo = URI.open("https://www.vinademi.com/528-special_default/saint-veran-blanc-2018.jpg")
+photo = URI.open("https://www.oscar-lespuces.com/wp-content/uploads/2020/11/vire-clesse.jpg")
 wine1.photo.attach(io: photo, filename: "profil")
 
 wine2 = Wine.create!(nom:'Domaine Saint Jacques', appellation: 'Bourgogne aligoté', provenance: 'France', annee: '2019', couleur: 'blanc', quantité: "8")
-photo = URI.open("https://cdn.shopify.com/s/files/1/0076/3032/3801/products/DSC_1077_clipped_rev_1_1_1024x1024.png?v=1662128864")
+photo = URI.open("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670425779/Domaine_St_jacques_bourgogne_qumrqo.jpg")
 wine2.photo.attach(io: photo, filename: "profil")
 
 wine3 = Wine.create!(nom:'Domaine Saint Germain', appellation: 'Bourgogne', provenance: 'France', annee: '2019', couleur: 'rouge', quantité: "5")
-photo = URI.open("https://courses.monoprix.fr/images-v3/0c44253f-c4a3-4340-9d37-d41e42b9d14a/aa85f4a3-6e39-4aa8-9f23-15a4bbf784b6/500x500.jpg")
+photo = URI.open("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670425779/image_nadrcv.png")
 wine3.photo.attach(io: photo, filename: "profil")
 
 wine4 = Wine.create!(nom:'Domaine Antoine Armanet', nom_commercial: 'Pura vida', appellation: 'Rhone', provenance: 'France', annee: '2021', couleur: 'blanc', quantité: "6")
-photo = URI.open("https://www.antoine-armanet.com/wp-content/uploads/2022/03/vin-armanet-Pura-Vida-rouge-1024x1024.png")
+photo = URI.open("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670425779/pura_vida_kj99kb.jpg")
 wine4.photo.attach(io: photo, filename: "profil")
 
 wine5 = Wine.create!(nom:'Domaine des coutures', appellation: 'Saint Nicolas de Bourgeuil', provenance: 'France', annee: '2020', couleur: 'rouge', cépage: 'cabernet franc')
-photo = URI.open("https://www.vinatis.com/64772-detail_default/les-coutures-2018-frederic-mabileau.png")
+photo = URI.open("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670425779/domaine_des_coutures_uydugm.jpg")
 wine5.photo.attach(io: photo, filename: "profil")
 
 wine6 = Wine.create!(nom: 'Domaine des marrans', appellation: 'Beaujolais', provenance: 'France', annee: '2018', couleur: 'rouge', cépage: 'gamay')
-photo = URI.open("https://www.vinatis.com/72641-detail_default/morgon-corcelette-2021-domaine-des-marrans.png")
+photo = URI.open("https://www.vinsbioplus.com/235/domaine-des-marrans-beaujolais-primeur-2019.jpg")
 wine6.photo.attach(io: photo, filename: "profil")
 
 wine7 = Wine.create!(nom: 'Domaine Berthoumieu', nom_commercial: 'Tanatis', provenance: 'France', annee: '2008', couleur: 'rouge', cépage: 'tanat')
-photo = URI.open("https://images.vivino.com/thumbs/q3LzsfAkR1C17mLtts_m0A_pb_600x600.png")
+photo = URI.open("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670425780/image_1_gy2gwe.png")
 wine7.photo.attach(io: photo, filename: "profil")
 
 wine8 = Wine.create!(nom: 'Xavier Vignon', appellation: 'Côte du Rhône Villages', provenance: 'France', annee: '2019', couleur: 'rouge', cépage: '75% Syrah, 10% Mourvèdre, 10% Grenache, 2% Roussanne, 3% Viognier')
-photo = URI.open("https://www.vinatis.com/59365-detail_default/cotes-du-rhone-villages-bio-2019-xavier-vignon.png")
+photo = URI.open("https://chezstephan.wine/wp-content/uploads/2020/08/Xavier-C%C3%B4tes-du-Rh%C3%B4ne-Villages-BIO-2016_s-1.jpg")
 wine8.photo.attach(io: photo, filename: "profil")
 
 wine9 = Wine.create!(nom: 'LES CLOS DE PAULILLES', appellation: 'Collioure', provenance: 'France', annee: '2020', couleur: 'rouge', cépage: '	60% Grenache, 25% Syrah, 15% Mourvèdre')
-photo = URI.open("https://www.vinatis.com/64459-detail_default/collioure-rouge-2020-les-clos-de-paulilles.png")
+photo = URI.open("https://auptitmarchedecampagne.fr/wp-content/uploads/2022/01/10ebe9ab-e92c-4a19-95bb-c1e5f83ee7b7-4524-0000027b90aa746e_file-scaled.jpeg")
 wine9.photo.attach(io: photo, filename: "profil")
 
 wine10 = Wine.create!(nom: 'Domaine du Bourg', appellation: 'St Nicolas de Bourgueil',  nom_commercial: 'Les graviers', provenance: 'France', annee: '2019', couleur: 'rouge', quantité: "8")
-photo = URI.open("https://optimuswine.com/1913-medium_default/domaine-du-bourg-les-graviers-saint-nicolas-de-bourgueil-rouge-2019-75cl.jpg")
+photo = URI.open("https://www.lamaisonduvin.fr/wp-content/uploads/2015/08/Domaine-du-Bourg-Saint-Nicolas-de-Bourgueil-2012.jpg")
 wine10.photo.attach(io: photo, filename: "profil")
 
 wine11 = Wine.create!(nom: 'Château de la Pierre', appellation: 'Beaujolais Village', provenance: 'France', annee: '2018', couleur: 'rouge', quantité: "6")
-photo = URI.open("https://www.martigny.vin/medias/images/sans-titre-2-copie-14.png?fx=c_300_300")
+photo = URI.open("https://boutique.loron.fr/wp-content/uploads/2021/07/BEAUJOLAIS-VILL-CHATEAU-DE-LA-PIERRE-1.jpg")
 wine11.photo.attach(io: photo, filename: "profil")
 
-wine12 = Wine.create!(nom: 'Vignerons de Bel air', appellation: 'Beaujolais Village', provenance: 'France', annee: '2020', couleur: 'rouge')
-photo = URI.open("https://www.vinatis.com/52908-detail_default/beaujolais-villages-2020-vignerons-de-bel-air.png")
+wine12 = Wine.create!(nom: 'Louis Jadot', appellation: 'Beaujolais Village', provenance: 'France', annee: '2007', couleur: 'rouge')
+photo = URI.open("https://upload.wikimedia.org/wikipedia/commons/8/84/Beaujolais_villages_primeur_Louis_Jadot_2007.jpg")
 wine12.photo.attach(io: photo, filename: "profil")
 
 wine13 = Wine.create!(nom: 'Georges Duboeuf', appellation: 'Beaujolais Village', provenance: 'France', annee: '2020', couleur: 'rouge')
-photo = URI.open("https://www.centraleboissons.com/22518-large_default/aoc-beaujolais-village-georges-du-boeuf-rouge-75cl.jpg")
+photo = URI.open("https://www.vipino-wein.de/media/image/43/cd/ca/georges-duboeuf-beaujolais-villages-nouveau-2022-1_300x300.jpg")
 wine13.photo.attach(io: photo, filename: "profil")
 
 dish1 = Dish.create!(nom: 'Quiche au saumon')
