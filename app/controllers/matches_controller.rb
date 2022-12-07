@@ -14,6 +14,11 @@ before_action :set_match, only: %i[show destroy]
   def show
   end
 
+  def edit
+    @match = Match.find(params[:id])
+  end
+
+
   def new
     @match = Match.new
     @appellations = Wine.all.pluck(:appellation)
