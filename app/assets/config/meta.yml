@@ -1,0 +1,5 @@
+meta_name: "Monsommelier"
+meta_title: "Monsommelier - L'expert en mariages mets et vins"
+meta_description: "Monsommelier - L'expert en mariages mets et vins - Notre application vous permet de trouver des accords mets et vins ; Elle vous suggère des vins lorsque vous saisissez un plat ou un plat quand vous entrez le nom d'un vin sur la base des accords déjà renseignés."
+meta_image: "sommelier.png" # should exist in `app/assets/images/`
+twitter_account: "@AACeyrac"   # required for Twitter Cards
