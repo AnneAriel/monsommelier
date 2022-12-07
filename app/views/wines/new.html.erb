@@ -6,7 +6,7 @@
     <h1 class="mb-4 text-center" >Ajouter un vin</h1>
       <%= simple_form_for(@wine) do |f| %>
         <%= f.select :couleur, ["rouge","blanc","rosé"] %>
-        <%= f.input :nom, label: false, placeholder: "Nom", class: "form-font" %>
+        <%= f.input :nom, label: false, placeholder: "Nom" %>
         <%= f.input :appellation, label: false, placeholder: "Appellation" %>
         <%= f.input :annee, label: false, placeholder: "Année" %>
         <%= f.input :quantité, input_html: { type: 'number' }, label: false, placeholder: "Quantité" %>
