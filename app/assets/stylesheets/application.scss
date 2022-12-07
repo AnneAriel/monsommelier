@@ -12,7 +12,20 @@
 @import "pages/index";
 @import "star-rating.js/dist/star-rating.css";
 
+// indexmatchs
+.topmatchcard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.bottommatchcard {
+  position: absolute;
+  bottom: 2px;
+  left: 5px;
+}
+
+// new accord
 .nouvelaccordform {
   margin: 10px;
 }
@@ -31,6 +44,7 @@
   margin-right: 50px;
 }
 
+// toujours actif?
 .upper-card{
   display: flex;
   justify-content: space-between;
@@ -91,10 +105,6 @@
   margin-top: 10px;
 }
 
-// .fa-solid.fa-wine-bottle{
-
-
-// }
 
 .carousel-control-prev{
   height: 75%;
