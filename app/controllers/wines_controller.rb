@@ -69,11 +69,16 @@ end
   end
 
   def set_favorite
-    @wines = Wine.where("quantité > 0")
+    @wine = Wine.find(params[:wine_id])
+    if current_user.favorited?(@wine)
+      current_user.unfavorite(@wine)
+    else
+      current_user.favorite(@wine)
+    end
   end
 
-  def index_cellar
-    @wines = Wine.find(params[:wine_id])
+  def cellar
+    @wines = Wine.where("quantité > 0")
   end
 
 
