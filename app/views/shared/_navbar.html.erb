@@ -16,20 +16,30 @@
         <ul class="navbar-nav me-auto">
             <% if user_signed_in? %>
             <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class:"avatar dropdown-toggle", id: "navbarDropdown", 'data-bs-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= link_to  user_path(current_user), style:"text-decoration:none;color:black;position:relative;" do %>
+                <%#= cl_image_tag current_user.photo.key, class:"avatar dropdown-toggle", id: "navbarDropdown", 'data-bs-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= cl_image_tag current_user.photo.key, class:"avatar", id: "navbarDropdown" %>
+              <% end %>
+
             <% else %>
-              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+              <%= link_to  user_path(current_user), style:"text-decoration:none;color:black;position:relative;" do %>
+                <%# <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" /> %>
+                <img class="avatar" id="navbarDropdown" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+              <% end %>
             <% end %>
 
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+
+
+              <%#=<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#"></a>
                 <%#= link_to "Tous les vins",  wines_path, class:"dropdown-item" %>
                 <%#= link_to "Ma cave",  wines_path, class:"dropdown-item" %>
                 <%# if reservation.user == current_user %>
                 <%#= link_to "My reservations",  reservations_path, class:"dropdown-item" %>
                 <%# end %>
-                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-              </div>
+                <%#= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%#=</div>%>
             </li>
             <% else %>
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

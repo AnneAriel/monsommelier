@@ -34,6 +34,6 @@ Rails.application.routes.draw do
   resources :wines
   get "cellar", to: "wines#cellar"
 
-
+  resources :users, only: [:show]
 
 end
