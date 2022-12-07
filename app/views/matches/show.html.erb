@@ -14,11 +14,6 @@
             <% end %>
             <% if @match.wine.comments.average(:note).to_i != 0 && @match.wine.comments.average(:note).to_i != nil %>
                <h1>Accord</h1>
-              <div class="star">
-                <div class="note-vin">
-                  <%= @match.wine.comments.average(:note).to_i %>
-                </div>
-              </div>
             <% end %>
           </div>
           <div class="row mb-6">
