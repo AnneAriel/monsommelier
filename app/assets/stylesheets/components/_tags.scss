@@ -1,3 +1,35 @@
+.indexmatch_white_tag {
+  text-align: center;
+  background-color: #f4de54;
+  border-radius: 10px;
+  display: inline-table;
+  position: relative;
+  float: right;
+}
+
+.indexmatch_red_tag {
+  text-align: center;
+  background-color: #5a1f29;
+  border-radius: 10px;
+  display: inline-table;
+  position: relative;
+  color: white;
+  float: right;
+}
+
+.indexmatch_rose_tag {
+  text-align: center;
+  background-color: #f9d3aa;
+  border-radius: 10px;
+  display: inline-table;
+  position: relative;
+  color:black;
+  float: right;
+}
+
+
+
+
   .color_tag {
     position: absolute;
   }

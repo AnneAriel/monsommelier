@@ -1,0 +1,41 @@
+<% @matches.each do |match| %>
+  <div class="indexmatchcard card bg-dark">
+      <% if match.wine.photo.attached? %>
+          <%= cl_image_tag match.wine.photo.key,height: 400, width: 300, crop: :fill, class:"card-img" %>
+        <% end %>
+    <div class="card-img-overlay">
+      <%= link_to  match_path(match), style:"text-decoration:none;color:white;" do %>
+        <% if current_user.favorited?(match) %>
+          <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl" id="<%=match.id%>"></i>
+          <% else %>
+            <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl" id="<%=match.id%>"></i>
+        <% end %>
+          <div class="matchstar">
+            <% match.comments.average(:note).to_i.times do %>
+            <i class="fa-solid fa-star"></i>
+            <% end %>
+          </div>
+        <h5 class="card-title"><%= match.wine.appellation %></h5>
+        <% if match.wine.comments.average(:note).to_i != 0 && match.wine.comments.average(:note).to_i != nil %>
+        <% end %>
+        <p class="card-text"><%= match.wine.nom %></p>
+        <p class="card-text"> <i class="fa-solid fa-utensils"></i> <%= match.dish.nom %></p>
+        <div class="indexmatch_color_tag">
+          <% if match.wine.couleur == "blanc" %>
+            <div class="indexmatch_white_tag" >
+              <span class="badge rounded-pill">Blanc</span>
+            </div>
+            <% elsif match.wine.couleur == "rouge" %>
+              <div class="indexmatch_red_tag" >
+                <span class="badge rounded-pill">Rouge</span>
+              </div>
+            <% else %>
+              <div class="indexmatch_rose_tag">
+              <span class="badge rounded-pill text-dark">Rosé</span>
+            </div>
+          <%end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
