@@ -20,6 +20,11 @@
       <div class="row mb-6">
         <div class="col-12 col-lg-8">
             <% @wines.each do |wine| %>
+                <% if current_user.favorited?(wine) %>
+                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl" id="<%=wine.id%>"></i>
+                <% else %>
+                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl" id="<%=wine.id%>"></i>
+                <% end %>
               <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
                 <div class="col-sm-6 bicard">
                   <div class="card rounded-4 shadow mb-4 ml-2">
