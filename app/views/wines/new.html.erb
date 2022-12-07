@@ -5,13 +5,13 @@
 
     <h1 class="mb-4 text-center" >Ajouter un vin</h1>
       <%= simple_form_for(@wine) do |f| %>
-        <%= f.input :nom %>
-        <%= f.input :appellation %>
         <%= f.select :couleur, ["rouge","blanc","rosé"] %>
-        <%= f.input :annee %>
-        <%= f.input :quantité, input_html: { type: 'number' } %>
+        <%= f.input :nom, label: false, placeholder: "Nom", class: "form-font" %>
+        <%= f.input :appellation, label: false, placeholder: "Appellation" %>
+        <%= f.input :annee, label: false, placeholder: "Année" %>
+        <%= f.input :quantité, input_html: { type: 'number' }, label: false, placeholder: "Quantité" %>
         <%= f.input :photo, as: :file %>
-        <%= f.submit %>
+        <%= f.submit "Ajouter à la cave", class: "btn btn-ghost" %>
       <% end %>
     </div>
   </div>
