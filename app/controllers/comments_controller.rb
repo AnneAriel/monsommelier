@@ -73,10 +73,13 @@ class CommentsController < ApplicationController
     @comment.update(comment_params)
     #redirect_to comment_path(@comment)
     if params[:wine_id]
+      @wine = Wine.find(params[:wine_id])
       redirect_to wine_comment_path(@wine, @comment)
     elsif params[:dish_id]
+      @dish = Dish.find(params[:dish_id])
       redirect_to dish_comment_path(@dish, @comment)
     elsif params[:match_id]
+      @match = Match.find(params[:match_id])
       redirect_to match_comment_path(@match, @comment)
     else
       render :new, status: :unprocessable_entity
