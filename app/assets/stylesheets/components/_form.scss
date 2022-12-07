@@ -18,13 +18,10 @@
 }
 
 .new_wine_form {
-  margin-top: 50px;
+  margin-top: 50px
 }
 
-// .form-font {
-//   color: lightgrey;
-// }
+::placeholder {
+  color: lightgrey
+}
 
-// .control-label {
-//   color: lightgrey;
-// }
