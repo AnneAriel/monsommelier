@@ -17,60 +17,53 @@
     </div>
 
     <div class="wines">
-      <a class="btn btn-gradient rounded-circle" href="#"></a>
-      <div class="row">
+      <div class="row mb-6">
         <div class="col-12 col-lg-8">
-          <div class="row">
-            <% if params[:query] %>
-              <% @wines.each do |wine| %>
-              <div class="col-sm-6 bicard">
-                <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
-                <div class="card rounded-4 shadow mb-4 ml-2">
-                  <% if wine.photo.attached? %>
-                    <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
-                  <% end %>
-                 <div class="card-body text-center">
-                  <% if wine.couleur == "blanc" %>
-                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:beige"></i></div>
-                  <% elsif wine.couleur == "rouge" %>
-                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:purple"></i></div>
-                  <% else %>
-                  <div class="pastille"><i class="fa-solid fa-wine-bottle" style="color:lightpink"></i></div>
-                  <%end %>
-                  <div class="card-body  text-center">
-                    <div class="infos-index text-center">
-                      <% if @match != nil %>
-                        <div class="text-center mb-3">
-                          <%= link_to "Voir l'accord",  match_path(@match), class:"btn btn-ghost" %>
-                        </div>
-                      <% end %>
-                      <h4 class="card-title"><%= wine.nom%></h4>
-                      <h5 class="card-title"><%= wine.appellation%></h5>
-                      <h6 class="card-title">Couleur : <%= wine.couleur%></h6>
-                      <h6><%= wine.annee %></h6>
-                      <% if wine.quantité != 0 && wine.quantité != nil %>
-                        <h6>Quantité : <%= wine.quantité %></h6>
-                      <% end %>
-                    </div>
-                    <% if wine.comments.average(:note).to_i != 0 && wine.comments.average(:note).to_i != nil %>
-                      <div class="star">
-                        <div class="note">
-                          <%= wine.comments.average(:note).to_i %>
-                        </div>
-                      </div>
+            <% @wines.each do |wine| %>
+                <% if current_user.favorited?(wine) %>
+                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl" id="<%=wine.id%>"></i>
+                <% else %>
+                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl" id="<%=wine.id%>"></i>
+                <% end %>
+              <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
+                <div class="col-sm-6 bicard">
+                  <div class="card rounded-4 shadow mb-4 ml-2">
+                    <% if wine.photo.attached? %>
+                      <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fit, class:"card-img-top rounded-4" %>
                     <% end %>
+                    <div class="card-body text-center">
+                      <div class="color_tag">
+                        <% if wine.couleur == "blanc" %>
+                          <div class="white_tag" >
+                            <span class="badge rounded-pill">Blanc</span>
+                          </div>
+                          <% elsif wine.couleur == "rouge" %>
+                            <div class="red_tag" >
+                              <span class="badge rounded-pill">Rouge</span>
+                            </div>
+                          <% else %>
+                            <div class="rose_tag">
+                            <span class="badge rounded-pill text-dark">Rosé</span>
+                          </div>
+                        <%end %>
+                      </div>
+                      <div class="infos-index text-center">
+                        <div class="infos-accords text-center">
+                          <h3><%= wine.nom %></h3>
+                          <p><%= wine.appellation %>  </p>
+                          <p><%= wine.annee %></p>
+                        </div>
+                        <% if wine.quantité != 0 && wine.quantité != nil %>
+                          <h6>Quantité : <%= wine.quantité %></h6>
+                        <% end %>
+                        <% if wine.comments.average(:note).to_i != 0 && wine.comments.average(:note).to_i != nil %>
+                        <% end %>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <% end %>
-              </div>
               <% end %>
-
-            <% else %>
-              <%= render "wineinfoindex" %>
             <% end %>
-
-          </div>
-        </div>
       </div>
     </div>
   </div>
