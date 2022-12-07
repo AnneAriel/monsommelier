@@ -1,28 +1,42 @@
-<div class="footer">
+<div class="footer-test">
   <div class="footer-links">
-    <%= link_to  new_match_path, class: "testing" do %>
-      <i class="fa-solid fa-champagne-glasses fa-lg"></i>
-    <% end %>
-    <%#= link_to  new_wine_path, class: "new_wine" do %>
-     <%#<i class="fa-solid fa-wine-bottle"></i>
-    <%<% end %>
-    <%= link_to  wines_path, class: "wines" do %>
-     <i class="fa-solid fa-wine-bottle"></i>
-    <% end %>
-    <%= link_to  bookmarks_path, class: "favorites" do %>
-      <i class="fa-solid fa-bookmark fa-lg"></i>
-    <% end %>
-    <%= link_to  cellar_path, class: "cellar" do %>
-      <i class="fa-solid fa-cubes"></i>
-    <% end %>
-    <%= link_to  root_path, class: "network" do %>
-      <i class="fa-solid fa-user-group fa-lg"></i>
-    <% end %>
-     <%# <%= link_to  root_path, class: "knowledge" do %>
-      <%# <img src="https://cdn-icons-png.flaticon.com/512/1945/1945958.png", class="avatar"/> %>
-    <%# <% end %>
-     <%# <%= link_to  root_path, class: "Quizz" do %>
-      <%# <img src="https://cdn-icons-png.flaticon.com/512/2195/2195378.png", class="avatar"/> %>
-    <%# <% end %>
+      <%= link_to  new_match_path, class: "testing" do %>
+        <i class="fa-solid fa-champagne-glasses fa-lg"></i>
+      <% end %>
+      <%#= link_to  new_wine_path, class: "new_wine" do %>
+      <%#<i class="fa-solid fa-wine-bottle"></i>
+      <%<% end %>
+      <%= link_to  cellar_path, class: "cellar" do %>
+        <i class="fa-solid fa-cubes"></i>
+      <% end %>
+      <%= link_to  root_path, class: "network" do %>
+        <i class="fa-solid fa-user-group fa-lg"></i>
+      <% end %>
+
+      <% if user_signed_in? %>
+      <% if current_user.photo.attached? %>
+        <%= link_to  user_path(current_user), style:"text-decoration:none;color:black;position:relative;" do %>
+          <%#= cl_image_tag current_user.photo.key, class:"avatar dropdown-toggle", id: "navbarDropdown", 'data-bs-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.photo.key, class:"avatar", id: "navbarDropdown" %>
+        <% end %>
+
+      <% else %>
+        <%= link_to  user_path(current_user), style:"text-decoration:none;color:black;position:relative;" do %>
+
+          <img class="avatar" id="navbarDropdown" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+        <% end %>
+      <% end %>
+
+      </li>
+      <% else %>
+      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %>
+
+      <%# <%= link_to  root_path, class: "knowledge" do %>
+        <%# <img src="https://cdn-icons-png.flaticon.com/512/1945/1945958.png", class="avatar"/> %>
+      <%# <% end %>
+      <%# <%= link_to  root_path, class: "Quizz" do %>
+        <%# <img src="https://cdn-icons-png.flaticon.com/512/2195/2195378.png", class="avatar"/> %>
+      <%# <% end %>
   </div>
 </div>
