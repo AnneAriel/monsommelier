@@ -21,8 +21,7 @@
 
     <% else %>
 
-     <h5>Bonjour  <strong><%=current_user.username%></strong> !</h5>
-      <h5> Que souhaites-tu accorder aujourd'hui?</h5>
+     
 
       <div class=search-bar>
         <%= form_with url: matches_path, method: :get, class: "d-flex" do %>
