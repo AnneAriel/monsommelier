@@ -63,6 +63,11 @@ wine9 = Wine.create!(nom: 'LES CLOS DE PAULILLES', appellation: 'Collioure', pro
 photo = URI.open("https://www.vinatis.com/64459-detail_default/collioure-rouge-2020-les-clos-de-paulilles.png")
 wine9.photo.attach(io: photo, filename: "profil")
 
+wine10 = Wine.create!(nom: 'Domaine du Bourg', appellation: 'Saint Nicolas de Bourgeuil', provenance: 'France', annee: '2020', couleur: 'rouge', cépage: '	60% Grenache, 25% Syrah, 15% Mourvèdre')
+photo = URI.open("https://www.vinatis.com/64459-detail_default/collioure-rouge-2020-les-clos-de-paulilles.png")
+wine9.photo.attach(io: photo, filename: "profil")
+
+
 dish1 = Dish.create!(nom: 'Quiche au saumon')
 dish2 = Dish.create!(nom: 'Rillettes d’oie')
 dish3 = Dish.create!(nom: 'Camembert')
