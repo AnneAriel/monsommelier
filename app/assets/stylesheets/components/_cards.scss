@@ -1,3 +1,12 @@
 .indexmatchcard {
   margin: 10px;
+  height: 160px;
+  width: 160px;
+  background-size: cover;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
 }
