@@ -11,20 +11,23 @@
     </div>
 
     <%#END NEW NAVBAR  %>
-      <div class=search-bar>
-        <%= form_with url: wines_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "Je recherche un vin"
-              %>
-          <button type="submit" class="btn btn-no-design">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        <% end %>
-      </div>
 
-      <div class="cards-grid">
+    <div class=search-bar>
+      <%= form_with url: wines_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Je recherche un vin"
+            %>
+        <button type="submit" class="btn btn-no-design">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      <% end %>
+    </div>
+
+    <div class="cards-grid">
+
+      <% @wines = Wine.where(scraped: false) %>
         <% @wines.each do |wine| %>
           <% if wine.photo.attached? %>
             <div class="indexmatchcard card bg-dark"
@@ -72,8 +75,7 @@
             </div>
 
         <%end %>
-      </div>
-
+    </div>
 
   </div>
 </div>
