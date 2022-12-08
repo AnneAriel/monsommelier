@@ -1,23 +1,12 @@
 <div class="container_home">
-   <% if user_signed_in? %>
-
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%=image_path "homepicture.png"%>)";>
-      <div class='liens_home'>
-        <%= link_to 'Je cherche un accord', matches_path, class: "btn_home btn btn-primary"%>
-        <%= link_to 'Je cherche un vin', wines_path, class: "btn_home btn btn-primary"%>
-        <%= link_to 'Ma cave', wines_path, class: "btn_home btn btn-primary"%>
-        <%= link_to 'Mon réseau', wines_path, class: "btn_home btn btn-primary"%>
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=image_path "homepicture.png"%>)";>
+      <div class="slogan">
+        <h1>Monsommelier.wine</h1>
+        <p></p>
+          <h2>L'expert en mariages mets et vins </h2>
+        <p></p>
+        <%= link_to "Inscris-toi !", new_user_registration_path, class:"btn btn-flat" %>
       </div>
-
-    <% else %>
-      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=image_path "homepicture.png"%>)";>
-        <div class="slogan">
-          <h1>Monsommelier.wine</h1>
-          <p></p>
-            <h2>L'expert en mariages mets et vins </h2>
-          <p></p>
-          <%= link_to "Inscris-toi !", new_user_registration_path, class:"btn btn-flat" %>
-        </div>
     <% end %>
   </div>
 </div>
