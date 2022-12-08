@@ -12,16 +12,15 @@
 
     <%#END NEW NAVBAR  %>
 
-
     <div class=search-bar>
-      <%= form_with url: wines_path, method: :get, class: "d-flex" do %>
+      <%= form_with url: wines_path, method: :get, class: "wrapper-search" do %>
         <%= text_field_tag :query,
               params[:query],
               class: "form-control",
               placeholder: "Je recherche un vin"
             %>
-        <button type="submit" class="btn btn-no-design">
-          <i class="fa-solid fa-magnifying-glass"></i>
+        <button type="submit" class="btn btn-no-design btn-search">
+          <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
         </button>
       <% end %>
     </div>

@@ -1,0 +1,21 @@
+.modal.show .modal-dialog {
+  // transform: none;
+  height: 100%;
+  margin: 0;
+}
+.modal.show .modal-content {
+  background-color: #0000006e;
+  /* border: var(--bs-modal-border-width) solid var(--bs-modal-border-color); */
+  border-radius: 0;
+  height: 100%;
+  backdrop-filter: blur(40px);
+  color: white;
+}
+
+.modal.show .modal-header {
+  border-bottom: 1px solid transparent;
+}
+
+.modal-footer  {
+  border-top: 0px solid transparent;
+}
