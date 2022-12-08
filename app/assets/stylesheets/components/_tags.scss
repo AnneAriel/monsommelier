@@ -27,9 +27,6 @@
   float: right;
 }
 
-
-
-
   .color_tag {
     position: absolute;
   }
@@ -60,35 +57,37 @@
     color:black;
   }
 
-  // .color_tag_show {
-  //   position: absolute;
-  // }
+  .color_tag_show {
+    margin: 10px 0;
+  }
 
   .white_tag_show{
     text-align: center;
     background-color: #f4de54;
-    border-radius: 10px;
-    display: inline-table;
-    position: relative;
-    bottom: -170px;
+    border-radius: 50px;
+    color:black;
+
+    display: initial;
+    padding: 6px 10px;
   }
 
   .red_tag_show{
     text-align: center;
     background-color: #5a1f29;
-    border-radius: 10px;
-    display: inline-table;
-    position: relative;
+    border-radius: 50px;
+
     color: white;
-    bottom: -170px;
+
+    display: initial;
+    padding: 6px 10px;
   }
 
   .rose_tag_show{
     text-align: center;
     background-color: #f9d3aa;
-    border-radius: 10px;
-    display: inline-table;
-    position: relative;
+    border-radius: 50px;
     color:black;
-    bottom: -170px;
+
+    display: initial;
+    padding: 6px 10px;
   }
