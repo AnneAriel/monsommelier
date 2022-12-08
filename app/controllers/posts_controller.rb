@@ -7,12 +7,9 @@ class PostsController < ApplicationController
   end
 
   #respond_to :html, :js
-  def index
-    @activities = PublicActivity::Activity.all
-  end
-end
-
-
+  #def index
+  #  @activities = PublicActivity::Activity.all
+  #end
 
 
   # GET /posts/1 or /posts/1.json
