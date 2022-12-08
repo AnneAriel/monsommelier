@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :matches
   has_one_attached :photo
   acts_as_favoritor
+  acts_as_followable
+  acts_as_follower
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
