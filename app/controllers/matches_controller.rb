@@ -2,6 +2,7 @@ class MatchesController < ApplicationController
 before_action :set_match, only: %i[show destroy]
 
   def index
+    @recos = []
     if params[:query].present?
       # raise
       @matches = Match.matches_search(params[:query])
