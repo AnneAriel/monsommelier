@@ -1,5 +1,7 @@
 .topnav {
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Style the links inside the navigation bar */
@@ -7,7 +9,7 @@
   float: left;
   color: black;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 12px;
   text-decoration: none;
   font-size: 15px;
 }
