@@ -10,6 +10,10 @@ gem "dotenv-rails", groups: [:development, :test]
 
 gem "acts_as_favoritor"
 gem "pundit"
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+gem 'public_activity'
+
+#gem "acts_as_follower"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"

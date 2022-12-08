@@ -6,6 +6,7 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "*";
 
 // Your CSS partials
 @import "components/index";
@@ -37,6 +38,10 @@
 .upper-card{
   display: flex;
   justify-content: space-between;
+  position: absolute;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 20px;
     .fa-bookmark{
       position: relative;
       left: 10px;
@@ -98,4 +103,23 @@
 .carousel-control-prev{
   height: 75%;
   margin-top: 30px;
+}
+
+.upper-card .fa-bookmark {
+
+}
+
+// .upper-card .fa-bookmark {
+//   position: relative;
+//   left: 18px;
+//   top: 45px;
+//   z-index: 1000;
+// }
+
+.upper-card .fa-star{
+
+}
+
+.upper-card .color_tag_show{
+
 }
