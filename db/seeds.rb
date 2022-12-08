@@ -182,7 +182,8 @@ dishes.each do |dish|
       scraped_wine = Wine.create!(
         appellation: vin,
         provenance: region,
-        couleur: color
+        couleur: color,
+        scraped: true
       )
 
       scraped_dish = Dish.create!(
