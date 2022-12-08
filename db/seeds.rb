@@ -9,11 +9,13 @@ require "nokogiri"
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "Cleaning database..."
 Match.destroy_all
 Wine.destroy_all
 Dish.destroy_all
 User.destroy_all
 
+puts "Creating users..."
 user1 = User.create!(username: "Cathy", email: "catherinecrozat@gmail.com", password: "toto123")
 photo = URI.open("https://ca.slack-edge.com/T02NE0241-U045TDQ4M43-d011388c1f01-512")
 user1.photo.attach(io: photo, filename: "profil")
@@ -30,6 +32,7 @@ user4 = User.create!(username: "Anne Ariel", email: "anne_ariel@gmail.com", pass
 photo = URI.open("https://ca.slack-edge.com/T02NE0241-U045T6WG65S-3016efea1458-512")
 user4.photo.attach(io: photo, filename: "profil")
 
+puts "Creating wines..."
 wine1 = Wine.create!(nom:'Maison Trenel', nom_commercial: 'Trenel', appellation: 'Viré-Clessé', provenance: 'France', annee: '2021', couleur: 'blanc', quantité: "16")
 photo = URI.open("https://www.oscar-lespuces.com/wp-content/uploads/2020/11/vire-clesse.jpg")
 wine1.photo.attach(io: photo, filename: "profil")
@@ -82,6 +85,7 @@ wine13 = Wine.create!(nom: 'Georges Duboeuf', appellation: 'Beaujolais Village',
 photo = URI.open("https://www.vipino-wein.de/media/image/43/cd/ca/georges-duboeuf-beaujolais-villages-nouveau-2022-1_300x300.jpg")
 wine13.photo.attach(io: photo, filename: "profil")
 
+puts "Creating dishes..."
 dish1 = Dish.create!(nom: 'Quiche au saumon')
 dish2 = Dish.create!(nom: 'Rillettes d’oie')
 dish3 = Dish.create!(nom: 'Camembert')
@@ -90,6 +94,7 @@ dish5 = Dish.create!(nom: 'Toasts au chèvre chaud')
 dish6 = Dish.create!(nom: 'Omelette aux champignons')
 dish7 = Dish.create!(nom: 'Poulet rôti')
 
+puts "Creating matches..."
 match1 = Match.create!(user: user1, dish: dish5, wine: wine1)
 match2 = Match.create!(user: user2, dish: dish3, wine: wine5)
 match3 = Match.create!(user: user3, dish: dish3, wine: wine6)
@@ -103,6 +108,7 @@ match10 = Match.create!(user: user1, dish: dish7, wine: wine11)
 match11 = Match.create!(user: user1, dish: dish7, wine: wine12)
 match12 = Match.create!(user: user1, dish: dish7, wine: wine13)
 
+puts "Creating Wine comments..."
 winecomment1 = Comment.create!(commentaire: "Délicieux & fruité", note: "4", user: user2, commented_on: wine1)
 winecomment2 = Comment.create!(commentaire: "Pas terrible", note: "2", user: user1, commented_on: wine2)
 winecomment3 = Comment.create!(commentaire: "Correct", note: "3", user: user3, commented_on: wine3)
@@ -119,6 +125,7 @@ winecomment13 = Comment.create!(commentaire: "Moyen", note: "2", user: user3, co
 winecomment14 = Comment.create!(commentaire: "Pas top", note: "2", user: user2, commented_on: wine13)
 winecomment15 = Comment.create!(commentaire: "Trop de tanins", note: "1", user: user3, commented_on: wine13)
 
+puts "Creating Match comments..."
 matchcomment1 = Comment.create!(commentaire: "Incroyable", note: "5", user: user3, commented_on: match1)
 matchcomment2 = Comment.create!(commentaire: "Pas terrible", note: "2", user: user1, commented_on: match2)
 matchcomment3 = Comment.create!(commentaire: "Accord correct", note: "3", user: user3, commented_on: match3)
@@ -139,7 +146,7 @@ matchcomment17 = Comment.create!(commentaire: "Très déçue par cet accord", no
 matchcomment18 = Comment.create!(commentaire: "Correct", note: "3", user: user4, commented_on: match10)
 
 
-
+puts "Creating scrapped dishes..."
 
 dishes = ["quiche+au+saumon", "camembert", "tarte+au+chocolat", "Omelette+champignon", "moules+marinieres", "fondure+savoyarde",
   "blanquette+de+veau", "choucroute", "salade+nicoise", "ratatouille", "pissaladiere", "samoussas+aux+legumes", "poulet+roti",
@@ -147,8 +154,8 @@ dishes = ["quiche+au+saumon", "camembert", "tarte+au+chocolat", "Omelette+champi
   "Puree+de+pommes+de+terre", "Poulet+basquaise", "Tartiflette", "Risotto", "Raclette", "Couscous", "Hachis+Parmentier", "Roti+de+porc",
   "Soupe+de+poissons", "Aligot", "Creme+brulee", "Gratin+Dauphinois", "oignon", "Confit+de+canard", "aioli", "chapon"]
 
-  p dishes.count
 
+  puts "Creating scrapped wines and dishes..."
 dishes.each do |dish|
   url = "http://www.quelvin.com/rechacccrus.asp?Plat=#{dish}&Tri=Coul&Ordre=ASC&Lien=0"
   html_file = URI.open(url).read
@@ -178,6 +185,8 @@ dishes.each do |dish|
       end
     end
 
+
+
     unless color.nil?
       scraped_wine = Wine.create!(
         appellation: vin,
@@ -199,3 +208,4 @@ dishes.each do |dish|
     end
   end
 end
+puts "Finished!"

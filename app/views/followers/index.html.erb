@@ -26,44 +26,56 @@
 <%# EXEMPLE WAGON %>
 
 
+
+
 <div class="container">
-  <div class="row">
-    <% @users=User.all%>
-    <% @users.each do |user|%>
-      <div class="span2 m-2 p-2">
-        <%= link_to user do %>
-          <% if user.photo.attached? %>
-            <%= link_to  user_path(user), style:"text-decoration:none;color:black;position:relative;" do %>
-              <%#= cl_image_tag current_user.photo.key, class:"avatar dropdown-toggle", id: "navbarDropdown", 'data-bs-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
-              <%= cl_image_tag user.photo.key, class:"avatar", id: "navbarDropdown" %>
-            <% end %>
 
-          <% else %>
-            <%= link_to  user_path(user), style:"text-decoration:none;color:black;position:relative;" do %>
-              <img class="avatar" id="navbarDropdown" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
-            <% end %>
-          <% end %>
-          <p><%= user.username %></p>
-          <p><%= user.email %><br /></p>
-          <div class="follow">
-            <% if user.followed_by?(current_user) %>
-              <%= form_tag unfollow_path(user_id: user.id), method: :delete do %>
-                <%= button_tag 'unfollow', class: 'btn btn-primary' %>
+  <%#NEW NAVBAR  %>
+
+  <div class="topnav">
+    <a href="/followers">Fil d'activités</a>
+    <a class="active" href="/followers">Contacts</a>
+    <%#  <a href=""><% link_to user_comments_path(current_user)%> <%# Mon activité </a>%>
+    <a href="/followers">Messagerie</a>
+  </div>
+
+  <%#END NEW NAVBAR  %>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <% @users=User.all%>
+      <% @users.each do |user|%>
+        <%#<div class="followers">%>
+        <div>
+          <%= link_to user do %>
+            <% if user.photo.attached? %>
+              <%= link_to  user_path(user), style:"text-decoration:none;color:black;position:relative;" do %>
+                <%#= cl_image_tag current_user.photo.key, class:"avatar dropdown-toggle", id: "navbarDropdown", 'data-bs-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= cl_image_tag user.photo.key, class:"avatar", id: "navbarDropdown" %>
               <% end %>
+
             <% else %>
-              <%= form_tag follows_path(user_id: user.id), method: :post do %>
-                <%= button_tag 'follow', class: 'btn btn-success' %>
+              <%= link_to  user_path(user), style:"text-decoration:none;color:black;position:relative;" do %>
+                <img class="avatar" id="navbarDropdown" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
               <% end %>
             <% end %>
-          </div>
-        <% end %><br />
-
-
-
-        <%# if current_user %>
-          <%#= link_to image_tag("", {:alt => 'Edit User'}), edit_user_path(user), :method => :get %>
-          <%#= link_to image_tag("", {:alt => 'Delete User'}), user, method: :delete, data: { confirm: 'Are you sure you want to delete this User?' } %><br /><br />
-        <%# end %>
+            <h5><b><%= user.username %></h5></b>
+            <h6><%= user.email %></h6>
+            <div class="follow">
+              <% if user.followed_by?(current_user) %>
+                <%= form_tag unfollow_path(user_id: user.id), method: :delete do %>
+                  <%= button_tag 'unfollow', class: 'btn btn-primary pull-right' %>
+                <% end %>
+              <% else %>
+                <%= form_tag follows_path(user_id: user.id), method: :post do %>
+                  <%= button_tag 'follow', class: 'btn btn-success pull-right' %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+          <%# if current_user %>
+            <%#= link_to image_tag("", {:alt => 'Edit User'}), edit_user_path(user), :method => :get %>
+            <%#= link_to image_tag("", {:alt => 'Delete User'}), user, method: :delete, data: { confirm: 'Are you sure you want to delete this User?' } %><br /><br />
+          <%# end %>
       </div>
     <% end %>
   </div>

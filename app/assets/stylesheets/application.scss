@@ -21,16 +21,20 @@
 }
 
 .wineform{
-  margin-left: 70px;
-  margin-right: 50px;
+  //margin-left: 70px;
+  //margin-right: 50px;
 }
 
 .field {
   margin:10px;
 }
 
+.field input {
+  width: 100%;
+}
+
 .dishform{
-  margin-left: 70px;
+  //margin-left: 70px;
   margin-right: 50px;
 }
 
@@ -105,9 +109,19 @@
   margin-top: 30px;
 }
 
-.upper-card .fa-bookmark {
+.wine-bookmark .fa-bookmark{
+  position: relative;
+  top: 30px;
+  color: white;
+  }
 
+.wine-bookmark {
+  position: relative;
+  top: 2px;
+  left: 20px;
+  height: 0px;
 }
+
 
 // .upper-card .fa-bookmark {
 //   position: relative;
@@ -115,11 +129,3 @@
 //   top: 45px;
 //   z-index: 1000;
 // }
-
-.upper-card .fa-star{
-
-}
-
-.upper-card .color_tag_show{
-
-}

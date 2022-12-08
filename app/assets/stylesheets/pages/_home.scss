@@ -1,11 +1,29 @@
 // Specific CSS for your home-page
-.background {
-  background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1669977727/Rectangle_17_1_d9lgss.png");
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
-  height:100%;
+.upperhome {
+  background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670516167/undraw_special_event_-4-aj8_1_1_oqj2e9.png");
+  width: 100%;
+  height: 345px;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
+
+.bottomhome {
+  background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670513931/Component_1_e5jug7.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 200px;
+  margin-top: -40px;
+}
+
+
+// .background {
+//   background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1669977727/Rectangle_17_1_d9lgss.png");
+//   background-size:contain;
+//   background-repeat:no-repeat;
+//   background-attachment:fixed;
+//   height:100%;
+// }
 
 .carousel-inner {
   margin-left: 43px;

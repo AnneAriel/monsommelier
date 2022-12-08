@@ -38,9 +38,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   delete "unfollow", to: "follows#destroy"
-  resources :follows
-    #post "follow", to: "follows#create"
 
+  resources :follows
+  #post "follow", to: "follows#create"
+
+  resources :users do
+    resources :comments
+  end
 
 
 end
