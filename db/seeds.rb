@@ -1,3 +1,6 @@
+require "open-uri"
+require "nokogiri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,9 +9,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Match.destroy_all
 Wine.destroy_all
 Dish.destroy_all
-Match.destroy_all
 User.destroy_all
 
 user1 = User.create!(username: "Cathy", email: "catherinecrozat@gmail.com", password: "toto123")
@@ -134,3 +137,64 @@ matchcomment15 = Comment.create!(commentaire: "Le vin a pris le pas sur le goût
 matchcomment16 = Comment.create!(commentaire: "Aucun interêt", note: "1", user: user2, commented_on: match10)
 matchcomment17 = Comment.create!(commentaire: "Très déçue par cet accord", note: "2", user: user1, commented_on: match10)
 matchcomment18 = Comment.create!(commentaire: "Correct", note: "3", user: user4, commented_on: match10)
+
+
+
+
+dishes = ["quiche+au+saumon", "camembert", "tarte+au+chocolat", "Omelette+champignon", "moules+marinieres", "fondure+savoyarde",
+  "blanquette+de+veau", "choucroute", "salade+nicoise", "ratatouille", "pissaladiere", "samoussas+aux+legumes", "poulet+roti",
+  "Lasagnes+au+boeuf+hache", "Sole+meuniere", "Boeuf+bourguignon", "Artichauts", "Tarte+aux+pommes", "Lapin+a+la+moutard", "Entrecote",
+  "Puree+de+pommes+de+terre", "Poulet+basquaise", "Tartiflette", "Risotto", "Raclette", "Couscous", "Hachis+Parmentier", "Roti+de+porc",
+  "Soupe+de+poissons", "Aligot", "Creme+brulee", "Gratin+Dauphinois", "oignon", "Confit+de+canard", "aioli", "chapon"]
+
+  p dishes.count
+
+dishes.each do |dish|
+  url = "http://www.quelvin.com/rechacccrus.asp?Plat=#{dish}&Tri=Coul&Ordre=ASC&Lien=0"
+  html_file = URI.open(url).read
+  html_doc = Nokogiri::HTML(html_file)
+
+  html_doc.search("table tr").each do |element|
+    color = nil
+    plat = nil
+    vin = nil
+    region = nil
+    element.search("td").each_with_index do |column, index|
+      if index == 0
+        plat = column.text.strip
+      elsif index == 1
+        vin = column.text.strip
+      elsif index == 3
+        region = column.text.strip
+      elsif column.text.strip == "" && !column.search("img").attribute("src").nil?
+        couleur = column.search("img").attribute("src").value
+        if couleur.include?("Rouge")
+          color = "Rouge"
+        elsif couleur.include?("Blanc")
+          color = "Blanc"
+        elsif couleur.include?("Rosé")
+          color = "Rosé"
+        end
+      end
+    end
+
+    unless color.nil?
+      scraped_wine = Wine.create!(
+        appellation: vin,
+        provenance: region,
+        couleur: color
+      )
+
+      scraped_dish = Dish.create!(
+        nom: plat
+      )
+
+      match = Match.create!(
+      user: User.all.sample,
+      wine: scraped_wine,
+      dish: scraped_dish,
+      scraped: true
+      )
+    end
+  end
+end

@@ -2,6 +2,7 @@ require "open-uri"
 require "nokogiri"
 
 
+
 dishes = ["quiche+au+saumon", "camembert", "tarte+au+chocolat", "Omelette+champignon", "moules+marinieres", "fondure+savoyarde",
   "blanquette+de+veau", "choucroute", "salade+nicoise", "ratatouille", "pissaladiere", "samoussas+aux+legumes", "poulet+roti",
   "Lasagnes+au+boeuf+hache", "Sole+meuniere", "Boeuf+bourguignon", "Artichauts", "Tarte+aux+pommes", "Lapin+a+la+moutard", "Entrecote",
@@ -36,16 +37,18 @@ dishes.each do |dish|
         elsif couleur.include?("Rosé")
           color = "Rosé"
         end
+        p color
       end
     end
-    match = {
-      dish: plat,
-      appellation: vin,
-      couleur: color,
-      provenance: region
-    }
+    total_match.reject{ |vin| vin[:couleur].nil? }
+    
+    p "Vin: #{vin}"
+    p "Plat: #{plat}"
+    p "region: #{region}"
+    p "color: #{color}"
+
+
   end
-  total_match.reject{ |vin| vin[:couleur].nil? }
 end
 
 
@@ -61,3 +64,6 @@ end
 # final_search = search_dishes.map do |search_dish|
 #   search_dish.downcase.gsub(/[[:space:]]/,'+')
 # end
+
+
+# creer un match from scrap
