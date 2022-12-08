@@ -1,0 +1,100 @@
+  <div class="container">
+    <div class="comments">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="row">
+            <% if params[:wine_id] %>
+              <% @comments_select = Comment.where(commented_on_type: "Wine", commented_on_id: params[:wine_id] ) %>
+              <% @comments_select.each do |comment| %>
+              <div class="col-sm-6 bicard">
+                <div class="card rounded-4 shadow mb-4 ml-2" >
+                  <div class="card-body">
+                    <% if current_user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+                    <% else %>
+                      <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+                    <% end %>
+                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <% @wine = Wine.find(params[:wine_id]) %>
+                    <h4 class="card-title"><%= @wine.nom %></h4>
+                    <h5 class="card-title"><%= comment.commentaire%></h5>
+                    <h5 class="card-title"><%= comment.note%></h5>
+                    <% if @wine.user == current_user %>
+                      <i class="fa-solid fa-x"></i><%= link_to,
+                        dish_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                      <i class="fa-solid fa-pen"></i><%= link_to,
+                        edit_dish_comment_path(@wine, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+            <% if params[:dish_id] %>
+              <% @comments_select = Comment.where(commented_on_type: "Dish", commented_on_id: params[:dish_id]) %>
+              <% @comments_select.each do |comment| %>
+              <div class="col-sm-6 bicard">
+                <div class="card rounded-4 shadow mb-4 ml-2" >
+                  <div class="card-body">
+                    <% if current_user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+                    <% else %>
+                      <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+                    <% end %>
+                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <h4 class="card-title"><%= comment.commented_on.dish.nom %></h4>
+                    <h5 class="card-title"><%= comment.commentaire%></h5>
+                    <h5 class="card-title"><%= comment.note%></h5>
+                    <% @dish = Dish.find(params[:dish_id]) %>
+                    <% if @dish.user == current_user %>
+                      <i class="fa-solid fa-x"></i><%= link_to,
+                        dish_comment_path(@dish, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                      <i class="fa-solid fa-pen"></i><%= link_to,
+                        edit_dish_comment_path(@dish, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+            <% if params[:match_id] %>
+              <% @comments_select = Comment.where(commented_on_type: "Match", commented_on_id: params[:match_id]) %>
+              <% @comments_select.each do |comment| %>
+              <div class="col-sm-6 bicard">
+                <div class="card rounded-4 shadow mb-4 ml-2" >
+                  <div class="card-body">
+                    <% if current_user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, class:"avatar card-comment-user" %>
+                    <% else %>
+                      <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+                    <% end %>
+                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <h4 class="card-title"><%= comment.commented_on.wine.nom %> / <%= comment.commented_on.dish.nom %></h4>
+                    <h5 class="card-title"><%= comment.commentaire%></h5>
+                    <h5 class="card-title"><%= comment.note%></h5>
+                    <% @match = Match.find(params[:match_id]) %>
+                    <% if comment.user == current_user %>
+                      <i class="fa-solid fa-x"></i><%= link_to,
+                        match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                      <i class="fa-solid fa-pen"></i><%= link_to,
+                        edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+                        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                      %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+    </div>
+  </div>

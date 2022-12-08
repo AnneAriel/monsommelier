@@ -26,7 +26,20 @@
 <%# EXEMPLE WAGON %>
 
 
+
+
 <div class="container">
+
+  <%#NEW NAVBAR  %>
+
+  <div class="topnav">
+    <a href="/followers">Fil d'activités</a>
+    <a class="active" href="/followers">Contacts</a>
+    <%#  <a href=""><% link_to user_comments_path(current_user)%> <%# Mon activité </a>%>
+    <a href="/followers">Messagerie</a>
+  </div>
+
+  <%#END NEW NAVBAR  %>
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
       <% @users=User.all%>
