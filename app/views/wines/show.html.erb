@@ -3,21 +3,36 @@
     <div class="container-card align-items-center">
       <div class="row pt-4">
         <div class="col-sm-3 align-self-center">
-          <div class="card rounded-4 shadow mb-4 ml-2 align-self-center">
-            <div class="wine">
+          <div class="card rounded-4 shadow mb-4 ml-2 align-self-center overflow-hidden">
+            <div class="wine position-relative">
+              <div class="position-absolute top-0 end-0">
+                <% if @wine.couleur == "blanc" %>
+                <div class="indexmatch_white_tag mx-3 my-4">
+                  <span class="badge rounded-pill">Blanc</span>
+                </div>
+                <% elsif @wine.couleur == "rouge" %>
+                <div class="indexmatch_red_tag mx-3 my-4">
+                  <span class="badge rounded-pill">Rouge</span>
+                </div>
+                <% else %>
+                <div class="indexmatch_rose_tag mx-3 my-4">
+                  <span class="badge rounded-pill text-dark">Rosé</span>
+                </div>
+                <%end %>
+              </div>
               <% if current_user.favorited?(@wine) %>
               <div class="wine-bookmark">
                 <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
-                  data-favourite-class-value="wine" class="fa-solid fa-bookmark" id="<%=@wine.id%>"></i>
+                  data-favourite-class-value="wine" class="fa-solid fa-bookmark fa-xl" id="<%=@wine.id%>"></i>
               </div>
               <% else %>
               <div class="wine-bookmark">
                 <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
-                  data-favourite-class-value="wine" class="fa-regular fa-bookmark" id="<%=@wine.id%>"></i>
+                  data-favourite-class-value="wine" class="fa-regular fa-bookmark fa-xl" style="color:white;height:60px;width:60px" id="<%=@wine.id%>"></i>
               </div>
               <% end %>
               <% if @wine.photo.attached? %>
-              <%= cl_image_tag @wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+              <%= cl_image_tag @wine.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
               <% end %>
             </div>
             <div class="col-sm-12 mt-4 text-center bicard">
@@ -25,7 +40,9 @@
               <h6><%= @wine.appellation%></h5>
               <h6><%= @wine.annee %></h6>
               <% if @wine.quantité != 0 && @wine.quantité != nil %>
-                <h6>Quantité : <%= @wine.quantité %></h6>
+
+
+                  <h6> <i class="fa-solid fa-wine-bottle fa-2xs"></i> <%= @wine.quantité %></h6>
               <% end %>
               <% if @wine.comments.average(:note).to_i != 0 && @wine.comments.average(:note).to_i != nil %>
                 <div class="note">
