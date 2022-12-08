@@ -6,10 +6,6 @@
   background-color: #f5f5f52b;
 }
 
-.card-img-top {
-  margin-top: 10px;
-}
-
 .background-index {
   background-color: white;
   // background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1669977727/Rectangle_17_1_d9lgss.png");
@@ -47,4 +43,9 @@
     position: relative;
     top: -367px;
     left: 200px;
+}
+
+.vin {
+  display: flex;
+  align-items: center;
 }

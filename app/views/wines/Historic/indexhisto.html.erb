@@ -1,0 +1,81 @@
+<div class="background-index">
+  <div class="container">
+
+  <%#NEW NAVBAR  %>
+
+  <div class="topnav">
+    <a href="/matches">Accords</a>
+    <a class="active" href="/wines">Vins</a>
+    <a href="/bookmarks">Favoris</a>
+    <a href="/wines">Découvertes</a>
+  </div>
+
+  <%#END NEW NAVBAR  %>
+
+    <h5>Bonjour <strong><%=current_user.username%></strong> !</h5>
+
+    <div class=search-bar>
+      <%= form_with url: wines_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Je recherche un vin"
+          %>
+      <button type="submit" class="btn btn-no-design">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <% end %>
+    </div>
+
+    <div class="wines">
+      <div class="row mb-6">
+        <div class="col-12 col-lg-8">
+            <% @wines.each do |wine| %>
+                <% if current_user.favorited?(wine) %>
+                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl" id="<%=wine.id%>"></i>
+                <% else %>
+                  <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl" id="<%=wine.id%>"></i>
+                <% end %>
+              <%= link_to  wine_path(wine), style:"text-decoration:none;color:black;" do %>
+                <div class="col-sm-6 bicard">
+                  <div class="card rounded-4 shadow mb-4 ml-2">
+                    <% if wine.photo.attached? %>
+                      <%= cl_image_tag wine.photo.key, height: 300, width: 400, crop: :fit, class:"card-img-top rounded-4" %>
+                    <% end %>
+                    <div class="card-body text-center">
+                      <div class="color_tag">
+                        <% if wine.couleur == "blanc" %>
+                          <div class="white_tag" >
+                            <span class="badge rounded-pill">Blanc</span>
+                          </div>
+                          <% elsif wine.couleur == "rouge" %>
+                            <div class="red_tag" >
+                              <span class="badge rounded-pill">Rouge</span>
+                            </div>
+                          <% else %>
+                            <div class="rose_tag">
+                            <span class="badge rounded-pill text-dark">Rosé</span>
+                          </div>
+                        <%end %>
+                      </div>
+                      <div class="infos-index text-center">
+                        <div class="infos-accords text-center">
+                          <h3><%= wine.nom %></h3>
+                          <p><%= wine.appellation %>  </p>
+                          <p><%= wine.annee %></p>
+                        </div>
+                        <% if wine.quantité != 0 && wine.quantité != nil %>
+                          <h6>Quantité : <%= wine.quantité %></h6>
+                        <% end %>
+                        <% if wine.comments.average(:note).to_i != 0 && wine.comments.average(:note).to_i != nil %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>
