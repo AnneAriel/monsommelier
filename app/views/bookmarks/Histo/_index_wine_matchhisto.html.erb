@@ -1,0 +1,97 @@
+<% favorites.each do |favorite| %>
+  <% if favorite.class == Match %>
+  <%# Si le favori est un MATCH %>
+    <div class="col-sm-6 bicard">
+      <div class="card rounded-4 shadow mb-4 ml-2">
+        <div class="card-body">
+          <div class="upper-card">
+            <% if current_user.favorited?(favorite) %>
+            <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
+              data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl" id="<%=favorite.id%>"></i>
+            <% else %>
+            <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
+              data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl" id="<%=favorite.id%>"></i>
+            <% end %>
+            <%= link_to  match_path(favorite), style:"text-decoration:none;color:black;" do %>
+            <div class="star">
+              <div class="note-vin">
+                <%= favorite.wine.comments.average(:note).to_i %>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-6">
+            <div class="col-sm-6 bicard">
+              <% if favorite.wine.photo.attached? %>
+              <%= cl_image_tag favorite.wine.photo.key, height: 300, width: 400, crop: :fit, class:"card-img-top rounded-4" %>
+              <% end %>
+            </div>
+            <div class="col-sm-6 bicard">
+              <div class="infos-accords text-center">
+                <h3><%= favorite.wine.nom %></h3>
+                <% if favorite.wine.comments.average(:note).to_i != 0 && favorite.wine.comments.average(:note).to_i != nil %>
+                <% end %>
+                <p><%= favorite.wine.appellation %> </p>
+                <h4> <i class="fa-solid fa-utensils"></i> <%= favorite.dish.nom %></h4>
+              </div>
+              <div class="color_tag">
+                <% if favorite.wine.couleur == "blanc" %>
+                <div class="white_tag">
+                  <span class="badge rounded-pill">Blanc</span>
+                </div>
+                <% elsif favorite.wine.couleur == "rouge" %>
+                <div class="red_tag">
+                  <span class="badge rounded-pill">Rouge</span>
+                </div>
+                <% else %>
+                <div class="rose_tag">
+                  <span class="badge rounded-pill text-dark">Rosé</span>
+                </div>
+                <%end %>
+              </div>
+              <div class="star">
+                <% favorite.comments.average(:note).to_i.times do %>
+                <i class="fa-solid fa-star"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+<%# Si le favori est un VIN %>
+  <% if favorite.class == Wine %>
+    <div class="col-sm-6 bicard">
+      <div class="card rounded-4 shadow mb-4 ml-2">
+        <div class="card-body">
+          <% if current_user.favorited?(favorite) %>
+          <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
+            data-favourite-class-value="wine" class="fa-solid fa-bookmark" id="<%=favorite.id%>"></i>
+          <% else %>
+          <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
+            data-favourite-class-value="wine" class="fa-regular fa-bookmark" id="<%=favorite.id%>"></i>
+          <% end %>
+          <%= link_to  wine_path(favorite), style:"text-decoration:none;color:black;" do %>
+          <div class="row mb-6">
+            <div class="col-sm-6 bicard">
+              <% if favorite.photo.attached? %>
+              <%= cl_image_tag favorite.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top rounded-4" %>
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title"><%= favorite.nom%></h4>
+                <div class="note-vin">
+                  <p>Note du vin:<%=favorite.comments.average(:note).to_i %></p>
+                </div>
+                <h5 class="card-title"><%= favorite.appellation%></h5>
+                <h6><%= favorite.annee %></h6>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

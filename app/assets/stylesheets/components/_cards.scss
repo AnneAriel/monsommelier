@@ -10,10 +10,39 @@
   // border-color: black;
   background-size: cover;
   border-radius: 5px;
+  background-position: top;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 5px;
+}
+
+// indexmatchs
+.topmatchcard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.bottommatchcard {
+  position: absolute;
+  bottom: 2px;
+  left: 5px;
+}
+
+// indexwines
+
+.topwinecard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottomwinecard {
+  position: absolute;
+  bottom: 2px;
+  left: 5px;
 }
