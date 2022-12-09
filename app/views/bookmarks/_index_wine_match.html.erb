@@ -7,7 +7,7 @@
         <div class="cards-grid">
           <% if favorite.wine.photo.attached? %>
             <div class="indexmatchcard card bg-dark"
-              style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)), url('<%= cl_image_path favorite.wine.photo.key %>')">
+              style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url('<%= cl_image_path favorite.wine.photo.key %>')">
               <% end %>
               <div class="card-img-overlay">
                 <div class="topmatchcard">
@@ -57,7 +57,7 @@
       <% if favorite.class == Wine %>
           <% if favorite.photo.attached?%>
             <div class="indexmatchcard card bg-dark"
-              style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)), url('<%= cl_image_path favorite.photo.key %>')">
+              style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url('<%= cl_image_path favorite.photo.key %>')">
               <% end %>
               <div class="card-img-overlay">
                   <div class="topmatchcard">
