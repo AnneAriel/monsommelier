@@ -3,11 +3,30 @@ before_action :set_match, only: %i[show destroy]
 
   def index
     @recos = []
+    @recos_red = []
+    @recos_white = []
+    @recos_rose = []
     if params[:query].present?
       # raise
       @matches = Match.matches_search(params[:query])
       @recos = Wine.joins(matches: :dish)
                    .where(dishes: { id: Dish.search_by_nom_et_caracteristique(params[:query]).pluck(:id) })
+
+      @recos.each do |i|
+        if i.couleur.capitalize == "Rouge"
+          @recos_red << i
+        end
+
+        if i.couleur.capitalize == "Blanc"
+          @recos_white << i
+        end
+
+        if i.couleur.capitalize == "Rosé"
+          @recos_rose << i
+        end
+      end
+
+
     elsif params[:query] == ""
       redirect_to matches_path
     else

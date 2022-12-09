@@ -4,18 +4,34 @@
   margin: 0;
 }
 .modal.show .modal-content {
-  background-color: #0000006e;
+  background-color: white;
   /* border: var(--bs-modal-border-width) solid var(--bs-modal-border-color); */
   border-radius: 0;
-  height: 100%;
+  height: 80%;
   backdrop-filter: blur(40px);
-  color: white;
+  color: black;
 }
 
 .modal.show .modal-header {
   border-bottom: 1px solid transparent;
+  flex-direction: row-reverse;
+  align-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
 }
 
 .modal-footer  {
   border-top: 0px solid transparent;
+}
+
+.modal-content {
+  margin-top: 30px;
+  border-radius: 10px !important;
+  box-shadow: 0 0 10px;
+}
+
+.titresmodale {
+  text-decoration: underline;
+  padding-bottom: 10px;
+
 }
