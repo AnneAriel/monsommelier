@@ -31,7 +31,7 @@
       <div class="cards-grid">
           <%=render"matchcard" %>
           <div class="indexmatchcard card bg-dark bg-position-top text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-          style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)),url('https://media-cdn.tripadvisor.com/media/photo-s/0e/89/b0/de/degustation-a-l-aveugle.jpg')">
+          style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)),url('https://cdn.shopify.com/s/files/1/0538/2268/5356/products/mystery-bottle-of-italy_grande.jpg?v=1615595906')">
 
             <div class="card-img-overlay">
               <div class="bottommatchcard">
@@ -70,38 +70,48 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+
+       <i class="fa-solid fa-xmark fa-2xl" data-bs-dismiss="modal" style = "text-align: right, margin-top: 10px"></i>
+
         <h4 class="modal-title" id="staticBackdropLabel"> Suggestions de vins à découvrir pour votre plat : <%=params[:query]%> </h4>
         <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
       </div>
       <div class="modal-body">
         <!-- inserer ici les suggestions-->
+        <%# <button type="button" class="btn btn-secondary" </button> %>
 
-        <h6> Vins rouges : </h6>
-        <% @recos.each do |reco_wine| %>
-           <% if reco_wine.couleur == "rouge" || reco_wine.couleur == "Rouge" %>
-                <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+        <% if !@recos_red.empty? %>
+          <h6 class="titresmodale"> Vins rouges  </h6>
+            <% @recos_red.each do |reco_wine| %>
+              <ul>
+                <li><%= reco_wine.appellation %> - <%= reco_wine.provenance %></li>
+              </ul>
             <% end %>
         <% end %>
+
           <p></p>
-          <h6> Vins blancs : </h6>
-         <% @recos.each do |reco_wine| %>
-          <% if reco_wine.couleur == "blanc" || reco_wine.couleur == "Blanc" %>
-            <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+
+        <% if !@recos_white.empty? %>
+          <h6 class="titresmodale"> Vins blancs  </h6>
+            <% @recos_white.each do |reco_wine| %>
+              <ul>
+                <li><%= reco_wine.appellation %> - <%= reco_wine.provenance %></li>
+              </ul>
             <% end %>
         <% end %>
-        <p></p>
 
-          <h6> Vins rosés : </h6>
-          <% @recos.each do |reco_wine| %>
-            <% if reco_wine.couleur == "Rosé" || reco_wine.couleur == "rosé"%>
-              <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+        <% if !@recos_rose.empty?%>
+          <h6 class="titresmodale"> Vins rosés  </h6>
+            <% @recos_rose.each do |reco_wine| %>
+              <ul>
+                <li><%= reco_wine.appellation %> - <%= reco_wine.provenance %></li>
+              </ul>
             <% end %>
-           <% end %>
+        <% end %>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-
-      </div>
+        </div>
     </div>
   </div>
 </div>
