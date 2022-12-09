@@ -40,15 +40,16 @@
               <h6><%= @wine.appellation%></h5>
               <h6><%= @wine.annee %></h6>
               <% if @wine.quantité != 0 && @wine.quantité != nil %>
-
-
                   <h6> <i class="fa-solid fa-wine-bottle fa-2xs"></i> <%= @wine.quantité %></h6>
               <% end %>
-              <% if @wine.comments.average(:note).to_i != 0 && @wine.comments.average(:note).to_i != nil %>
-                <div class="note">
-                  <%= @wine.comments.average(:note).to_i %>
-                </div>
+
+              <% if @wine.comments.average(:note).to_i.times do %>
+                      <i class="fa-solid fa-star fa-2l"></i>
+                <% end %>
               <% end %>
+
+
+
 
               <div>
                 <%= simple_form_for(@wine) do |f| %>
