@@ -151,7 +151,7 @@ puts "Creating scrapped dishes..."
 dishes = ["quiche+au+saumon", "camembert", "tarte+au+chocolat", "Omelette+champignon", "moules+marinieres", "fondure+savoyarde",
   "blanquette+de+veau", "choucroute", "salade+nicoise", "ratatouille", "pissaladiere", "samoussas+aux+legumes", "poulet+roti",
   "Lasagnes+au+boeuf+hache", "Sole+meuniere", "Boeuf+bourguignon", "Artichauts", "Tarte+aux+pommes", "Lapin+a+la+moutard", "Entrecote",
-  "Puree+de+pommes+de+terre", "Poulet+basquaise", "Tartiflette", "Risotto", "Raclette", "Couscous", "Hachis+Parmentier", "Roti+de+porc",
+  "Puree+de+pommes+de+terre", "Tartiflette", "Risotto", "Raclette", "Couscous", "Hachis+Parmentier", "Roti+de+porc",
   "Soupe+de+poissons", "Aligot", "Creme+brulee", "Gratin+Dauphinois", "oignon", "Confit+de+canard", "aioli", "chapon"]
 
 

@@ -63,11 +63,11 @@
             <div class="follow">
               <% if user.followed_by?(current_user) %>
                 <%= form_tag unfollow_path(user_id: user.id), method: :delete do %>
-                  <%= button_tag 'unfollow', class: 'btn btn-primary pull-right' %>
+                  <%= button_tag 'Unfollow', class: 'btn btn-follow pull-right' %>
                 <% end %>
               <% else %>
                 <%= form_tag follows_path(user_id: user.id), method: :post do %>
-                  <%= button_tag 'follow', class: 'btn btn-success pull-right' %>
+                  <%= button_tag 'Follow', class: 'btn btn-follow pull-right' %>
                 <% end %>
               <% end %>
             </div>
