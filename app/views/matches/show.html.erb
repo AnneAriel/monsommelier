@@ -86,9 +86,36 @@
                 <% else %>
                   <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                 <% end %>
-                <p><b>Evaluateur: <%= "#{comment.user.username}" %></b></p>
-                <p>Note: <%= comment.note%></p>
-                <p><%= comment.commentaire%></p>
+
+                <%#  <p><b><%= "#{comment.user.username}" %><%#  %><%# </b></p>%>
+                <%# <p>Note: <%= comment.note%><%# </p>%>
+                <%# <p><%= comment.commentaire%><%# </p>%>
+
+                <%# DEMO DAY %>
+                <div class="row">
+                  <div class="col-2">
+                    <% if current_user.photo.attached? %>
+                    <%= cl_image_tag comment.user.photo.key, class:"avatar card-comment-user" %>
+                    <% else %>
+                    <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+                    <% end %>
+                  </div>
+                  <%#  <div class="card-header", style="background-color: #BC8F8F"></div>%>
+
+                  <div class="col-10"><p><b><%= "#{comment.user.username}" %></b>
+
+                  <%# NOTE EN ETOILES  %>
+                  <% comment.note.times do %>
+                    <i class="fa-solid fa-star fa-2l", style="color:#A4133C"></i>
+                  <% end %>
+
+                  <%# END NOTE ETOILES  %>
+                  </p>
+                  <div style="color:grey"></div><p>"<i><%= comment.commentaire%>"</p></i></div>
+                  </div>
+
+
                 <% if comment.user == current_user %>
                   <%= link_to match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
                     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
@@ -98,6 +125,9 @@
                     <i class="fa-solid fa-pen fa-lg"></i>
                   <% end %>
                 <% end %>
+              </div>
+                <%# END DEMO DAY %>
+
               </div>
             </div>
           </div>

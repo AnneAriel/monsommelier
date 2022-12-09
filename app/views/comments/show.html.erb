@@ -21,9 +21,16 @@
               <% else %>
                 <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
               <% end %>
-              <p>Evaluateur: <%= "#{@comment.user.username}" %></p>
+              <p><%= "#{@comment.user.username}" %></p>
               <p><%= @comment.commentaire %></p>
-              <p><%= @comment.note %></p>
+              <p><%#= @comment.note %></p>
+
+              <%# NOTE EN ETOILES  %>
+              <% @comment.note.times do %>
+                <i class="fa-solid fa-star fa-2xs"></i>
+              <% end %>
+
+              <%# END NOTE ETOILES  %>
 
               <% if params[:wine_id] %>
                   <%= link_to match_comment_path(@wine, @comment), style:"text-decoration:none;color:black;text-align:center;",
