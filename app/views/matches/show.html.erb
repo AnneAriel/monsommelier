@@ -45,7 +45,7 @@
       </div>
     </div>
   </div>
-  
+
  <div class="boutons-liens-accord">
             <% if @match.user == current_user %>
               <%= link_to match_path(@match), style:"text-decoration:none;color:black;text-align:center;",
@@ -83,6 +83,18 @@
               <% end %>
           </div>
           <p class="comment-content">"<%= comment.commentaire%>"</p>
+
+          <% if comment.user == current_user %>
+            <%= link_to match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-x fa-lg"></i>
+            <% end %>
+            <%= link_to edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;" do %>
+              <i class="fa-solid fa-pen fa-lg"></i>
+            <% end %>
+          <% end %>
+
+
         </div>
       </div>
     <% end %>
