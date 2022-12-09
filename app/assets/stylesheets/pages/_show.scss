@@ -1,0 +1,26 @@
+
+.back i {
+  font-size: 40px;
+}
+
+
+.card-match-show {
+  border-radius: 20px;
+  height: 50vh;
+  width: 90vw;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+
+.card-match-show-icons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px;
+
+  i {
+    margin-top: 20px;
+    display: block;
+  }
+}

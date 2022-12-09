@@ -1,6 +1,41 @@
-<div class="container">
-  <div class="back text-center my-3">
-    <%= link_to "Retour", matches_path(query: params[:value]), style:"text-decoration:none;color:black;" %>
+<div class="container container-show">
+  <div class="back my-3">
+    <%= link_to matches_path(query: params[:value]), style:"text-decoration:none;color:black;" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+  </div>
+
+  <div class="card-match-show"
+       style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)), url('<%= cl_image_path @match.wine.photo.key %>')">
+    <div class="card-match-show-icons">
+      <%# bookmark icon fullfilled or not %>
+      <% if current_user.favorited?(@match) %>
+        <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl mar" style="color:white" id="<%=@match.id%>"></i>
+      <% else %>
+        <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl mar " style="color:white" id="<%=@match.id%>"></i>
+      <% end %>
+      <%# wine color  %>
+      <div class="color_tag_show">
+        <% if @match.wine.couleur == "blanc" %>
+          <div class="white_tag_show" >
+            <span class="badge rounded-pill">Blanc</span>
+          </div>
+          <% elsif @match.wine.couleur == "rouge" %>
+            <div class="red_tag_show" >
+              <span class="badge rounded-pill">Rouge</span>
+            </div>
+          <% else %>
+            <div class="rose_tag_show">
+            <span class="badge rounded-pill text-dark">Rosé</span>
+          </div>
+        <%end %>
+      </div>
+    </div>
+    <div class="card-match-text">
+      <h3 class = "nom-vin"><%= @match.wine.nom %></h3>
+      <p> <%= @match.wine.appellation %> </p>
+      <h4> <i class="fa-solid fa-utensils"></i>  <%= @match.dish.nom %></h4>
+    </div>
   </div>
 
   <div class="card rounded-4 shadow mb-4 overflow-hidden" >
