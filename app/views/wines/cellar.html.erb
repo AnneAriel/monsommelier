@@ -10,7 +10,7 @@
         <% @wines.each do |wine| %>
           <% if wine.photo.attached? %>
           <div class="indexmatchcard card bg-dark"
-              style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)), url('<%= cl_image_path wine.photo.key %>')">
+              style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url('<%= cl_image_path wine.photo.key %>')">
           <% end %>
               <div class="card-img-overlay">
                 <div class="topmatchcard">

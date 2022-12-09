@@ -1,7 +1,7 @@
 <% @matches.each do |match| %>
     <% if match.wine.photo.attached? %>
     <div class="indexmatchcard card bg-dark"
-      style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)), url('<%= cl_image_path match.wine.photo.key %>')">
+      style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url('<%= cl_image_path match.wine.photo.key %>')">
 
       <div class="card-img-overlay">
         <div class="topmatchcard">
