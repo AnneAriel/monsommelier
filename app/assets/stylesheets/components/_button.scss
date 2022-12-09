@@ -77,3 +77,19 @@
   margin-top: 10px;
   // margin-bottom: 15px;
 }
+
+.btn-show-wine {
+  color: black;
+  border: 2px solid black;
+  padding: 8px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+  width: max-content;
+  background-color: white;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  display: flex;
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
