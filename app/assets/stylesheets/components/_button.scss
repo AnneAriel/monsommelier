@@ -3,17 +3,26 @@
 
 
 .btn-ghost {
-  color: #4A4A4A;
-  border: 1px solid #4A4A4A;
+  color: black;
+  border: 2px solid black;
   padding: 8px 24px;
-  border-radius: 50px;
-  font-weight: lighter;
-  opacity: 0.6;
+  border-radius: 5px;
+  font-weight: bold;
+
+  background-color: white;
+  opacity: 0.8;
   transition: opacity 0.3s ease;
+  width: 95%;
+  display: block;
+  margin: auto;
+  margin-top: 18px;
+  margin-bottom: 15px;
 }
 
 .btn-ghost:hover {
   opacity: 1;
+  background-color: black;
+  color: white;
 }
 
 .btn-no-design , .btn-no-design:active {
@@ -39,4 +48,22 @@
 
 .boutons-liens-accord {
   text-align: right;
+}
+
+
+.btn-follow {
+  color: black;
+  border: 2px solid black;
+  padding: 8px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+
+  background-color: white;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  width: 30%;
+  // display: block;
+  // margin: auto;
+  margin-top: 10px;
+  // margin-bottom: 15px;
 }
