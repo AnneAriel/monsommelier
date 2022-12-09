@@ -1,5 +1,5 @@
-<div class="background-index" >
-  <div class="container">
+<div class="background-index " >
+  <div class="container ">
 
     <%#NEW NAVBAR  %>
 
@@ -56,7 +56,6 @@
         <% end %>
       </div>
 
-
       <div class="cards-grid">
           <%=render"matchcard" %>
       </div>
@@ -71,14 +70,33 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"> Nom du plat à inserer ici</h5>
+        <h4 class="modal-title" id="staticBackdropLabel"> Suggestions de vins à découvrir pour votre plat : <%=params[:query]%> </h4>
         <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
       </div>
       <div class="modal-body">
         <!-- inserer ici les suggestions-->
+
+        <h6> Vins rouges : </h6>
         <% @recos.each do |reco_wine| %>
-          <p><%= reco_wine.appellation %> - <%= reco_wine.couleur %> - <%= reco_wine.provenance %></p>
+           <% if reco_wine.couleur == "rouge" || reco_wine.couleur == "Rouge" %>
+                <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+            <% end %>
         <% end %>
+          <p></p>
+          <h6> Vins blancs : </h6>
+         <% @recos.each do |reco_wine| %>
+          <% if reco_wine.couleur == "blanc" || reco_wine.couleur == "Blanc" %>
+            <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+            <% end %>
+        <% end %>
+        <p></p>
+
+          <h6> Vins rosés : </h6>
+          <% @recos.each do |reco_wine| %>
+            <% if reco_wine.couleur == "Rosé" || reco_wine.couleur == "rosé"%>
+              <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+            <% end %>
+           <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -87,4 +105,3 @@
     </div>
   </div>
 </div>
-
