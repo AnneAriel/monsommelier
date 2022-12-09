@@ -1,110 +1,69 @@
-<div class="container">
-  <div class="back text-center my-3">
-    <%= link_to "Retour", matches_path(query: params[:value]), style:"text-decoration:none;color:black;" %>
+<div class="container container-show">
+  <div class="back my-2">
+    <%= link_to matches_path(query: params[:value]), style:"text-decoration:none;color:black;" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
   </div>
 
-  <div class="card rounded-4 shadow mb-4 overflow-hidden" >
-
-    <!-- CARD HEADER -->
-    <div class = "upper-card">
+  <div class="card-match-show"
+       style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)), url('<%= cl_image_path @match.wine.photo.key %>')">
+    <div class="card-match-flex">
+      <div class="card-match-show-icons">
+        <%# bookmark icon fullfilled or not %>
         <% if current_user.favorited?(@match) %>
-            <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl mar" style="color:white" id="<%=@match.id%>"></i>
-          <% else %>
-            <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl mar " style="color:white" id="<%=@match.id%>"></i>
+          <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl mar" style="color:white" id="<%=@match.id%>"></i>
+        <% else %>
+          <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl mar " style="color:white" id="<%=@match.id%>"></i>
         <% end %>
-        <div class="align-items-end d-flex flex-column">
-          <div class="star">
-              <% @match.comments.average(:note).to_i.times do %>
-                <i class="fa-solid fa-star" style="color:white"></i>
-              <% end %>
-          </div>
-          <div class="color_tag_show">
-            <% if @match.wine.couleur == "blanc" %>
-              <div class="white_tag_show" >
-                <span class="badge rounded-pill">Blanc</span>
-              </div>
-              <% elsif @match.wine.couleur == "rouge" %>
-                <div class="red_tag_show" >
-                  <span class="badge rounded-pill">Rouge</span>
-                </div>
-              <% else %>
-                <div class="rose_tag_show">
-                <span class="badge rounded-pill text-dark">Rosé</span>
-              </div>
-            <%end %>
-          </div>
-        </div>
-    </div>
-
-    <!-- CARD IMAGE -->
-    <div class="col-sm-6 bicard" style="position:relative;">
-      <% if @match.wine.photo.attached? %>
-        <%= cl_image_tag @match.wine.photo.key, height: 500, width: 400, crop: :fit, class:"card-img-top" %>
-      <% end %>
-    </div>
-
-    <!-- CARD CONTENT -->
-    <div class="col-sm-6 bicard p-3">
-      <div class="infos-wine text-center">
-        <h3 class = "nom-vin"><%= @match.wine.nom %></h3>
-        <p> <%= @match.wine.appellation %> </p>
-        <h4> <i class="fa-solid fa-utensils"></i>  <%= @match.dish.nom %></h4>
-
-      </div>
-    </div>
-
-      <div class="boutons-liens-accord p-3">
-        <% if @match.user == current_user %>
-          <%= link_to match_path(@match), style:"text-decoration:none;color:black;text-align:center;",
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-solid fa-x fa-lg"></i>
-          <% end %>
-
-          <%= link_to edit_match_path(@match), style:"text-decoration:none;color:black;text-align:center;" do %>
-            <i class="fa-solid fa-pen fa-lg"></i>
-          <% end %>
-        <% end %>
-
-        <%= link_to new_match_comment_path(@match), style:"text-decoration:none;color:black;text-align:center;" do %>
-          <i class="fa-regular fa-comment fa-lg"></i>
-        <% end %>
-      </div>
-
-      <%#= link_to "Noter",  new_match_comment_path(@match), class:"btn btn-ghost" %>
-  </div>
-
-  <div class="comments">
-      <div class="col-12 col-lg-8">
-        <div class="row">
-          <% @comments_select = Comment.where(commented_on_type: "Match", commented_on_id: params[:id] ) %>
-          <% @comments_select.each do |comment| %>
-          <div class="col-sm-6 bicard">
-            <div class="card rounded-4 shadow mb-4 ml-2" >
-              <div class="card-body">
-                <% if current_user.photo.attached? %>
-                  <%= cl_image_tag comment.user.photo.key, class:"avatar card-comment-user" %>
-                <% else %>
-                  <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
-                <% end %>
-                <p><b>Evaluateur: <%= "#{comment.user.username}" %></b></p>
-                <p>Note: <%= comment.note%></p>
-                <p><%= comment.commentaire%></p>
-                <% if comment.user == current_user %>
-                  <%= link_to match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;",
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                    <i class="fa-solid fa-x fa-lg"></i>
-                  <% end %>
-                  <%= link_to edit_match_comment_path(@match, comment), style:"text-decoration:none;color:black;text-align:center;" do %>
-                    <i class="fa-solid fa-pen fa-lg"></i>
-                  <% end %>
-                <% end %>
-              </div>
+        <%# wine color  %>
+        <div class="color_tag_show">
+          <% if @match.wine.couleur == "blanc" %>
+            <div class="white_tag_show" >
+              <span class="badge rounded-pill">Blanc</span>
             </div>
-          </div>
-          <% end %>
-        </div >
+            <% elsif @match.wine.couleur == "rouge" %>
+              <div class="red_tag_show" >
+                <span class="badge rounded-pill">Rouge</span>
+              </div>
+            <% else %>
+              <div class="rose_tag_show">
+              <span class="badge rounded-pill text-dark">Rosé</span>
+            </div>
+          <%end %>
+        </div>
       </div>
-
+      <div class="card-match-text">
+        <h1><%= @match.wine.nom %></h1>
+        <h4> <%= @match.wine.appellation %> </h4>
+        <p> <i class="fa-solid fa-utensils"></i>  <%= @match.dish.nom %></p>
+        <%# stars %>
+        <div class="star">
+          <% @match.comments.average(:note).to_i.times do %>
+            <i class="fa-solid fa-star" style="color:white"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <div class="card-match-show-comments">
+    <% @comments_select = Comment.where(commented_on_type: "Match", commented_on_id: params[:id] ) %>
+    <% @comments_select.each do |comment| %>
+      <div class="card-match-show-comment">
+        <div>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag comment.user.photo.key, class:"avatar card-comment-user" %>
+          <% else %>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+          <% end %>
+        </div>
+        <div>
+          <div class="d-flex">
+            <p><b><%= "#{comment.user.username}" %></b></p>
+            <p>&nbsp&nbsp<%= comment.note%></p>
+          </div>
+          <p class="comment-content">"<%= comment.commentaire%>"</p>
+        </div>
+      </div>
+    <% end %>
 </div>
