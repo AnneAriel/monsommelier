@@ -12,19 +12,22 @@ before_action :set_match, only: %i[show destroy]
       @recos = Wine.joins(matches: :dish)
                    .where(dishes: { id: Dish.search_by_nom_et_caracteristique(params[:query]).pluck(:id) })
 
-      @recos.each do |i|
-        if i.couleur.capitalize == "Rouge"
-          @recos_red << i
-        end
+      @recos_red = @recos.where('LOWER(couleur) LIKE ?', "rouge").pluck(:appellation, :provenance).uniq
+      @recos_white = @recos.where('LOWER(couleur) LIKE ?', "blanc").pluck(:appellation, :provenance).uniq
+      @recos_rose = @recos.where('LOWER(couleur) LIKE ?', "rosé").pluck(:appellation, :provenance).uniq
+      # @recos.each do |i|
+      #   if i.couleur.capitalize == "Rouge"
+      #     @recos_red << i
+      #   end
 
-        if i.couleur.capitalize == "Blanc"
-          @recos_white << i
-        end
+      #   if i.couleur.capitalize == "Blanc"
+      #     @recos_white << i
+      #   end
 
-        if i.couleur.capitalize == "Rosé"
-          @recos_rose << i
-        end
-      end
+      #   if i.couleur.capitalize == "Rosé"
+      #     @recos_rose << i
+      #   end
+      # end
 
 
     elsif params[:query] == ""

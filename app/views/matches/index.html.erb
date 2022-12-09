@@ -79,12 +79,11 @@
       <div class="modal-body">
         <!-- inserer ici les suggestions-->
         <%# <button type="button" class="btn btn-secondary" </button> %>
-
         <% if !@recos_red.empty? %>
           <h6 class="titresmodale"> Vins rouges  </h6>
             <% @recos_red.each do |reco_wine| %>
               <ul>
-                <li><%= reco_wine.appellation %> - <%= reco_wine.provenance %></li>
+                <li><%= reco_wine.join(' - ') %></li>
               </ul>
             <% end %>
         <% end %>
@@ -95,7 +94,7 @@
           <h6 class="titresmodale"> Vins blancs  </h6>
             <% @recos_white.each do |reco_wine| %>
               <ul>
-                <li><%= reco_wine.appellation %> - <%= reco_wine.provenance %></li>
+                <li><%= reco_wine.join(' - ') %></li>
               </ul>
             <% end %>
         <% end %>
@@ -104,7 +103,7 @@
           <h6 class="titresmodale"> Vins rosés  </h6>
             <% @recos_rose.each do |reco_wine| %>
               <ul>
-                <li><%= reco_wine.appellation %> - <%= reco_wine.provenance %></li>
+                <li><%= reco_wine.join(' - ') %></li>
               </ul>
             <% end %>
         <% end %>
