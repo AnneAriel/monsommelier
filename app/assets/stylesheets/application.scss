@@ -54,9 +54,15 @@
 }
 .card-body .card-comment-user {
   position: absolute;
-  right: 16px;
+  left: 16px;
   top: 10px;
   width: 40px;
+}
+
+
+.card-body .card-comment-username {
+  left: 40px;
+
 }
 
 .banner{

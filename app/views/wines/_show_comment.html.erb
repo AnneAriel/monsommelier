@@ -14,7 +14,7 @@
                     <% else %>
                       <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                     <% end %>
-                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <p><%= "#{comment.user.username}" %></p>
                     <h4 class="card-title"><%= comment.commented_on.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                   </div>
@@ -33,7 +33,7 @@
                     <% else %>
                       <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                     <% end %>
-                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <p><%= "#{comment.user.username}" %></p>
                     <h4 class="card-title"><%= comment.commented_on.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                   </div>
@@ -52,7 +52,7 @@
                     <% else %>
                       <img class="avatar card-comment-user" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
                     <% end %>
-                    <p>Evaluateur: <%= "#{comment.user.username}" %></p>
+                    <p><%= "#{comment.user.username}" %></p>
                     <h4 class="card-title"><%= comment.commented_on.nom %></h4>
                     <h5 class="card-title"><%= comment.commentaire%></h5>
                   </div>
