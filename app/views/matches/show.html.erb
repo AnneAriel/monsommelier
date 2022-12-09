@@ -33,82 +33,17 @@
         </div>
       </div>
       <div class="card-match-text">
-        <h3><%= @match.wine.nom %></h3>
-        <p> <%= @match.wine.appellation %> </p>
-        <h4> <i class="fa-solid fa-utensils"></i>  <%= @match.dish.nom %></h4>
-      </div>
-    </div>
-    
-  </div>
-
-  <div class="card rounded-4 shadow mb-4 overflow-hidden" >
-
-    <!-- CARD HEADER -->
-    <div class = "upper-card">
-        <% if current_user.favorited?(@match) %>
-            <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-solid fa-bookmark fa-2xl mar" style="color:white" id="<%=@match.id%>"></i>
-          <% else %>
-            <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="match" class="fa-regular fa-bookmark fa-2xl mar " style="color:white" id="<%=@match.id%>"></i>
-        <% end %>
-        <div class="align-items-end d-flex flex-column">
-          <div class="star">
-              <% @match.comments.average(:note).to_i.times do %>
-                <i class="fa-solid fa-star" style="color:white"></i>
-              <% end %>
-          </div>
-          <div class="color_tag_show">
-            <% if @match.wine.couleur == "blanc" %>
-              <div class="white_tag_show" >
-                <span class="badge rounded-pill">Blanc</span>
-              </div>
-              <% elsif @match.wine.couleur == "rouge" %>
-                <div class="red_tag_show" >
-                  <span class="badge rounded-pill">Rouge</span>
-                </div>
-              <% else %>
-                <div class="rose_tag_show">
-                <span class="badge rounded-pill text-dark">Rosé</span>
-              </div>
-            <%end %>
-          </div>
+        <h1><%= @match.wine.nom %></h1>
+        <h4> <%= @match.wine.appellation %> </h4>
+        <p> <i class="fa-solid fa-utensils"></i>  <%= @match.dish.nom %></p>
+        <%# stars %>
+        <div class="star">
+          <% @match.comments.average(:note).to_i.times do %>
+            <i class="fa-solid fa-star" style="color:white"></i>
+          <% end %>
         </div>
-    </div>
-
-    <!-- CARD IMAGE -->
-    <div class="col-sm-6 bicard" style="position:relative;">
-      <% if @match.wine.photo.attached? %>
-        <%= cl_image_tag @match.wine.photo.key, height: 500, width: 400, crop: :fit, class:"card-img-top" %>
-      <% end %>
-    </div>
-
-    <!-- CARD CONTENT -->
-    <div class="col-sm-6 bicard p-3">
-      <div class="infos-wine text-center">
-        <h3 class = "nom-vin"><%= @match.wine.nom %></h3>
-        <p> <%= @match.wine.appellation %> </p>
-        <h4> <i class="fa-solid fa-utensils"></i>  <%= @match.dish.nom %></h4>
-
       </div>
     </div>
-
-      <div class="boutons-liens-accord p-3">
-        <% if @match.user == current_user %>
-          <%= link_to match_path(@match), style:"text-decoration:none;color:black;text-align:center;",
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-solid fa-x fa-lg"></i>
-          <% end %>
-
-          <%= link_to edit_match_path(@match), style:"text-decoration:none;color:black;text-align:center;" do %>
-            <i class="fa-solid fa-pen fa-lg"></i>
-          <% end %>
-        <% end %>
-
-        <%= link_to new_match_comment_path(@match), style:"text-decoration:none;color:black;text-align:center;" do %>
-          <i class="fa-regular fa-comment fa-lg"></i>
-        <% end %>
-      </div>
-
-      <%#= link_to "Noter",  new_match_comment_path(@match), class:"btn btn-ghost" %>
   </div>
 
   <div class="comments">
