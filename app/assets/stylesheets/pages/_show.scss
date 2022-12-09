@@ -35,3 +35,23 @@
     display: block;
   }
 }
+
+.card-match-show-comments {
+  width: 90vw;
+  margin: 20px auto;
+  .card-match-show-comment {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+    }
+    img {
+      margin-right: 20px;
+    }
+  }
+  .comment-content {
+    color: grey;
+    font-style: italic;
+  }
+}
