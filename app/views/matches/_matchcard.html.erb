@@ -14,11 +14,11 @@
           <% end %>
           <div class="matchstar">
             <% match.comments.average(:note).to_i.times do %>
-            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-solid fa-star fa-2xs"></i>
             <% end %>
           </div>
         </div>
-        <%= link_to  match_path(match), style:"text-decoration:none;color:white;" do %>
+        <%= link_to  match_path(match, value: params[:query]), style:"text-decoration:none;color:white;" do %>
         <div class="bottommatchcard">
           <% if  match.wine.quantité != nil  %>
             <h6> <i class="fa-solid fa-wine-bottle fa-2xs"></i> <%= match.wine.quantité %></h6>
@@ -46,4 +46,3 @@
     </div>
     <% end %>
   <% end %>
-
