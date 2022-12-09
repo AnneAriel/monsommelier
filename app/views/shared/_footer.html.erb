@@ -23,7 +23,9 @@
       <% else %>
         <%= link_to  user_path(current_user), style:"text-decoration:none;color:black;position:relative;" do %>
 
-          <img class="avatar" id="navbarDropdown" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+          <%= image_tag "logo.png", :class => "avatar" %>
+
+          <%#  <img class="avatar" id="navbarDropdown" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />%>
         <% end %>
       <% end %>
 

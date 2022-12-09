@@ -1,5 +1,5 @@
-<div class="background-index" >
-  <div class="container">
+<div class="background-index " >
+  <div class="container ">
 
     <%#NEW NAVBAR  %>
 
@@ -13,15 +13,16 @@
     <%#END NEW NAVBAR  %>
 
     <% if params[:query]%>
-      <div class=search-bar>
-        <%= form_with url: matches_path, method: :get, class: "d-flex" do %>
+
+    <div class="search-bar">
+        <%= form_with url: matches_path, method: :get, class: "wrapper-search" do %>
           <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
+            class: "form-control focused",
             placeholder: "Mon plat/Mon vin"
           %>
-          <button type="submit" class= "btn btn-no-design">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <button type="submit" class= "btn btn-no-design btn-search focused">
+          <i class="fa-solid fa-magnifying-glass  fa-2xl"></i>
           </button>
           <% link_to matches_path  %>
         <% end %>
@@ -29,8 +30,9 @@
 
       <div class="cards-grid">
           <%=render"matchcard" %>
-          <div class="indexmatchcard card bg-dark bg-position-top text-white"
+          <div class="indexmatchcard card bg-dark bg-position-top text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
           style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)),url('https://media-cdn.tripadvisor.com/media/photo-s/0e/89/b0/de/degustation-a-l-aveugle.jpg')">
+
             <div class="card-img-overlay">
               <div class="bottommatchcard">
               <p class="card-text">Propose moi de nouveaux accords !</p>
@@ -41,19 +43,18 @@
     <% else %>
 
 
-      <div class=search-bar>
-        <%= form_with url: matches_path, method: :get, class: "d-flex" do %>
+    <div class="search-bar">
+        <%= form_with url: matches_path, method: :get, class: "wrapper-search" do %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
             placeholder: "Mon plat/Mon vin"
           %>
-          <button type="submit" class= "btn btn-no-design">
+          <button type="submit" class= "btn btn-no-design btn-search">
           <i class="fa-solid fa-magnifying-glass  fa-2xl"></i>
           </button>
         <% end %>
       </div>
-
 
       <div class="cards-grid">
           <%=render"matchcard" %>
@@ -64,4 +65,43 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="staticBackdropLabel"> Suggestions de vins à découvrir pour votre plat : <%=params[:query]%> </h4>
+        <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
+      </div>
+      <div class="modal-body">
+        <!-- inserer ici les suggestions-->
 
+        <h6> Vins rouges : </h6>
+        <% @recos.each do |reco_wine| %>
+           <% if reco_wine.couleur == "rouge" || reco_wine.couleur == "Rouge" %>
+                <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+            <% end %>
+        <% end %>
+          <p></p>
+          <h6> Vins blancs : </h6>
+         <% @recos.each do |reco_wine| %>
+          <% if reco_wine.couleur == "blanc" || reco_wine.couleur == "Blanc" %>
+            <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+            <% end %>
+        <% end %>
+        <p></p>
+
+          <h6> Vins rosés : </h6>
+          <% @recos.each do |reco_wine| %>
+            <% if reco_wine.couleur == "Rosé" || reco_wine.couleur == "rosé"%>
+              <%= reco_wine.appellation %> - <%= reco_wine.provenance %>
+            <% end %>
+           <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
+      </div>
+    </div>
+  </div>
+</div>

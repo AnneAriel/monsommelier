@@ -12,22 +12,20 @@
 @import "cards";
 @import "topnav";
 @import "followers";
-
+@import "search_bar";
+@import "modal";
 
 
 .search-bar {
-  width: 300px;
-  border-radius: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  top: 7px;
-  left: 73px;
+  width: 100px;
+  /* border-radius: 10px; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  top: 40px;
+  right: 0px;
   position: fixed;
-  width: 250px;
+  /* width: 250px; */
   z-index: 1000;
-  // margin-bottom: 20px;
-  // margin-top:20px;
-
 }
 
 .images-search {

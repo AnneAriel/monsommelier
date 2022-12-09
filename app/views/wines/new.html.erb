@@ -12,14 +12,33 @@
     <div class="card rounded-4 border-0 shadow mb-4 ml-2 p-4">
 
     <h1 class="mb-4 text-center" >Ajouter un vin</h1>
-      <%= simple_form_for(@wine) do |f| %>
-        <%= f.select :couleur, ["rouge","blanc","rosé"] %>
-        <%= f.input :nom, label: false, placeholder: "Nom" %>
-        <%= f.input :appellation, label: false, placeholder: "Appellation" %>
-        <%= f.input :annee, label: false, placeholder: "Année" %>
-        <%= f.input :quantité, input_html: { type: 'number' }, label: false, placeholder: "Quantité" %>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit "Ajouter à la cave", class: "btn btn-ghost" %>
+      <%= simple_form_for(@wine) do |w| %>
+        <div class="field"><%= w.select :couleur, collection: ["rouge","blanc","rosé"] %></div>
+        <%#= f.input :nom, label: false, placeholder: "Nom" %>
+        <div class="field">
+          <%= w.text_field :nom, :placeholder => "Domaine/Château/Clos...", list: "noms"%>
+          <datalist id="noms">
+            <% @noms_vin.each do |nom| %>
+            <option value="<%= nom %>"></option>
+            <% end %>
+          </datalist>
+        </div>
+
+        <%#= w.input :appellation, label: false, placeholder: "Appellation" %>
+        <div class="field">
+          <%= w.text_field :appellation, :placeholder => "Appellation", list: "appellations"%>
+          <datalist id="appellations">
+            <% @appellations.each do |appellation| %>
+            <option value="<%= appellation %>"></option>
+            <% end %>
+          </datalist>
+        </div>
+
+        <%= w.input :annee, label: false, placeholder: "Année", input_html: { type: 'number' } %>
+        <%#  <div class="field"><%= w.input :annee %><%#</div>%>
+        <%= w.input :quantité, input_html: { type: 'number' }, label: false, placeholder: "Quantité" %>
+        <%= w.input :photo, as: :file %>
+        <%= w.submit "Ajouter à la cave", class: "btn btn-ghost" %>
       <% end %>
     </div>
   </div>

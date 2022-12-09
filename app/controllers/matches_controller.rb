@@ -2,8 +2,12 @@ class MatchesController < ApplicationController
 before_action :set_match, only: %i[show destroy]
 
   def index
+    @recos = []
     if params[:query].present?
+      # raise
       @matches = Match.matches_search(params[:query])
+      @recos = Wine.joins(matches: :dish)
+                   .where(dishes: { id: Dish.search_by_nom_et_caracteristique(params[:query]).pluck(:id) })
     elsif params[:query] == ""
       redirect_to matches_path
     else

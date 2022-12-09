@@ -24,6 +24,13 @@ class WinesController < ApplicationController
 
   def new
     @wine = Wine.new
+    @appellations = Wine.all.pluck(:appellation)
+    @noms_vin = Wine.all.pluck(:nom)
+    @noms_commercial = Wine.all.pluck(:nom_commercial)
+    @provenances = Wine.all.pluck(:provenance)
+    @cépages = Wine.all.pluck(:cépage)
+    @years = Wine.all.pluck(:annee)
+    @noms = Dish.all.pluck(:nom)
     # authorize @wine
   end
 

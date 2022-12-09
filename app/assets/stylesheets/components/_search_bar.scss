@@ -12,36 +12,25 @@ html, body {
 }
 
 body {
-  background: #252525;
+  background: white;
 }
 
 .wrapper-search {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 300px;
-  height: 100px;
-  .search-glas {
+  .btn-search {
     position: absolute;
     margin: auto;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 80px;
-    height: 80px;
-    background: black;
+    width: 60px;
+    height: 60px;
+    background: white;
     border-radius: 50%;
     transition: all 1s;
     z-index: 4;
-    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    // box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
     // box-shadow: 0 0 25px 0 crimson;
-    &:hover {
-      cursor: pointer;
-    }
     &::before {
       content: "";
       position: absolute;
@@ -72,25 +61,25 @@ body {
     }
   }
   input {
-    // font-family: 'Inconsolata', monospace;
+    font-family: 'Inconsolata', monospace;
     position: absolute;
     margin: auto;
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: -100px;
     width: 50px;
     height: 50px;
     outline: none;
     border: none;
     // border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    background: black;
+    background: crimson;
     color: white;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 10px crimson;
     padding: 0 80px 0 20px;
     border-radius: 30px;
-    box-shadow: 0 0 25px 0 black,
-                0 20px 25px 0 rgba(0, 0, 0, 0.2);
+    // box-shadow: 0 0 25px 0 crimson,
+    //             0 20px 25px 0 rgba(0, 0, 0, 0.2);
     // box-shadow: inset 0 0 25px 0 rgba(0, 0, 0, 0.5);
     transition: all 1s;
     opacity: 0;
@@ -101,12 +90,14 @@ body {
       cursor: pointer;
     }
     &:focus {
-      width: 300px;
+      left: -320px;
+      width: 210px;
       opacity: 1;
       cursor: text;
+      padding: 0 20px 0 20px;
     }
-    &:focus ~ .search-glas {
-      right: -250px;
+    &:focus ~ .btn-search {
+      left: 0px;
       background: #151515;
       z-index: 6;
       &::before {
@@ -130,5 +121,34 @@ body {
       opacity: 0.5;
       font-weight: bolder;
     }
+  }
+}
+
+.wrapper-search input.focused {
+  left: -320px;
+  width: 210px;
+  opacity: 1;
+  cursor: text;
+  padding: 0 20px 0 20px;
+}
+
+.wrapper-search .btn-search.focused {
+  left: 0px;
+  background: #151515;
+  z-index: 6;
+  &::before {
+    top: 0;
+    left: 0;
+    width: 25px;
+  }
+  &::after {
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    border: none;
+    background: white;
+    border-radius: 0%;
+    transform: rotate(-45deg);
   }
 }
