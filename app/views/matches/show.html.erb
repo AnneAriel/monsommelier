@@ -46,6 +46,19 @@
     </div>
   </div>
 
+  <div class="card-match-show-comments">
+    <% @comments_select = Comment.where(commented_on_type: "Match", commented_on_id: params[:id] ) %>
+    <% @comments_select.each do |comment| %>
+      <div class="card-match-show-comment">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag comment.user.photo.key, class:"avatar card-comment-user" %>
+        <% else %>
+          <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1659/1659503.png" />
+        <% end %>
+      
+      </div>
+
+    <% end %>
   <div class="comments">
       <div class="col-12 col-lg-8">
         <div class="row">
