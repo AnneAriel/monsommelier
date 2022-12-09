@@ -1,6 +1,19 @@
 <div class="background-index">
   <div class="container">
 
+  <div class=search-bar>
+      <%= form_with url: wines_path, method: :get, class: "wrapper-search" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Je recherche un vin"
+            %>
+        <button type="submit" class="btn btn-no-design btn-search">
+          <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
+        </button>
+      <% end %>
+    </div>
+
     <div class="boutons-new-vin justify-content-center">
       <%= link_to "Ajouter un vin à ma cave",  new_wine_path, class:"btn btn-ghost" %>
     </div>
