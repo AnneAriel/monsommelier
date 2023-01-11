@@ -1,0 +1,59 @@
+// Specific CSS for your home-page
+.upperhome {
+  background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670576634/undraw_special_event_-4-aj8_1_2_jjl8dj.png");
+  width: 100%;
+  height: 345px;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  margin-top: 38px;
+}
+
+.slogan {
+  margin-top: 20px;
+}
+
+.bottomhome {
+  background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670513931/Component_1_e5jug7.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 250px;
+  margin-top: -20px;
+}
+
+
+// .background {
+//   background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1669977727/Rectangle_17_1_d9lgss.png");
+//   background-size:contain;
+//   background-repeat:no-repeat;
+//   background-attachment:fixed;
+//   height:100%;
+// }
+
+.carousel-inner {
+  margin-left: 43px;
+  margin-top:30px;
+}
+
+.banner {
+  .liens_home {
+    display: inline-grid;
+    .btn_home {
+      margin: 10px;
+      padding: 30px;
+      background-color: #1e5052;
+      color: white;
+      border-color: #1e5052;
+      border-radius: 5px;
+    }
+  }
+}
+
+#titre-home {
+  color:white;
+  text-align: center;
+}
+
+// .btn-ghost {
+//   display: list-item;
+// }
