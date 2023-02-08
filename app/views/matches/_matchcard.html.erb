@@ -1,48 +1,67 @@
 <% @matches.each do |match| %>
-    <% if match.wine.photo.attached? %>
+  <%# Si une photo est présente : afficage de la photo en fond %>
+  <% if match.wine.photo.attached? %>
     <div class="indexmatchcard card bg-dark"
       style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url('<%= cl_image_path match.wine.photo.key %>')">
-
+      <%# Affichage des résultats%>
       <div class="card-img-overlay">
+        <%# Haut de la page : favoris et couleur du vin %>
         <div class="topmatchcard">
-          <% if current_user.favorited?(match) %>
-          <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
-            data-favourite-class-value="match" class="fa-solid fa-bookmark fa-xl" id="<%=match.id%>"></i>
-          <% else %>
-          <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
-            data-favourite-class-value="match" class="fa-regular fa-bookmark fa-xl" id="<%=match.id%>"></i>
-          <% end %>
-          <div class="matchstar">
-            <% match.comments.average(:note).to_i.times do %>
-            <i class="fa-solid fa-star fa-2xs"></i>
-            <% end %>
-          </div>
-        </div>
-        <%= link_to  match_path(match, value: params[:query]), style:"text-decoration:none;color:white;" do %>
-        <div class="bottommatchcard">
-          <% if  match.wine.quantité != nil  %>
-            <h6> <i class="fa-solid fa-wine-bottle fa-2xs"></i> <%= match.wine.quantité %></h6>
-          <% end %>
-          <h6><%= match.wine.appellation %></h6>
-          <div> <i class="fa-solid fa-utensils"></i> <%= match.dish.nom %></div>
-        </div>
-        <div class="indexmatch_color_tag">
+          <%# Tag couleurs vin%>
+          <div class="indexmatch_color_tag">
             <% if match.wine.couleur == "blanc" %>
-            <div class="indexmatch_white_tag">
-              <span class="badge rounded-pill">Blanc</span>
-            </div>
+              <div class="indexmatch_white_tag">
+                <span class="badge rounded-pill">Blanc</span>
+              </div>
             <% elsif match.wine.couleur == "rouge" %>
-            <div class="indexmatch_red_tag">
-              <span class="badge rounded-pill">Rouge</span>
-            </div>
+              <div class="indexmatch_red_tag">
+                <span class="badge rounded-pill">Rouge</span>
+              </div>
             <% else %>
-            <div class="indexmatch_rose_tag">
-              <span class="badge rounded-pill text-dark">Rosé</span>
-            </div>
+              <div class="indexmatch_rose_tag">
+                <span class="badge rounded-pill text-dark">Rosé</span>
+              </div>
             <%end %>
+          </div>
+          <%# Affichage des favoris si flagués %>
+          <% if current_user.favorited?(match) %>
+            <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
+              data-favourite-class-value="match" class="fa-solid fa-bookmark fa-xl" id="<%=match.id%>"></i>
+          <% else %>
+            <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
+              data-favourite-class-value="match" class="fa-regular fa-bookmark fa-xl" id="<%=match.id%>"></i>
+          <% end %>
         </div>
+        <%# Carte clickable %>
+        <%= link_to  match_path(match, value: params[:query]), style:"text-decoration:none;color:white;" do %>
+          <%# Pied de carte : quantité cave, nom vin/nom plat %>
+          <div class="bottommatchcard">
+            <%# Identité accord met/vin %>
+            <%# Vin et Quantité cave %>
+            <div>
+              <i class="fa-solid fa-wine-bottle"></i> <%= match.wine.appellation %>
+              <% if  match.wine.quantité != nil  %>
+              (<%= match.wine.quantité %>)
+              <% end %>
+            </div>
+            <%# Met%>
+            <div>
+              <i class="fa-solid fa-utensils"></i> <%= match.dish.nom %>
+            </div>
+            <%# Affichage de la note moyenne en étoiles %>
+            <div class="indexmatchstar">
+              <% if match.comments.average(:note) != nil %>
+                <div> Note de l'accord </div>
+                  <div>
+                    <% match.comments.average(:note).to_i.times do %>
+                    <i class="fa-solid fa-star fa-2xs"></i>
+                    <% end %>
+                  </div>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
-    <% end %>
   <% end %>
+<% end %>

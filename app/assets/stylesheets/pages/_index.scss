@@ -2,52 +2,5 @@
 @import "home";
 @import "matches_search";
 @import "show";
-
-
-.card{
-  background-color: #f5f5f52b;
-}
-
-.background-index {
-  background-color: white;
-  // background-image: url("https://res.cloudinary.com/dg3ubhfyk/image/upload/v1669977727/Rectangle_17_1_d9lgss.png");
-  // background-size:contain;
-  // background-repeat:no-repeat;
-  // background-attachment:fixed;
-  // height:100%;
-
-}
-
-.titre-vin-carte-accord {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-.infos-vin-index {
-  display: flex;
-  align-items: center;
-}
-
-.descriptif-match-search {
-  position: relative;
-  background: transparent;
-  text-align: center;
-  border: solid 1px;
-  width: 300px;
-  top: 0px;
-  left: -20px;
-  }
-
-
-.note-accord{
-    position: relative;
-    top: -367px;
-    left: 200px;
-}
-
-.vin {
-  display: flex;
-  align-items: center;
-}
+@import "matchesindex";
+@import "winesindex";

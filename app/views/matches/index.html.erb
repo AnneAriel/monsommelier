@@ -1,22 +1,20 @@
+<%# Navbar avec logo %>
 <%= render "navbar"%>
-
-<div class="background-index " >
-  <div class="container ">
-
-    <%#NEW NAVBAR  %>
-
-    <div class="topnav">
+<%# Contenu de la page %>
+<div style = "background: white">
+  <div class= "container ">
+    <%# Index avec les 4 chemins %>
+    <div class="topnav sticky-lg-top">
       <a class="active" href="/matches">Accords</a>
       <a href="/wines">Vins</a>
       <a href="/bookmarks">Favoris</a>
       <a href="/wines">Découvertes</a>
     </div>
 
-    <%#END NEW NAVBAR  %>
-
+    <%# Affichage des accords si une recherche est en cours %>
     <% if params[:query]%>
-
-    <div class="search-bar">
+      <%# Emplacement et bouton recherche %>
+      <div class="search-bar">
         <%= form_with url: matches_path, method: :get, class: "wrapper-search" do %>
           <%= text_field_tag :query,
             params[:query],
@@ -24,28 +22,29 @@
             placeholder: "Mon plat/Mon vin"
           %>
           <button type="submit" class= "btn btn-no-design btn-search focused">
-          <i class="fa-solid fa-magnifying-glass  fa-2xl"></i>
+          <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
           </button>
           <% link_to matches_path  %>
         <% end %>
       </div>
-
+      <%# Affichage des accords avec recherche en cours %>
       <div class="cards-grid">
-          <%=render"matchcard" %>
-          <div class="indexmatchcard card bg-dark bg-position-top text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+        <%=render"matchcard" %>
+        <%# Card avec carte mystère %>
+        <div class="indexmatchcard card bg-dark bg-position-top text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
           style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)),url('https://res.cloudinary.com/dg3ubhfyk/image/upload/v1670588086/logo_question_mark_p3hdss.png')">
-
-            <div class="card-img-overlay">
-              <div class="bottommatchcard">
-              <p class="card-text">Propose moi de nouveaux accords!</p>
+          <div class="card-img-overlay">
+            <div class="bottommatchcard">
+            <p class="card-text">Propose moi de nouveaux accords!</p>
             </div>
           </div>
+        </div>
       </div>
 
     <% else %>
-
-
-    <div class="search-bar">
+      <%# Affichage des accords si aucune recherche n'est en cours %>
+      <%# Emplacement et bouton recherche %>
+      <div class="search-bar">
         <%= form_with url: matches_path, method: :get, class: "wrapper-search" do %>
           <%= text_field_tag :query,
             params[:query],
@@ -57,62 +56,57 @@
           </button>
         <% end %>
       </div>
-
+      <%# Affichage des accords sans recherche %>
       <div class="cards-grid">
           <%=render"matchcard" %>
       </div>
-
     <% end %>
-
   </div>
-</div>
 
+<%# Affichage des suggestions de vins à découvrire en cas de recherche %>
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <%# titre de la modale avec nom de la recherche en dynamique %>
       <div class="modal-header">
-
-       <i class="fa-solid fa-xmark fa-2xl" data-bs-dismiss="modal" style = "text-align: right, margin-top: 10px"></i>
-
         <h4 class="modal-title" id="staticBackdropLabel"> Suggestions de vins à découvrir pour votre plat : <%=params[:query]%> </h4>
-        <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
       </div>
+      <%# liste des vins %>
       <div class="modal-body">
         <!-- inserer ici les suggestions-->
-        <%# <button type="button" class="btn btn-secondary" </button> %>
+        <%# vins rouges si il y en a %>
         <% if !@recos_red.empty? %>
-          <h6 class="titresmodale"> Vins rouges  </h6>
-            <% @recos_red.each do |reco_wine| %>
-              <ul>
-                <li><%= reco_wine.join(' - ') %></li>
-              </ul>
-            <% end %>
+          <h6 class="titresmodale"> Vins rouges </h6>
+          <% @recos_red.each do |reco_wine| %>
+            <ul>
+              <li><%= reco_wine.join(' - ') %></li>
+            </ul>
+          <% end %>
         <% end %>
-
-          <p></p>
-
+        <%# vins blancs si il y en a %>
         <% if !@recos_white.empty? %>
           <h6 class="titresmodale"> Vins blancs  </h6>
-            <% @recos_white.each do |reco_wine| %>
-              <ul>
-                <li><%= reco_wine.join(' - ') %></li>
-              </ul>
-            <% end %>
+          <% @recos_white.each do |reco_wine| %>
+            <ul>
+              <li><%= reco_wine.join(' - ') %></li>
+            </ul>
+          <% end %>
         <% end %>
-
+        <%# vins rosés si il y en a %>
         <% if !@recos_rose.empty?%>
           <h6 class="titresmodale"> Vins rosés  </h6>
-            <% @recos_rose.each do |reco_wine| %>
-              <ul>
-                <li><%= reco_wine.join(' - ') %></li>
-              </ul>
-            <% end %>
+          <% @recos_rose.each do |reco_wine| %>
+            <ul>
+              <li><%= reco_wine.join(' - ') %></li>
+            </ul>
+          <% end %>
         <% end %>
-
       </div>
+      <%# boutton pour fermer la modale %>
       <div class="modal-footer">
-        </div>
+        <button type="button" class="btn btn-dark rounded-5" data-bs-dismiss="modal">Retour</button>
+      </div>
     </div>
   </div>
 </div>

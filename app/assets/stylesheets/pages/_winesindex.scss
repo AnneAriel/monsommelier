@@ -1,0 +1,56 @@
+@media(min-width: 769px) {
+  .wine-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+  }
+
+  .indexwinecard {
+    margin: 10px;
+    height: 250px;
+    width: 350px;
+    background-size: cover;
+    border-radius: 5px;
+    background-position: bottom;
+  }
+  .topwinecard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .bottomwinecard {
+    position: absolute;
+    bottom: 2px;
+    left: 5px;
+  }
+
+}
+
+
+  @media(max-width: 768px) {
+    .wine-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 5px;
+    }
+    .indexwinecard {
+      margin: 10px;
+      height: 300px;
+      width: 165px;
+      background-size: cover;
+      border-radius: 5px;
+      background-position: bottom;
+    }
+    .topwinecard {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bottomwinecard {
+      position: absolute;
+      bottom: 2px;
+      left: 5px;
+    }
+  }
