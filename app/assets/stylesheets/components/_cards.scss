@@ -1,37 +1,4 @@
-.indexmatchcard {
-  margin: 10px;
-  height: 200px;
-  width: 160px;
-  // border: 2px solid;
-  // border-right: 3px solid;
-  // border-bottom: 3px solid;
-  // border-top: 1.5px;
-  // border-left: 1.5px;
-  // border-color: black;
-  background-size: cover;
-  border-radius: 5px;
-  background-position: top;
-}
 
-.cards-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
-}
-
-// indexmatchs
-.topmatchcard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-}
-
-.bottommatchcard {
-  position: absolute;
-  bottom: 2px;
-  left: 5px;
-}
 
 // indexwines
 

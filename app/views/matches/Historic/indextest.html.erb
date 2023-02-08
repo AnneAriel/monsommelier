@@ -1,0 +1,62 @@
+
+    <div class="container py-5">
+      <!--- Index des accords -->
+      <div class="row">
+        <% @matches.each do |match| %>
+          <!--- Si il y a une photo alors elle est en background -->
+          <% if match.wine.photo.attached? %>
+            <div class="co-12 col-sm-6 col-md-4 mb-3 indexmatchcard card bg-dark"
+              style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)),
+              url('<%= cl_image_path match.wine.photo.key %>')">
+              <div class="card-img-overlay">
+                <div class="topmatchcard">
+                  <!--- Affichage du bookmark plein ou vide en fonction du favori -->
+                  <% if current_user.favorited?(match) %>
+                    <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
+                    data-favourite-class-value="match" class="fa-solid fa-bookmark fa-xl" id="<%=match.id%>"></i>
+                  <% else %>
+                    <i data-action="click->favourite#toggle" data-controller="favourite" data-favourite-target="bookmark"
+                    data-favourite-class-value="match" class="fa-regular fa-bookmark fa-xl" id="<%=match.id%>"></i>
+                  <% end %>
+                  <!--- Affichage de la note moyenne en étoiles -->
+                  <div class="matchstar">
+                    <% match.comments.average(:note).to_i.times do %>
+                    <i class="fa-solid fa-star fa-2xs"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <!--- Carte clicable à partir d'ici -->
+                <%= link_to  match_path(match, value: params[:query]), style:"text-decoration:none;color:white;" do %>
+                <!--- Affichage de la quantité si présent dans la cave (renseignée) et du nom -->
+                <div class="bottommatchcard">
+                  <!--- Affichage de la quantité si présent dans la cave (renseignée)-->
+                  <% if match.wine.quantité != nil  %>
+                    <h6> <i class="fa-solid fa-wine-bottle fa-2xs"></i> <%= match.wine.quantité %></h6>
+                  <% end %>
+                  <!--- Affichage du nom du vin -->
+                  <h6><%= match.wine.appellation %></h6>
+                  <div> <i class="fa-solid fa-utensils"></i> <%= match.dish.nom %></div>
+                </div>
+                <!--- Affichage de la couleur du vin en tag-->
+                <div class="indexmatch_color_tag">
+                  <% if match.wine.couleur == "blanc" %>
+                    <div class="indexmatch_white_tag">
+                      <span class="badge rounded-pill">Blanc</span>
+                    </div>
+                    <% elsif match.wine.couleur == "rouge" %>
+                    <div class="indexmatch_red_tag">
+                      <span class="badge rounded-pill">Rouge</span>
+                    </div>
+                    <% else %>
+                    <div class="indexmatch_rose_tag">
+                      <span class="badge rounded-pill text-dark">Rosé</span>
+                    </div>
+                  <%end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+<% end %>

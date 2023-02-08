@@ -1,10 +1,9 @@
+<%# Navbar avec logo%>
 <%= render "navbar"%>
-
+<%# Contenu de la page %>
 <div class="background-index">
   <div class="container">
-
-    <%#NEW NAVBAR  %>
-
+    <%# Index avec les 4 chemins %>
     <div class="topnav">
       <a href="/matches">Accords</a>
       <a class="active" href="/wines">Vins</a>
@@ -12,8 +11,7 @@
       <a href="/wines">Découvertes</a>
     </div>
 
-    <%#END NEW NAVBAR  %>
-
+    <%# searchbar%>
     <div class=search-bar>
       <%= form_with url: wines_path, method: :get, class: "wrapper-search" do %>
         <%= text_field_tag :query,
@@ -27,56 +25,65 @@
       <% end %>
     </div>
 
-    <div class="cards-grid">
-
+    <%# Affichage des vins %>
+    <div class="wine-cards-grid">
+      <%# Affichage des vins non scrapés %>
       <% @wines = Wine.where(scraped: false) %>
         <% @wines.each do |wine| %>
+          <%# Si une photo est présente : afficage de la photo en fond %>
           <% if wine.photo.attached? %>
-            <div class="indexmatchcard card bg-dark"
+            <div class="indexwinecard card bg-dark"
               style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url('<%= cl_image_path wine.photo.key %>')">
-          <% end %>
-          <div class="card-img-overlay">
-              <div class="topmatchcard">
+              <% end %>
+              <%# Affichage des résultats%>
+              <div class="card-img-overlay">
+                <%# Haut de la page : favoris et notations %>
+                <div class="topwinecard">
+                  <%# Affichage des favoris si flagués %>
                   <% if current_user.favorited?(wine) %>
                     <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="wine" class="fa-solid fa-bookmark fa-xl pb-3" id="<%=wine.id%>"></i>
                   <% else %>
                     <i data-action="click->favourite#toggle"  data-controller="favourite" data-favourite-target="bookmark" data-favourite-class-value="wine" class="fa-regular fa-bookmark fa-xl pb-3" id="<%=wine.id%>"></i>
                   <% end %>
-                  <div class="d-flex flex-column align-items-end">
-                    <div class="matchstar">
-                      <% wine.comments.average(:note).to_i.times do %>
-                      <i class="fa-solid fa-star fa-xs"></i>
-                      <% end %>
-                    </div>
-                    <div class="indexwine_color_tag">
-                      <% if wine.couleur == "blanc" %>
+                  <%# Affichage des couleurs %>
+                  <div class="indexwine_color_tag">
+                    <%# blanc %>
+                    <% if wine.couleur == "blanc" %>
                       <div class="indexmatch_white_tag">
                         <span class="badge rounded-pill">Blanc</span>
                       </div>
-                      <% elsif wine.couleur == "rouge" %>
+                    <%# rouge %>
+                    <% elsif wine.couleur == "rouge" %>
                       <div class="indexmatch_red_tag">
                         <span class="badge rounded-pill">Rouge</span>
                       </div>
-                      <% else %>
+                    <%# rosé %>
+                    <% else %>
                       <div class="indexmatch_rose_tag">
                         <span class="badge rounded-pill text-dark">Rosé</span>
                       </div>
-                      <%end %>
-                    </div>
-                  </div>
-              </div>
-              <%= link_to wine_path(wine), style:"text-decoration:none;color:white;" do %>
-                <div class="bottommatchcard">
-                  <% if  wine.quantité != nil  %>
-                    <h6> <i class="fa-solid fa-wine-bottle fa-2xs"></i> <%= wine.quantité %></h6>
-                    <% end %>
-                    <h6><%= wine.appellation %></h6>
+                    <%end %>
                   </div>
                 </div>
-
-
-              <%end %>
+                <%# Carte clickable %>
+                <%= link_to wine_path(wine), style:"text-decoration:none;color:white;" do %>
+                <%# Bas de la page : nom du vin et note %>
+                <div class="bottomwinecard">
+                  <%# Vin et Quantité cave %>
+                  <div>
+                    <i class="fa-solid fa-wine-bottle fa-2xs"></i> <%= wine.appellation %>
+                      <% if  wine.quantité != nil %>(<%= wine.quantité %>)<% end %>
+                  </div>
+                  <%# note %>
+                  <div class="winematchstar">
+                    <% if wine.comments.average(:note) != nil %>
+                      <i class="fa-solid fa-star"></i> <%= wine.comments.average(:note).to_f %>
+                    <%end %>
+                  </div>
+                </div>
+              </div>
             </div>
+          <%end %>
         <%end %>
     </div>
   </div>

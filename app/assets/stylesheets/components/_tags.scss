@@ -27,73 +27,64 @@
   float: right;
 }
 
-
-
-.indexwine_color_tag {
-  // margin-top: 36px;
+.color_tag {
+    position: absolute;
 }
 
-  .color_tag {
-    position: absolute;
-  }
+.white_tag{
+  text-align: center;
+  background-color: #f4de54;
+  border-radius: 10px;
+  display: inline-table;
+  position: relative;
+}
 
-  .white_tag{
-    text-align: center;
-    background-color: #f4de54;
-    border-radius: 10px;
-    display: inline-table;
-    position: relative;
-  }
+.red_tag{
+  text-align: center;
+  background-color: #5a1f29;
+  border-radius: 10px;
+  display: inline-table;
+  position: relative;
+  color: white;
+}
 
-  .red_tag{
-    text-align: center;
-    background-color: #5a1f29;
-    border-radius: 10px;
-    display: inline-table;
-    position: relative;
-    color: white;
-  }
+.rose_tag{
+  text-align: center;
+  background-color: #f9d3aa;
+  border-radius: 10px;
+  display: inline-table;
+  position: relative;
+  color:black;
+}
 
-  .rose_tag{
-    text-align: center;
-    background-color: #f9d3aa;
-    border-radius: 10px;
-    display: inline-table;
-    position: relative;
-    color:black;
-  }
+.color_tag_show {
+  margin: 10px 0;
+}
 
-  .color_tag_show {
-    margin: 10px 0;
-  }
+.white_tag_show{
+  text-align: center;
+  background-color: #f4de54;
+  border-radius: 50px;
+  color:black;
 
-  .white_tag_show{
-    text-align: center;
-    background-color: #f4de54;
-    border-radius: 50px;
-    color:black;
+  display: initial;
+  padding: 6px 10px;
+}
 
-    display: initial;
-    padding: 6px 10px;
-  }
+.red_tag_show{
+  text-align: center;
+  background-color: #5a1f29;
+  border-radius: 50px;
+  color: white;
+  display: initial;
+  padding: 6px 10px;
+}
 
-  .red_tag_show{
-    text-align: center;
-    background-color: #5a1f29;
-    border-radius: 50px;
-
-    color: white;
-
-    display: initial;
-    padding: 6px 10px;
-  }
-
-  .rose_tag_show{
-    text-align: center;
-    background-color: #f9d3aa;
-    border-radius: 50px;
-    color:black;
-
-    display: initial;
-    padding: 6px 10px;
-  }
+.rose_tag_show{
+  text-align: center;
+  background-color: #f9d3aa;
+  border-radius: 50px;
+  color:black;
+  display: initial;
+  padding: 6px 10px;
+}
