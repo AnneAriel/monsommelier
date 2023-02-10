@@ -1,7 +1,7 @@
 @media(min-width: 769px) {
   .cards-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 5px;
   }
 
@@ -15,15 +15,14 @@
   }
 
   .indexmatchstar {
-    background-color: #f23068;
+    background-color: white;
+    color: #5f202b;
     width: 350px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     justify-items: center;
     margin-left: -6px;
     margin-bottom: -3px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
   }
 }
 
@@ -39,6 +38,7 @@
     position: absolute;
     bottom: 2px;
     left: 5px;
+    margin-bottom: 8px;
   }
 
 
@@ -61,7 +61,8 @@
   }
 
   .indexmatchstar {
-    background-color: #f23068;
+    background-color: white;
+    color: #5f202b;
     width: 165px;
     height: 50px;
     display: flex;
@@ -71,8 +72,6 @@
     align-items: center;
     margin-left: -6px;
     margin-bottom: -3px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
   }
 }
 
